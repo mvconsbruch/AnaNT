@@ -4,7 +4,7 @@
 ## Announcements
 * From now on we will meet at 8:30!
 
-## Solutions to the exercise Sheets
+## Solutions to the exercise sheets
 * [Sheet 1](Sheet1/Sheet1.pdf)
 * [Sheet 2](Sheet2/Sheet2.pdf)
 
