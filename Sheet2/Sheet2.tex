@@ -1,0 +1,144 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+
+\begin{document}
+
+\section*{Exercise 1}
+\textbf{1.} The squarefull non-squares up to onehundred are $8,27,32,72$.
+
+\textbf{2.} It suffices to show that any prime power can be written uniquely as
+$p^k = a^2 b^3$ with $b$ square-free. But this is the same as writing $k =
+2a+3b$ with $0 \leq b \leq 1$, and this is possible in a unique way. 
+
+\textbf{3.} Using the above and that $b$ is square-free iff $\mu^2(b) = 1$, we may write
+\[
+    \sum_{n \text{ squarefull}} n^{-s} = \sum_{a,b} \frac{\mu^2(b)}{a^{2s} b^{3s}} = \zeta(2s) \sum_{b} \mu^2(b) b^{-3s}.
+\]
+We can extend the Dirichlet series of $\mu^2$ into an Euler product, obtaining
+\[
+    \sum_{n \in \N} \mu^2(n)n^{-s} = \prod_p \left(1 + p^{-s} \right) = \prod_p
+    \frac {\left(1 - p^{-s}\right)^{-1}} {\left(1 - p^{-2s}\right)^{-1}} =
+    \frac {\zeta(s)}{\zeta(2s)}.
+\]
+(In the second-to-last equality we used $(1+x)(1-x) = 1-x^2$.)
+
+\textbf{Notes after correcting.} \leavevmode
+\begin{itemize}
+    \item This exercise went well!
+\end{itemize}
+
+\section*{Exercise 2}
+This is just a messy calculation. 
+We somehow want to get of the $(a,b)$-symbol in the sum. We do so by using that
+given $a,b \in \N$, we find unique coprime numbers $k, l$ with $a = k (a,b)$ and 
+$b = k (a,b)$. Now summing over all possible gcds $d$ yields
+\[
+    \sum_{a,b} \frac{(a,b)}{a^s b^t} = \sum_{d} \frac d{d^{s+t}} \sum_{k,l
+    \text{ coprime}} k^{-s}l^{-t} = \zeta(s+t-1)\sum_{k,l} k^{-s}l^{-t} \sum_{e \mid (k,l)} \mu(e)
+\]
+where we rephrased the coprimality condition on $k$ and $l$ using the trick
+from the last sheet.
+Now we rewrite
+\[
+    \sum_{k,l} k^{-s}l^{-t} \sum_{e \mid (k,l)} \mu(e) = \sum_e \mu(e)
+    \sum_{k,l} (ke)^{-s} (le)^{-t} = \frac{\zeta(s)\zeta(t)}{\zeta(s+t)},
+\]
+obtaining
+\[
+    \sum_{a,b} \frac{(a,b)}{a^s b^t} = \frac {\zeta(s+t-1) \zeta(s) \zeta(t)}{\zeta(s+t)}.
+\]
+Tracing through this calculation, we find that it is sufficient for absolute convergence to have
+$\Re(s)>1$ and $\Re(t) > 1$. These conditions are easily seen to be necessary too.
+
+\textbf{Notes after correcting.} \leavevmode
+\begin{itemize}
+    \item Even though it is easily seen that the double sum cannot converge
+        absolutely whenever (say) $\Re(s) \leq 1$, this does immediately follow from splitting 
+        the sum! The reason is that it is possible to split a convergent sum into divergent 
+        ones, i.e.
+        \[
+            \sum_{n \in \N} 0 = \sum_{n \in \N} (1-1) \neq \sum_n 1 - \sum_n 1.
+        \]
+\end{itemize}
+
+\section*{Exercise 3}
+\textbf{1.} We have
+\[
+    \psi(s) = \sum_{n} n^{-s} - 2 \sum_n (2n)^{-s}
+\]
+and 
+\[
+    \Tilde \psi(s) = \sum_{n} n^{-s} - 3 \sum_n (3n)^{-s}.
+\]
+
+\textbf{2.} Using the Leibniz criterion, we see that the series converge conditionally on the
+positive real line, and thereby for $\Re s > 0$. 
+
+\textbf{3.} As both $\psi$ and $\Tilde \psi$ are holomorphic in $\Re s > 0$, $\zeta$ can only
+have a pole whenever $(1-2^{1-s})$ and $(1-3^{1-s})$ vanish. But this is the case whenever 
+\[
+    1 = 2^{1-s} = \ec^{(\log 2)(1-s)} \quad \Leftrightarrow \quad (\log 2)(1-s) \in 
+    2 \pi \ic \Z.
+\]
+
+\textbf{4.} If $\log 2 / \log 3 = p/q$ was rational, we'd find that $2^p = 3^q$, contradiction.
+Hence the two sets $\log 2 (2 \pi i \Z)$ and $\log 3 ( 2 \pi i \Z)$ have intersection the set
+$\{0\}$. Thereby, $\zeta$ cannot have a pole away from $s = 1$. There it has a pole from a 
+theorem in the lecture, and it is a simple pole as $(2^{1-s}-1)$ has a simple zero at $s=1$. 
+
+
+
+\textbf{Notes after correcting.} \leavevmode
+\begin{itemize}
+    \item 
+\end{itemize}
+
+\section*{Exercise 4}
+We know that the $d$-th cyclotomic polynomial $\Phi_d(x)$ has degree $\phi(d)$, and that 
+$\prod_{d \mid n} \Phi_d(x) = x^n - 1$. Hence 
+\[
+\sum_{d \mid n} \phi(d) = \sum_{d \mid n } \deg \Phi_d = \deg \left(\prod_{d
+\mid n} \Phi_d \right) = \deg(x^n - 1) = n,
+\]
+hence (by Möbius-inversion)
+\[
+    \phi(n) = (\mu \star \id)(n) = \sum_{d\mid n}\frac nd \mu(d). 
+\]
+Now we find 
+\[
+    \sum_{n \leq x} \phi(n) / n = \sum_{n \leq x} \frac 1n \sum_{d \mid n}
+    \frac nd \mu(d) = \sum_{d \leq x} \frac{\mu(d)}d \sum_{k : kd \leq x} 1 = 
+    \sum_{d \leq x} \frac{\mu(d)}d \left[\frac xd \right] 
+\]
+We write $[x/d] = x/d + O(1)$ and use that $\mu(d) \in \{-1, 0, 1\}$. This gives 
+\[
+    \sum_{d \leq x} \frac{\mu(d)}d \left[\frac xd \right] 
+    = \sum_{d \leq x} \frac{\mu(d)}d \frac xd + O\left(\sum_{d \leq x} \frac 1d \right) 
+    = \sum_{d \leq x} \frac{\mu(d)}d \frac xd + O(\log x)
+\]
+(by approximating the $n$-th harmonic number with the logarithm) and 
+we have 
+\[
+    \sum_{d \leq x} \frac{\mu(d)}d \frac xd = x \sum_{d = 1}^\infty \mu(d) d^{-2} + 
+    O \left(x \sum_{x < d < \infty} d^{-2} \right) = x \zeta(2)^{-1} + O(1).
+\]
+One can show the estimate $\sum_{x < d < \infty} d^{-2} \ll x^{-1}$ using the inequality
+\[
+    \sum_{x < d < \infty} d^{-2} \leq \int_{x-1}^\infty t^{-2} \dc t = O((x-1)^{-1}) = O(x^{-1}).
+\]
+Done. 
+
+
+
+\textbf{Notes after correcting.} \leavevmode
+\begin{itemize}
+    \item The convolution formula can also be obtained formally by writing
+        \[
+            \phi(n) = \sum_{k \leq n \text{ and } (k,n) = 1} 1 = \sum_{k \leq
+            n} \sum_{d \mid (k,n)} \mu(d)
+        \]
+        and reordering sums.
+\end{itemize}
+
+\end{document}

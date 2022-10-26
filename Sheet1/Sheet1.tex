@@ -1,0 +1,153 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+
+\begin{document}
+
+\section*{Exercise 1}
+\textbf{1.} We may choose $a_n = (2n+2)!+2$. Note that now $2 \mid (2n+2)!+2$, 
+$3 \mid (2n+2)!+3$, etc.
+
+\textbf{2.} We already know that $\pi(x) \leq M \frac{x}{\log(x)}$ for some $M > 0$ 
+and $x > 2$. We solve the exercise by assuming that for all $c>0$ there are only
+finitely many $n \in \N$ such that the interval $[n, n+c \log(n)]$ does not
+contain a prime, which ultimately will result in a contradiction to the statement above.
+
+Let us make a choice for $c$ and count the number of primes in $[x, 2x]$, for
+some large number $x$. We trivially obtain 
+\[
+    \pi(2x)-\pi(x) \leq M \frac{2x}{\log(2x)}.
+\]
+By our assumption, if $x$ is large enough, there is no $n\in \N \cap[x, 2x]$ such the 
+interval $[n, n + c \log(n)]$ does not contain a prime. Let us define numbers 
+$a_k$ such that $a_0 = [x]+1$, $a_{k+1} = a_k + c \log(a_k)$. Further, let 
+$N\in \N$ be defined via $a_{N-1} \leq 2x < a_N$. As every interval 
+$[a_k, a_{k+1}]$ contains a prime, this yields the estimate $N \leq \pi(2x)-\pi(x)$. 
+Also, for $k < N$ we have $a_{k+1}-a_k \leq c \log(2x)$.  
+This yields the estimate
+\[
+    \frac x{c \log(2x)} \leq N \leq \pi(2x) - \pi(x)  \leq 2M \frac{x}{\log(2x)},
+\]
+which is a contradiction once we choose $c < \frac 1{2M}$.
+
+\textbf{Notes after correcting.} \leavevmode
+\begin{itemize}
+    \item Part 1 was relatively easy.
+    \item Main reason for point-loss: Messy write-ups
+    \item Common mistake: Whenever we have inequalities $a \leq b$ and $c \leq d$, 
+        we cannot deduce $a - c \leq b - d$. For that reason, we cannot effectively 
+        bound $\pi(x+h) - \pi(x)$ for small values of $h$ by only knowing an upper 
+        bound for $\pi$. 
+    \item $f(x) = O(g(x))$ does not imply that $\frac{f(x)}{g(x)}$ approaches some value
+        $C \in \R$ as $x \to \infty$. Rather, it implies that the absolute
+        value of this fraction is bounded.
+\end{itemize}
+
+\section*{Exercise 2}
+\textbf{1.} 
+Via $\alpha \star \alpha = 1$, we obtain $\alpha(1) = \pm 1$. Having defined 
+$\alpha(n)$ for values $n \leq N$, $\alpha(N)$ is uniquely determined by the equation
+$$1 = \sum_{d \mid N} \alpha(d)\alpha(N/d) = 2 \alpha(N) + \sum_{d \mid N, d
+\neq 1, N} \alpha(d) \alpha(N/d).$$
+Any choice of $\alpha(1)$ thereby extends to an arithmetic function with
+$\alpha \star \alpha  = 1$, and $\alpha$ cannot be multiplicative if $\alpha(1)
+\neq 1$. 
+
+\textbf{2.} 
+We set $\alpha(1) = 1$ define $\alpha(p^n)$ via the taylor series expansion of
+$(1-x)^{\frac{-1}2}$:
+\[
+    \sum_{n \in \N} \alpha(p^n) x^n = (1-x)^{\frac{-1}2}
+\]
+(Note that $(1-x)^{\frac{-1}2}$ is holomorphic in some neighbourhood around $0$) 
+and extend $\alpha$ to a multiplicative function via $\alpha(n) = \prod_{p}
+\alpha(p^{v_p(n)})$. By the formula for multiplying taylor series, we find 
+\[
+    \sum_{n \in \N} x^n = \frac{1}{1-x} = \left( \frac{1}{1-x} \right)^{2 \frac 12}
+    = \sum_{k \in \N}x^k \sum_{0 \leq l \leq k} \alpha(p^l) \alpha(p^{k-l}).
+\]
+After equating coefficients, this gives
+\[
+    \sum_{0 \leq l \leq k} \alpha(p^l) \alpha(p^{k-1}) = 1,
+\]
+i.e. $\alpha \star \alpha = 1$. (Note that $\alpha$ and $1$ are multiplicative, so it suffices
+to check the equality on prime-powers). 
+Basic analysis also reveals that $\alpha$ is now given by $\alpha(p^n) =
+\frac{(2n)!}{4^n(n!)^2}$, as demanded by the exercise.
+
+\textbf{Notes after correcting.} \leavevmode
+\begin{itemize}
+    \item Part 1 was relatively easy.
+    \item For part 2, one can also use that $\alpha(p^n) = (-1)^n\binom{-\frac 12}{n}$ and
+        deduce $\alpha \star \alpha = 1$ using formulas for binomial
+        coefficients. This does not use generating functions, but it is messy. 
+\end{itemize}
+
+\section*{Exercise 3}
+\textbf{1.} It is easily seen that both sides are multiplicative, and we may reduce to 
+the case $n = p^k$, $p$ prime. The LHS becomes $1+ak$, the RHS becomes $1+ak$
+too, and we are done.
+
+\textbf{2.} Again, both sides are multiplicative. (For the RHS, note that the product and the
+convolution of any two multiplicative functions is multiplicative, and that 
+$\text{RHS} = 1 \star (\mu \tau)$.) For $n = 1$, we find $\LHS = \RHS = 1$. For
+prime powers $n = p^k$ with $k \geq 1$, we find 
+\[
+    \LHS = \mu(p^0) \tau(p^0) + \mu(p^1) \tau(p^1) + \underbrace{ \mu(p^2) \tau(p^2) + \dots 
++ \mu(p^n) \tau(p^n) }_{= 0 \text{ as $\mu(p^k) = 0$ for $k \geq 2$.}} = 1 - 2 = -1.
+\]
+As in this case we also have $\RHS = -1$, we are done. 
+
+\textbf{3.} We write $e(\theta)$ for $\ec^{2 \pi \ic \theta}$. We first get rid of
+the condition $(m,n) = 1$ via adding the term 
+\[
+    \eta((m,n)) = (1 \star \mu)((m,n))
+\]
+to each summand, obtaining
+\[
+    \LHS = \sum_{1 \leq m \leq n \text{ and } (m,n) = 1} e(m/n) \sum_{d \mid (m,n)} \mu(d).
+\]
+We change the order of summation, bringing $d$ to the outer sum, writing $m =
+dk$ for $d \mid n$. This gives
+\[
+    \LHS = \sum_{d \mid n} \mu(d) \sum_{k \leq n/d} e(\tfrac{k}{n/d}).
+\]
+Now the inner sum goes over all $n/d$-th roots of unity, and thereby equals $0$ whenever 
+$n/d > 1$. Hence we find 
+$\LHS = \RHS$, as desired. 
+
+\textbf{Notes after correcting.} \leavevmode
+\begin{itemize}
+    \item Part 2 can be done in multiple ways, one can for example use binomial coefficient stuff
+        to check the identity directly (for general $n$ and not only prime-powers). 
+    \item The trick used in part $3$ is quite commonly used and should be
+        added to your Analytic number theory toolkit!  
+\end{itemize}
+
+\section*{Exercise 4}
+We use summation by parts, setting $a_n = 1$ and $g(x) = \frac 1{\sqrt x}$. We find
+\[
+    \sum_{1 \leq n \leq x} \frac 1 {\sqrt n} = \frac{[x]}{\sqrt x} + \frac 12 \int_1^x
+    \frac{[t]}{t^{\frac 32}} \dc t = \sqrt x - \frac{\{x\}}{\sqrt x} + \frac 12 \int_1^x
+    \frac 1{\sqrt t} - \frac{\{t\}}{t^{3/2}} \dc t.
+\]
+We have $\{x\}/\sqrt x = O(x^{-\frac12})$,
+\[
+    \frac 12 \int_1^x \frac 1{\sqrt t} \dc t= [\sqrt t]_1^x = \sqrt x - 1
+\]
+and 
+\[
+    \frac 12 \int_1^x \frac{\{t\}}{t^{3/2}} \dc t = \frac 12 \int_1^\infty \frac{\{t\}}{t^{3/2}} \dc t -  \frac 12 \int_x^\infty \frac{\{t\}}{t^{3/2}} \dc t.
+\]
+Here the first integral converges, and the second integral lies within $O(x^{-1/2})$. The claim
+follows, with 
+\[
+    C = \frac 12 \int_1^\infty \frac{\{t\}}{t^{3/2}} \dc t  -1.
+\]
+\textbf{Notes after correcting.} \leavevmode
+\begin{itemize}
+    \item Common mistake: Errors while calculating the integral (but I am sure
+        this will get better as the course progresses).
+\end{itemize}
+
+\end{document}
