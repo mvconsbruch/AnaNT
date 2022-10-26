@@ -22,11 +22,11 @@ We can extend the Dirichlet series of $\mu^2$ into an Euler product, obtaining
     \frac {\zeta(s)}{\zeta(2s)}.
 \]
 (In the second-to-last equality we used $(1+x)(1-x) = 1-x^2$.)
-
-\textbf{Notes after correcting.} \leavevmode
-\begin{itemize}
-    \item This exercise went well!
-\end{itemize}
+We find 
+\[
+    \sum_{b} \mu^2(b) b^{-3s} = \frac{\zeta(3s) }{\zeta(6s)},
+\]
+done.
 
 \section*{Exercise 2}
 This is just a messy calculation. 
@@ -49,7 +49,8 @@ obtaining
     \sum_{a,b} \frac{(a,b)}{a^s b^t} = \frac {\zeta(s+t-1) \zeta(s) \zeta(t)}{\zeta(s+t)}.
 \]
 Tracing through this calculation, we find that it is sufficient for absolute convergence to have
-$\Re(s)>1$ and $\Re(t) > 1$. These conditions are easily seen to be necessary too.
+$\Re(s)>1$ and $\Re(t) > 1$. These conditions are easily seen to be necessary too (the sub-sums with 
+$a=1$ or $b=1$ diverge otherwise).
 
 \textbf{Notes after correcting.} \leavevmode
 \begin{itemize}
@@ -79,6 +80,11 @@ positive real line, and thereby for $\Re s > 0$.
 have a pole whenever $(1-2^{1-s})$ and $(1-3^{1-s})$ vanish. But this is the case whenever 
 \[
     1 = 2^{1-s} = \ec^{(\log 2)(1-s)} \quad \Leftrightarrow \quad (\log 2)(1-s) \in 
+    2 \pi \ic \Z
+\]
+and 
+\[
+    1 = 3^{1-s} = \ec^{(\log 3)(1-s)} \quad \Leftrightarrow \quad (\log 3)(1-s) \in 
     2 \pi \ic \Z.
 \]
 
@@ -87,12 +93,6 @@ Hence the two sets $\log 2 (2 \pi i \Z)$ and $\log 3 ( 2 \pi i \Z)$ have interse
 $\{0\}$. Thereby, $\zeta$ cannot have a pole away from $s = 1$. There it has a pole from a 
 theorem in the lecture, and it is a simple pole as $(2^{1-s}-1)$ has a simple zero at $s=1$. 
 
-
-
-\textbf{Notes after correcting.} \leavevmode
-\begin{itemize}
-    \item 
-\end{itemize}
 
 \section*{Exercise 4}
 We know that the $d$-th cyclotomic polynomial $\Phi_d(x)$ has degree $\phi(d)$, and that 
@@ -128,8 +128,6 @@ One can show the estimate $\sum_{x < d < \infty} d^{-2} \ll x^{-1}$ using the in
     \sum_{x < d < \infty} d^{-2} \leq \int_{x-1}^\infty t^{-2} \dc t = O((x-1)^{-1}) = O(x^{-1}).
 \]
 Done. 
-
-
 
 \textbf{Notes after correcting.} \leavevmode
 \begin{itemize}
