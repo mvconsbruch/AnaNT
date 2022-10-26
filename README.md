@@ -5,6 +5,6 @@
 * From now on we will meet at 8:30!
 
 ## Solutions to the exercise Sheets
-* [Sheet 1]("Sheet1/Sheet1.pdf")
-* [Sheet 2]("Sheet2/Sheet2.pdf")
+* [Sheet 1](Sheet1/Sheet1.pdf)
+* [Sheet 2](Sheet2/Sheet2.pdf)
 
