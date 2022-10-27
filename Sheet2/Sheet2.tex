@@ -55,9 +55,10 @@ $a=1$ or $b=1$ diverge otherwise).
 \textbf{Notes after correcting.} \leavevmode
 \begin{itemize}
     \item Even though it is easily seen that the double sum cannot converge
-        absolutely whenever (say) $\Re(s) \leq 1$, this does immediately follow from splitting 
-        the sum! The reason is that it is possible to split a convergent sum into divergent 
-        ones, as for example
+        absolutely whenever (say) $\Re(s) \leq 1$, this does immediately follow
+        from the divergence of the series in the $\zeta$-representation! The reason is that
+        it is that we split the series in the first equality. It is
+        possible to split a convergent series into divergent ones, as for example
         \[
             \sum_{n \in \N} 0 = \sum_{n \in \N} (1-1) \neq \sum_n 1 - \sum_n 1.
         \]
@@ -88,17 +89,16 @@ and
     2 \pi \ic \Z.
 \]
 
-\textbf{4.} If $\log 2 / \log 3 = p/q$ was rational, we'd find that $2^p = 3^q$, contradiction.
-Hence the two sets $\log 2 (2 \pi i \Z)$ and $\log 3 ( 2 \pi i \Z)$ have intersection the set
+\textbf{4.} If $\log 2 / \log 3 = p/q$ was rational, we'd find that $2^q = 3^p$, contradiction.
+Hence the two sets $(\log 2)^{-1} (2 \pi i \Z)$ and $(\log 3)^{-1}( 2 \pi i \Z)$ have intersection the set
 $\{0\}$. Thereby, $\zeta$ cannot have a pole away from $s = 1$. There it has a pole from a 
 theorem in the lecture, and it is a simple pole as $(2^{1-s}-1)$ has a simple zero at $s=1$. 
-
 
 \section*{Exercise 4}
 We know that the $d$-th cyclotomic polynomial $\Phi_d(x)$ has degree $\phi(d)$, and that 
 $\prod_{d \mid n} \Phi_d(x) = x^n - 1$. Hence 
 \[
-\sum_{d \mid n} \phi(d) = \sum_{d \mid n } \deg \Phi_d = \deg \left(\prod_{d
+\sum_{d \mid n} \phi(d) = \sum_{d \mid n} \deg \Phi_d = \deg \left(\prod_{d
 \mid n} \Phi_d \right) = \deg(x^n - 1) = n,
 \]
 hence (by Möbius-inversion)
@@ -109,7 +109,7 @@ Now we find
 \[
     \sum_{n \leq x} \phi(n) / n = \sum_{n \leq x} \frac 1n \sum_{d \mid n}
     \frac nd \mu(d) = \sum_{d \leq x} \frac{\mu(d)}d \sum_{k : kd \leq x} 1 = 
-    \sum_{d \leq x} \frac{\mu(d)}d \left[\frac xd \right] 
+    \sum_{d \leq x} \frac{\mu(d)}d \left[\frac xd \right].
 \]
 We write $[x/d] = x/d + O(1)$ and use that $\mu(d) \in \{-1, 0, 1\}$. This gives 
 \[

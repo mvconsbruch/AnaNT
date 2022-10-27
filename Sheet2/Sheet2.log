@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.10.21)  25 OCT 2022 18:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.10.21)  27 OCT 2022 14:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -22,7 +22,7 @@ File: size11.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen134
-) (../layout.sty (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+) (../environment.sty (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
  (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
@@ -595,7 +595,7 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 8.
  (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 28.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 57.
  (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [1
@@ -603,14 +603,14 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] (./Sheet2.aux) ) 
 Here is how much of TeX's memory you used:
  16644 strings out of 481239
- 330510 string characters out of 5920376
- 550991 words of memory out of 5000000
+ 330545 string characters out of 5920376
+ 551011 words of memory out of 5000000
  31541 multiletter control sequences out of 15000+600000
  564484 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,6n,88p,408b,159s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,6n,88p,408b,178s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Sheet2.pdf (3 pages, 144948 bytes).
+Output written on Sheet2.pdf (3 pages, 145759 bytes).
 PDF statistics:
  93 PDF objects out of 1000 (max. 8388607)
  61 compressed objects within 1 object stream
