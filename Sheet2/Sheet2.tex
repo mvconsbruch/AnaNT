@@ -35,9 +35,9 @@ done.
 This is just a messy calculation. 
 We somehow want to get of the $(a,b)$-symbol in the sum. We do so by using that
 given $a,b \in \N$, we find unique coprime numbers $k, l$ with $a = k (a,b)$ and 
-$b = k (a,b)$. Now summing over all possible gcds $d$ yields
+$b = l (a,b)$. Now summing over all possible gcds $d$ yields
 \[
-    \sum_{a,b} \frac{(a,b)}{a^s b^t} = \sum_{d} \frac d{d^{s+t}} \sum_{k,l
+    \sum_{a,b} \frac{(a,b)}{a^s b^t} = \sum_{d} \frac d{d^{s+t}} \sum_{k,l \in \N
     \text{ coprime}} k^{-s}l^{-t} = \zeta(s+t-1)\sum_{k,l} k^{-s}l^{-t} \sum_{e \mid (k,l)} \mu(e)
 \]
 where we rephrased the coprimality condition on $k$ and $l$ using the trick
