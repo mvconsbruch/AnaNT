@@ -1,1 +1,7 @@
 index.md
+
+*.aux
+*.fls
+*.synctex.gz
+*.fdb_latexmk
+*.log
