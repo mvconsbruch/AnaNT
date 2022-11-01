@@ -1,0 +1,61 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+
+
+\begin{document}
+
+\begin{center}
+    \huge{ Solution to Sheet 3. }
+\end{center}
+
+\section*{Exercise 1 \& 2}
+\textbf{Multiplicative groups mod $n$.} Given some $n = p_1^{e_1} \cdots
+p_r^{e_r} \in \N$, we want to investigate the structure of the multiplicative group
+$\left ( \Z/n\Z \right )^\times$. By the chinese remainder theorem we find 
+\[
+    (\Z / n\Z)^\times \cong \left ( \prod_{i = 1}^n (\Z / p_i^{e_i}\Z) \right
+        )^\times \cong \prod_{i = 1}^n (\Z / p_i^{e_i}\Z)^\times,
+\]
+so we really only care about the structure of $(\Z/p^e\Z)^\times$. There, the 
+structure is given by
+\[
+    (\Z/p^e\Z)^\times \cong 
+    \begin{cases} 
+        \text{a cyclic subgroup of order $\phi(p^e)$} & \text{ if $p$ is odd} \\
+        \langle 3 \rangle & \text{ if $p=2$ and $e \leq 2$} \\
+        \langle \pm 5 \rangle \cong \Z/2\Z \times \Z/2^{e-2}\Z & \text{ if
+        $p=2$ and $e \geq 3$.} 
+    \end{cases}
+\]
+A generator of $\FF_p^\times$, or more generally, a generator of $(\Z/p^e\Z)^\times$
+is called a \textit{root of unity}.
+We have the \textit{Legendre Symbol}, which for $a \in \Z$ and $p$ prime is given by 
+\[
+    \legendre ap = 
+    \begin{cases}
+        0 \quad & \text{if } p \mid a\\
+        (-1) \quad & \text{if there is no solution mod $p$ to }  x^2 = a\\
+        1 \quad & \text{otherwise.}\\
+    \end{cases}
+\]
+It is multiplicative in $a$, hence it yields a character $(\Z/p\Z)^\times \to
+\C^\times$. The subgroup of \textit{Quadratic residues mod $p$} is given by
+$\ker \left( \legendre -p \right) = \langle \varpi^2 \rangle$ for $\varpi$ a
+root of unity.
+
+\textbf{1.} Note that the real characters are exactly those $\chi:
+(\Z/p\Z)^\times \to \C^\times$  with $\chi^2 = 1$. Note also that given a cyclic 
+group $G \cong \Z/n\Z$, there is an isomorphism $G \cong \hat G$ given by 
+$a \mapsto (1 \mapsto \zeta_n^a)$, where $\zeta_n$ is an $n$-th root of unity. 
+As $p$ is odd, there are exactly two solutions to $x^2=1$, hence there are exactly
+$2$ real characters mod $p$, one of which is the trivial
+one (induced by the principle character mod $1$), and the other is given by the 
+legendre symbol. The same reasoning goes through mod $p^e$ for $e \geq 2$, but now
+the characters are induced from characters mod $p$. 
+
+\textbf{2.}
+
+\textbf{Notes after correcting.} \leavevmode
+
+\end{document}
