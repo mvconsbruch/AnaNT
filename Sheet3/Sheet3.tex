@@ -30,7 +30,8 @@ structure is given by
 \]
 A generator of $\FF_p^\times$, or more generally, a generator of $(\Z/p^e\Z)^\times$
 is called a \textit{root of unity}.
-We have the \textit{Legendre Symbol}, which for $a \in \Z$ and $p$ prime is given by 
+We have the \textit{Legendre Symbol}, which for $a \in \Z$ and an odd prime $p$
+is given by 
 \[
     \legendre ap = 
     \begin{cases}
@@ -42,12 +43,24 @@ We have the \textit{Legendre Symbol}, which for $a \in \Z$ and $p$ prime is give
 It is multiplicative in $a$, hence it yields a character $(\Z/p\Z)^\times \to
 \C^\times$. The subgroup of \textit{Quadratic residues mod $p$} is given by
 $\ker \left( \legendre -p \right) = \langle \varpi^2 \rangle$ for $\varpi$ a
-root of unity.
+root of unity. \textit{Quadratic reciprocity} states that for two odd primes
+$p,q$, we have
+\[
+    \legendre pq = (-1)^{\frac{p-1}2 \cdot \frac{q-1}2} \legendre qp,
+\]
+and there are the \textit{supplementary laws}
+\[
+    \legendre{-1}p = (-1)^{\frac {p-1}2} \quad \text{and} \quad
+    \legendre 2p = (-1)^{\frac{p^2-1}8}.
+\]
+
 
 \textbf{1.} Note that the real characters are exactly those $\chi:
 (\Z/p\Z)^\times \to \C^\times$  with $\chi^2 = 1$. Note also that given a cyclic 
 group $G \cong \Z/n\Z$, there is an isomorphism $G \cong \hat G$ given by 
-$a \mapsto (1 \mapsto \zeta_n^a)$, where $\zeta_n$ is an $n$-th root of unity. 
+$a \mapsto (1 \mapsto \zeta_n^a)$, where $\zeta_n$ is an $n$-th root of unity. As 
+we also have $\hat G \oplus \hat H = \widehat{G \oplus H}$, this shows that there
+are isomorphisms $G \cong \hat G$ for \textit{all} finite groups. 
 As $p$ is odd, there are exactly two solutions to $x^2=1$, hence there are exactly
 $2$ real characters mod $p$, one of which is the trivial
 one (induced by the principle character mod $1$), and the other is given by the 
@@ -55,6 +68,80 @@ legendre symbol. The same reasoning goes through mod $p^e$ for $e \geq 2$, but n
 the characters are induced from characters mod $p$. 
 
 \textbf{2.}
+For $n = 2^r$, we find again that the real dirichlet characters are in
+bijection with the set $\{x \in \Z/n\Z \mid x^2 -1 = 0\}$. By the structure of the 
+multiplicative group given above, this set has $1$ element if $r=1$, it has $2$
+elements if $r = 2$ and $4$ elements if $r \geq 3$. We find:
+\begin{itemize}
+    \item The multiplicative group of $\Z/2\Z$ is trivial, so there is only the
+        character given by $1 \mapsto 1$, which is induced by the principle
+        character. 
+    \item On $\Z/4\Z$ we have again the principle character and the primitive
+        character $\chi_{-4}$ uniquely defined via $\chi_{-4}(-1) = -1$.
+    \item On $\Z/8\Z$ we have the principle character, the one induced by $\chi_{-4}$ 
+        and the two characters $\chi_{\pm 8}$, where $\chi_{\pm 8}(3) = \mp 1$, 
+        $\chi_{\pm 8}(5) = -1$ and $\chi_{\pm 8}(7) = \pm 1$. 
+\end{itemize}
+
+\textbf{3.} 
+We first do uniqueness. Assume that we are given two characters $\chi_1$ mod $r$ 
+and $\chi_2$ mod $s$ such that for all $m \in \N$, 
+\[
+    \chi(m) = \chi_1(m \text{ mod $r$}) \chi_2(m \text{ mod $s$ }).
+\]
+Then whenever we are given $m \in \N$ such that $m \equiv 1$ mod $s$, we find 
+\[
+    \chi(m) = \chi_1(m),
+\]
+and similarly for $\chi_2$. But the chinese remainder theorem asserts that
+these equalities already define $\chi_1$ and $\chi_2$ uniquely: For any $a \in
+(\Z/r\Z)^\times$, there is some $m \in \N$ such that $m \equiv a \mod r$ and 
+$m \equiv 1 \mod s$. 
+
+Now it is also easy to see existence. For any $a \in (\Z/r\Z)^\times$, simply define
+$\chi_1(a) = \chi(q)$, where $q \in (\Z/n\Z)^\times$ is the unique residue with
+$q \equiv a \pmod r$ and $q \equiv 1 \pmod s$. Do the same for $\chi_2$.
+Multiplicativeness of $\chi_1$ and $\chi_2$ is immediate, and
+by definition we now have $\chi_1 \chi_2 = \chi$. 
+
+It remains to show that $\chi_1$ and $\chi_2$ are primitive iff $\chi$ is. Suppose first
+that $\chi_1$ was not primitive, i.e., has conductor $d < r$. Then we can write 
+$\chi_1 = \Tilde \chi \chi_{0,r}$ where $\Tilde\chi$ is a character mod $d$ and 
+$\chi_{0,r}$ is the primitive character mod $r$. Now $\chi' = \Tilde \chi \chi_2$ 
+is a character modulo $ds$ and induces $\chi$, since
+\[
+    \chi = \chi \chi_{0,rs} = \chi_1 \chi_2 \chi_{0,rs} = \Tilde \chi \chi_{0,r}\chi_2
+    \chi_{0,rs} = \chi' \chi_{0,r} \chi_{0,rs} = \chi' \chi_{0,rs}.
+\]
+Conversely, assume that $\chi_1$ and $\chi_2$ are primitive. 
+Choose a character $\Tilde \chi$ mod $d$ that induces $\chi$, so we may write 
+$$\chi_1\chi_2 = \Tilde \chi \chi_{0,rs} = (\Tilde \chi_1 \chi_{0,r}) (\Tilde \chi_2 
+\chi_{0,s}),$$
+where $\Tilde \chi_1$ is a character of conducter $d_1 \mid r$ and $\Tilde \chi_2$ is a 
+character of conducter $d_2 \mid s$. But by uniqueness of $\chi_1$ and $\chi_2$, we
+find $\chi_1 = \Tilde \chi \chi_{0,r}$ and $\chi_2 = \Tilde \chi \chi_{0,s}$, implying 
+$d = rs$ by primitivity of $\chi_1$ and $\chi_2$. 
+
+\textbf{4.} Writing $n = 2^r q$ with $q$ odd, we find that the number of primitive real
+characters mod $n$ is given by 
+\[
+    \begin{cases}
+        1 \quad &\text{if $r = 0$ and $q$ square-free}, \\
+        0 \quad &\text{if $r = 1$ and $q$ square-free}, \\
+        1 \quad &\text{if $r = 2$ and $q$ square-free}, \\
+        2 \quad &\text{if $r = 3$ and $q$ square-free}, \\
+        0 \quad &\text{if $r \geq 4$ or $q$ not square-free}. 
+    \end{cases}
+\]
+
+\textbf{5.} Clearly the product of two fundamental discriminants (FDs) is again a FD,
+and we have $\chi_{D_1 D_2} = \chi_{D_1}\chi_{D_2}$. So we can reduce to the case where
+$\abs D = p^r$ is a prime power. As a first reality check, we find that if $p$ is odd,
+the only fundamental discriminant of this type is $D = (-1)^{\frac{p-1}2} p$,
+in which case $\chi_D$ is given by the unique real primitive character. 
+There are no FDs with $\abs D =2$ or $\abs D = 2^r$ with $r \geq 4$. If $\abs D = 4$
+there is one ($D = -4$), and if $n = 8$ there are two ($D = \pm 8$).
+It is easily seen that these are exactly the primitive characters we described above.
 
 \textbf{Notes after correcting.} \leavevmode
 
