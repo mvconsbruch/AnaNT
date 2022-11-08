@@ -9,8 +9,7 @@
     \huge{ Solution to Sheet 3. }
 \end{center}
 
-\section*{Exercise 1 \& 2}
-\textbf{Multiplicative groups mod $n$.} Given some $n = p_1^{e_1} \cdots
+\section*{Facts from multiplicative number theory.} Given some $n = p_1^{e_1} \cdots
 p_r^{e_r} \in \N$, we want to investigate the structure of the multiplicative group
 $\left ( \Z/n\Z \right )^\times$. By the chinese remainder theorem we find 
 \[
@@ -24,13 +23,13 @@ structure is given by
     \begin{cases} 
         \text{a cyclic subgroup of order $\phi(p^e)$} & \text{ if $p$ is odd} \\
         \langle 3 \rangle & \text{ if $p=2$ and $e \leq 2$} \\
-        \langle \pm 5 \rangle \cong \Z/2\Z \times \Z/2^{e-2}\Z & \text{ if
+        \pm \langle 5 \rangle \cong \Z/2\Z \times \Z/2^{e-2}\Z & \text{ if
         $p=2$ and $e \geq 3$.} 
     \end{cases}
 \]
 A generator of $\FF_p^\times$, or more generally, a generator of $(\Z/p^e\Z)^\times$
 is called a \textit{root of unity}.
-We have the \textit{Legendre Symbol}, which for $a \in \Z$ and an odd prime $p$
+We have the \textit{Legendre symbol}, which for $a \in \Z$ and an odd prime $p$
 is given by 
 \[
     \legendre ap = 
@@ -41,7 +40,7 @@ is given by
     \end{cases}
 \]
 It is multiplicative in $a$, hence it yields a character $(\Z/p\Z)^\times \to
-\C^\times$. The subgroup of \textit{Quadratic residues mod $p$} is given by
+\C^\times$. The subgroup of \textit{quadratic residues mod $p$} is given by
 $\ker \left( \legendre -p \right) = \langle \varpi^2 \rangle$ for $\varpi$ a
 root of unity. \textit{Quadratic reciprocity} states that for two odd primes
 $p,q$, we have
@@ -54,21 +53,34 @@ and there are the \textit{supplementary laws}
     \legendre 2p = (-1)^{\frac{p^2-1}8}.
 \]
 
+Given a finite abelian group $G$, we define the group of \textit{characters of $G$}
+as 
+\[
+    \widehat G = \Hom_\Ab(G, \C^\times) = \Hom_\Ab(G, S^1).
+\]
+Given a cyclic group $G \cong \Z/n\Z$, there is an isomorphism $G \cong
+\widehat G$ given by $a \mapsto (1 \mapsto \zeta_n^a)$, where $\zeta_n$ is an
+$n$-th root of unity. As we also have $\widehat G \oplus \widehat H =
+\widehat{G \oplus H}$, this shows that there are isomorphisms $G \cong \widehat
+G$ for \textit{all} finite abelian groups\footnote{The first isomorphism is the
+universal property of the direct sum: We have $$\Hom_\Ab(G \oplus H, \C^\times)
+\cong \Hom_\Ab(G,\C^\times) \oplus \Hom_\Ab(H,\C^\times).$$ Remember that every
+finite group is a finite product (equivalently, finite direct sum) of cyclic
+groups.}.
 
+
+\section*{Exercise 1 \& 2.}
 \textbf{1.} Note that the real characters are exactly those $\chi:
-(\Z/p\Z)^\times \to \C^\times$  with $\chi^2 = 1$. Note also that given a cyclic 
-group $G \cong \Z/n\Z$, there is an isomorphism $G \cong \hat G$ given by 
-$a \mapsto (1 \mapsto \zeta_n^a)$, where $\zeta_n$ is an $n$-th root of unity. As 
-we also have $\hat G \oplus \hat H = \widehat{G \oplus H}$, this shows that there
-are isomorphisms $G \cong \hat G$ for \textit{all} finite groups. 
+(\Z/p\Z)^\times \to \C^\times$  with $\chi^2 = 1$.
 As $p$ is odd, there are exactly two solutions to $x^2=1$, hence there are exactly
 $2$ real characters mod $p$, one of which is the trivial
 one (induced by the principle character mod $1$), and the other is given by the 
-legendre symbol. The same reasoning goes through mod $p^e$ for $e \geq 2$, but now
-the characters are induced from characters mod $p$. 
+legendre symbol. The same reasoning goes through mod $p^e$ for $e \geq 2$ (the
+multiplicative group is cyclic), but now the characters are induced from
+characters mod $p$.
 
 \textbf{2.}
-For $n = 2^r$, we find again that the real dirichlet characters are in
+For $n = 2^r$, we find again that the real Dirichlet characters are in
 bijection with the set $\{x \in \Z/n\Z \mid x^2 -1 = 0\}$. By the structure of the 
 multiplicative group given above, this set has $1$ element if $r=1$, it has $2$
 elements if $r = 2$ and $4$ elements if $r \geq 3$. We find:
@@ -141,7 +153,8 @@ the only fundamental discriminant of this type is $D = (-1)^{\frac{p-1}2} p$,
 in which case $\chi_D$ is given by the unique real primitive character. 
 There are no FDs with $\abs D =2$ or $\abs D = 2^r$ with $r \geq 4$. If $\abs D = 4$
 there is one ($D = -4$), and if $n = 8$ there are two ($D = \pm 8$).
-It is easily seen that these are exactly the primitive characters we described above.
+Using quadratic reciprocity and the supplementary laws, it is easily seen that these
+are exactly the characters described above.
 
 \textbf{Notes after correcting.} \leavevmode
 
