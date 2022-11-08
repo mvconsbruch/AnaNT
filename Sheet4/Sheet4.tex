@@ -1,0 +1,56 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+
+
+\begin{document}
+
+\begin{center}
+    \huge{ Solution to Sheet 3. }
+\end{center}
+
+\section*{Problem 3}
+As the hint commands, we apply partial summation on $\tau(\chi)$, obtaining
+\[
+    \abs{\tau(\chi)} = \sum_{h=1}^q \chi(h) e(h/q) = e(q/q) \sum_{h=1}^q
+    \chi(h) - \frac{2\pi \ic}{q} \int_1^q e(t/q) \sum_{h \leq t} \chi(h) 
+    \dc t.
+\]
+As $\chi \neq \chi_0$, the sum $\sum_{h=1}^q \chi(h)$ vanishes. We also
+know by theorem (1.23) that $\abs{\tau(\chi)} = \sqrt q$. 
+Let $M$ deonte the supremum of the absolute values of $\sum_{h \leq x}
+\chi(h)$ for varying $x$. Then we obtain
+\[
+    \frac{q^{3/2}}{2 \pi} = \abs{\int_1^q e(t/q) \sum_{h \leq t} \chi(h) \dc t} \leq \int_1^q \abs{ \sum_{h \leq t}  \chi(h) } \dc t \leq (q-1)M,
+\]
+which is even a tad stronger than what we had to show. 
+
+\textbf{Notes after correcting.} \leavevmode
+
+\section*{Problem 4}
+Let's just plug in the definition and look at what we have here.
+\[
+    \tau(\chi_1 \chi_2) = \sum_{h \ (q)} \chi_1(h) \chi_2(h) e(h/q),
+\]
+where $q = q_1 q_2$. By the chinese remainder theorem, taking residues mod $q$ gives
+a bijection
+\[
+    \{h_1 q_2 + h_2 q_1 \mid 1 \leq h_i \leq q_i\} \to \Z/q\Z.
+\]
+Thus we may rewrite the sum above as 
+\[
+    \tau(\chi_1 \chi_2) = \sum_{1 \leq h_1 \leq q_1} \sum_{1 \leq h_2 \leq q_2}\chi_1(h_1q_2 + h_2q_1) \chi_2(h_1q_2 + h_2 q_1) e(\tfrac{h_1q_2+h_2q_1}q),
+\]
+and the claim follows after a few manipulations:
+\begin{multline*}
+     \sum_{1 \leq h_1 \leq q_1} \sum_{1 \leq h_2 \leq q_2}\chi_1(h_1q_2 + h_2q_1) \chi_2(h_1q_2
+     + h_2 q_1) e(\tfrac{h_1q_2+h_2q_1}q) \\
+     = \sum_{1 \leq h_1 \leq q_1} \sum_{1 \leq h_2 \leq q_2}\chi_1(h_1q_2) \chi_2(h_2 q_1)
+     e(\tfrac{h_1q_2}q) e(\tfrac{h_2q_1}q) \\ 
+     = \left(\chi_1(q_2)\sum_{1 \leq h_1 \leq q_1}
+     \chi_1(q_2)e(\tfrac{h_1}{q_1})\right) \left(\chi_2(q_1)\sum_{1 \leq h_2 \leq q_2}
+     \chi_2(q_1)e(\tfrac{h_2}{q_2})\right) = \chi_1(q_2)\tau(\chi_1) \chi_2(q_1)\tau(\chi_2).
+\end{multline*}
+
+
+\end{document}
