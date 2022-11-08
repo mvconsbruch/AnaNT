@@ -9,8 +9,50 @@
     \huge{ Solution to Sheet 3. }
 \end{center}
 
+\section*{Problem 1} % (fold)
+\textbf{a)} Let $g(x) = f(qx + a)$, so that
+\[
+    \sum_{n \equiv a \text{ (mod $q$)}} f(n) = \sum_{m \in \Z} g(m).
+\]
+We want to apply Poisson summation to $g$. The results of lemma (2.3) directly
+give that 
+$$\hat g(y) = \frac 1q e\left( \frac{ya}q \right) \hat f\left(\frac yq \right).$$
+The claim follows, as
+$$ \sum_{m \in \Z} g(m) = \sum_{m \in \Z} \hat g(m) = \frac 1q \sum_{m \in \Z} 
+    e\left( \frac{ma}q \right) \hat f\left(\frac mq \right).$$
+
+\textbf{b)} We would like to apply Poisson summation again, however we cannot 
+calculate the "Fourier transform" of $f\chi$, as, $\chi$ is only defined 
+on integers. We can abuse that $\chi$ is periodic though, rewriting
+\[
+    \sum_{m \in \Z} f(m) \chi(m) = \sum_{a \text{ (mod $q$)}} \chi(a) \sum_{m \equiv a \text{ (mod $q$)}}
+    f(m).
+\]
+Applying Poisson summation to the inner sum (we already did this in part
+a)) gives
+\[
+    \sum_{m \in \Z} f(m) \chi(m) = \frac 1q \sum_{a \text{ (mod $q$)}} \chi(a) \sum_{m \in \Z} 
+    e\left( \frac{ma}q \right) \hat f\left(\frac mq \right).
+\]
+Reordering sums, we obtain
+\begin{multline*}
+     \frac 1q \sum_{a \text{ (mod $q$)}} \chi(a) \sum_{m \in \Z} 
+     e\left( \frac{ma}q \right) \hat f\left(\frac mq \right) = \frac 1q \sum_{m
+         \in \Z} \hat f\left(\frac mq \right) \left( \sum_{a \text{ (mod $q$)}}
+             \chi(a) e\left(\frac{ma}q \right) \right) \\ =  \frac 1q \sum_{m
+         \in \Z} \hat f\left(\frac mq \right) \tau(\chi) \overline \chi(m) =
+         \frac {\tau(\chi)}q \sum_{m \in \Z} \hat f\left(\frac mq \right)
+         \overline \chi(m). 
+\end{multline*}
+
+\section*{Problem 2}
+I really don't like this problem as it has not much to do with number theory. 
+I might add a solution later, but I am sure one can find this in most books on 
+real analysis.
+
 \section*{Problem 3}
-As the hint commands, we apply partial summation on $\tau(\chi)$, obtaining
+As the hint commands, we apply partial summation to the definition of
+$\tau(\chi)$, obtaining
 \[
     \abs{\tau(\chi)} = \sum_{h=1}^q \chi(h) e(h/q) = e(q/q) \sum_{h=1}^q
     \chi(h) - \frac{2\pi \ic}{q} \int_1^q e(t/q) \sum_{h \leq t} \chi(h) 
@@ -19,7 +61,7 @@ As the hint commands, we apply partial summation on $\tau(\chi)$, obtaining
 As $\chi \neq \chi_0$, the sum $\sum_{h=1}^q \chi(h)$ vanishes. We also
 know by theorem (1.23) that $\abs{\tau(\chi)} = \sqrt q$. 
 Let $M$ deonte the supremum of the absolute values of $\sum_{h \leq x}
-\chi(h)$ for varying $x$. Then we obtain
+\chi(h)$ for varying $x$ (By Polya-Vinogradov, $M < \infty$). Then we obtain
 \[
     \frac{q^{3/2}}{2 \pi} = \abs{\int_1^q e(t/q) \sum_{h \leq t} \chi(h) \dc t} \leq \int_1^q \abs{ \sum_{h \leq t}  \chi(h) } \dc t \leq (q-1)M,
 \]
