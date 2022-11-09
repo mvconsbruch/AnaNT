@@ -117,14 +117,14 @@ elements if $r = 2$ and $4$ elements if $r \geq 3$. We find:
 %by definition we now have $\chi_1 \chi_2 = \chi$. 
 We inspect the map 
 \[
-    \widehat{(\Z/r\Z)^\times} \times \widehat{(\Z/s\Z)^\times} \to
+    \mu: \widehat{(\Z/r\Z)^\times} \times \widehat{(\Z/s\Z)^\times} \to
     \widehat{(\Z/n\Z)^\times} \quad (\chi_1, \chi_2) \mapsto \chi_1\chi_2.
 \]
 We claim that this map is injective. Indeed, assume that we are given two
 characters $\chi_1$ mod $r$ 
 and $\chi_2$ mod $s$ such that for all $m \in \N$, 
 \[
-    \mu: \chi(m) = \chi_1(m \text{ mod $r$}) \chi_2(m \text{ mod $s$}).
+    \chi(m) = \chi_1(m \text{ mod $r$}) \chi_2(m \text{ mod $s$}).
 \]
 Then whenever we are given $m \in \N$ such that $m \equiv 1$ mod $s$, we find 
 \[
@@ -145,15 +145,30 @@ is a character modulo $ds$ and induces $\chi$, since
     \chi = \chi \chi_{0,rs} = \chi_1 \chi_2 \chi_{0,rs} = \Tilde \chi \chi_{0,r}\chi_2
     \chi_{0,rs} = \chi' \chi_{0,r} \chi_{0,rs} = \chi' \chi_{0,rs}.
 \]
-Conversely, assume that $\chi_1$ and $\chi_2$ are primitive. 
-Choose a character $\Tilde \chi$ mod $d$ that induces $\chi$, so we may write 
-$$\chi_1\chi_2 = \Tilde \chi \chi_{0,rs} = (\Tilde \chi_1 \chi_{0,r}) (\Tilde \chi_2 
-\chi_{0,s}),$$
-where $\Tilde \chi_1$ is a character of conducter $d_1 \mid r$ and $\Tilde \chi_2$ is a 
-character of conducter $d_2 \mid s$. But by uniqueness of $\chi_1$ and $\chi_2$, we
-find $\chi_1 = \Tilde \chi \chi_{0,r}$ and $\chi_2 = \Tilde \chi \chi_{0,s}$,
-implying 
-$d = rs$ by primitivity of $\chi_1$ and $\chi_2$. 
+There is a neat way to now show the converse. Let $\phi_2(n)$ denote the number of 
+primitive characters mod $n$. For any $d \mid n$, the set of primitive characters
+mod $d$ is in bijection with the characters mod $n$ of conductor $d$, so we find
+\[
+    \phi(n) = \# \widehat{\left( \Z /n \Z \right)^\times} = \sum_{d \mid n} \phi_2(n) = (1 \star \phi_2)(n),
+\]
+implying that $\phi_2 = \mu \star \phi$ by moebius-inversion. Hence $\phi_2$ is 
+multiplicative. We have shown alrady that the inverse of $\mu$ restricts to a
+(necessarily) injective map
+\[
+    \mu^{-1}: \text{\{primitive characters mod $n$\}} \to \text{\{pr.
+    characters mod $r$\}} \times \text{\{pr. characters mod $s$\}}. 
+\]
+By multiplicity of $\phi_2$, this is a injective map of sets of the same cardinality,
+therefore $\mu^{-1}$ is a bijection, and we are done. 
+
+Alternatively we can calculate this directly. Assume that $\chi_1$ and $\chi_2$
+are primitive. Choose a character $\Tilde \chi$ mod $d$ that induces $\chi$, so
+we may write $$\chi_1\chi_2 = \Tilde \chi \chi_{0,rs} = (\Tilde \chi_1
+\chi_{0,r}) (\Tilde \chi_2 \chi_{0,s}),$$ where $\Tilde \chi_1$ is a character
+of conducter $d_1 \mid r$ and $\Tilde \chi_2$ is a character of conducter $d_2
+\mid s$. But by uniqueness of $\chi_1$ and $\chi_2$, we find $\chi_1 = \Tilde
+\chi \chi_{0,r}$ and $\chi_2 = \Tilde \chi \chi_{0,s}$, implying $d = rs$ by
+primitivity of $\chi_1$ and $\chi_2$. 
 
 \textbf{4.} Writing $n = 2^r q$ with $q$ odd, we find that the number of primitive real
 characters mod $n$ is given by 
@@ -181,7 +196,5 @@ There are no FDs with $\abs D =2$ or $\abs D = 2^r$ with $r \geq 4$. If $\abs D 
 there is one ($D = -4$), and if $n = 8$ there are two ($D = \pm 8$).
 Using quadratic reciprocity and the supplementary laws, it is easily seen that these
 are exactly the characters described above.
-
-\textbf{Notes after correcting.} \leavevmode
 
 \end{document}
