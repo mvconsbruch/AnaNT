@@ -96,10 +96,35 @@ elements if $r = 2$ and $4$ elements if $r \geq 3$. We find:
 \end{itemize}
 
 \textbf{3.} 
-We first do uniqueness. Assume that we are given two characters $\chi_1$ mod $r$ 
+%We first do uniqueness. Assume that we are given two characters $\chi_1$ mod $r$ 
+%and $\chi_2$ mod $s$ such that for all $m \in \N$, 
+%\[
+%    \chi(m) = \chi_1(m \text{ mod $r$}) \chi_2(m \text{ mod $s$}).
+%\]
+%Then whenever we are given $m \in \N$ such that $m \equiv 1$ mod $s$, we find 
+%\[
+%    \chi(m) = \chi_1(m),
+%\]
+%and similarly for $\chi_2$. But the chinese remainder theorem asserts that
+%these equalities already define $\chi_1$ and $\chi_2$ uniquely: For any $a \in
+%(\Z/r\Z)^\times$, there is some $m \in \N$ such that $m \equiv a \mod r$ and 
+%$m \equiv 1 \mod s$. 
+%
+%Now it is also easy to see existence. For any $a \in (\Z/r\Z)^\times$, simply define
+%$\chi_1(a) = \chi(q)$, where $q \in (\Z/n\Z)^\times$ is the unique residue with
+%$q \equiv a \pmod r$ and $q \equiv 1 \pmod s$. Do the same for $\chi_2$.
+%Multiplicativeness of $\chi_1$ and $\chi_2$ is immediate, and
+%by definition we now have $\chi_1 \chi_2 = \chi$. 
+We inspect the map 
+\[
+    \widehat{(\Z/r\Z)^\times} \times \widehat{(\Z/s\Z)^\times} \to
+    \widehat{(\Z/n\Z)^\times} \quad (\chi_1, \chi_2) \mapsto \chi_1\chi_2.
+\]
+We claim that this map is injective. Indeed, assume that we are given two
+characters $\chi_1$ mod $r$ 
 and $\chi_2$ mod $s$ such that for all $m \in \N$, 
 \[
-    \chi(m) = \chi_1(m \text{ mod $r$}) \chi_2(m \text{ mod $s$ }).
+    \mu: \chi(m) = \chi_1(m \text{ mod $r$}) \chi_2(m \text{ mod $s$}).
 \]
 Then whenever we are given $m \in \N$ such that $m \equiv 1$ mod $s$, we find 
 \[
@@ -108,13 +133,8 @@ Then whenever we are given $m \in \N$ such that $m \equiv 1$ mod $s$, we find
 and similarly for $\chi_2$. But the chinese remainder theorem asserts that
 these equalities already define $\chi_1$ and $\chi_2$ uniquely: For any $a \in
 (\Z/r\Z)^\times$, there is some $m \in \N$ such that $m \equiv a \mod r$ and 
-$m \equiv 1 \mod s$. 
-
-Now it is also easy to see existence. For any $a \in (\Z/r\Z)^\times$, simply define
-$\chi_1(a) = \chi(q)$, where $q \in (\Z/n\Z)^\times$ is the unique residue with
-$q \equiv a \pmod r$ and $q \equiv 1 \pmod s$. Do the same for $\chi_2$.
-Multiplicativeness of $\chi_1$ and $\chi_2$ is immediate, and
-by definition we now have $\chi_1 \chi_2 = \chi$. 
+$m \equiv 1 \mod s$. Now $\mu$ is an injective map of sets with the same cardinality,
+hence bijective.
 
 It remains to show that $\chi_1$ and $\chi_2$ are primitive iff $\chi$ is. Suppose first
 that $\chi_1$ was not primitive, i.e., has conductor $d < r$. Then we can write 
@@ -131,7 +151,8 @@ $$\chi_1\chi_2 = \Tilde \chi \chi_{0,rs} = (\Tilde \chi_1 \chi_{0,r}) (\Tilde \c
 \chi_{0,s}),$$
 where $\Tilde \chi_1$ is a character of conducter $d_1 \mid r$ and $\Tilde \chi_2$ is a 
 character of conducter $d_2 \mid s$. But by uniqueness of $\chi_1$ and $\chi_2$, we
-find $\chi_1 = \Tilde \chi \chi_{0,r}$ and $\chi_2 = \Tilde \chi \chi_{0,s}$, implying 
+find $\chi_1 = \Tilde \chi \chi_{0,r}$ and $\chi_2 = \Tilde \chi \chi_{0,s}$,
+implying 
 $d = rs$ by primitivity of $\chi_1$ and $\chi_2$. 
 
 \textbf{4.} Writing $n = 2^r q$ with $q$ odd, we find that the number of primitive real
@@ -147,10 +168,15 @@ characters mod $n$ is given by
 \]
 
 \textbf{5.} Clearly the product of two fundamental discriminants (FDs) is again a FD,
-and we have $\chi_{D_1 D_2} = \chi_{D_1}\chi_{D_2}$. So we can reduce to the case where
-$\abs D = p^r$ is a prime power. As a first reality check, we find that if $p$ is odd,
+and we have $\chi_{D_1 D_2} = \chi_{D_1}\chi_{D_2}$. Also, given a fundamental
+discriminant $D$ with $\abs D = d_1 d_2$ and $(d_1, d_2) = 1$, there are
+fundamental discriminants $D_1, D_2$ with $d_i = \pm D_i$. 
+So we can reduce to the case where
+$\abs D = p^r$ is a prime power. As a first reality check, we find that if $p$
+is odd,
 the only fundamental discriminant of this type is $D = (-1)^{\frac{p-1}2} p$,
-in which case $\chi_D$ is given by the unique real primitive character. 
+in which case $\chi_D$ is given by the unique real primitive character, given by (using quadratic reciprocity)
+$$\chi_D(q) = \legendre {(-1)^{(p-1)/2}p}q = \legendre qp.$$
 There are no FDs with $\abs D =2$ or $\abs D = 2^r$ with $r \geq 4$. If $\abs D = 4$
 there is one ($D = -4$), and if $n = 8$ there are two ($D = \pm 8$).
 Using quadratic reciprocity and the supplementary laws, it is easily seen that these
