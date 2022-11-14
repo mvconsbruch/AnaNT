@@ -45,6 +45,19 @@ Reordering sums, we obtain
          \overline \chi(m). 
 \end{multline*}
 
+\textbf{Notes after correcting.}
+\begin{itemize}
+    \item In part a), instead of using the results from the lecture, we can
+        also obtain the formula for the fourier transform directly.
+        Setting $g(x) = f(qx + a)$ and substituting $u = qx + a$, we obtain
+        \[
+            \hat g ( y ) = 
+            \int_\R f(qx+a) e(-xy) \dc x = 
+            \frac 1q \int_\R f(u) e(-u\tfrac yq + \tfrac{ay}q)
+            \dc u = \frac 1q e(\tfrac {ay}q) \hat f(\tfrac yq).
+        \]
+\end{itemize}
+
 \section*{Problem 2}
 I really don't like this problem as it has not much to do with number theory. 
 I might add a solution later, but I am sure one can find this in most books on 
