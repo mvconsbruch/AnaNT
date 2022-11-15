@@ -2,11 +2,12 @@
 \pagenumbering{arabic}
 \usepackage{../environment}
 
+\author{Max von Consbruch}
 
 \begin{document}
 
 \begin{center}
-    \huge{ Solution to Sheet 3. }
+    \huge{Solution to Sheet 4.}
 \end{center}
 
 \section*{Problem 1} % (fold)
@@ -59,9 +60,38 @@ Reordering sums, we obtain
 \end{itemize}
 
 \section*{Problem 2}
-I really don't like this problem as it has not much to do with number theory. 
-I might add a solution later, but I am sure one can find this in most books on 
-real analysis.
+We do as the hint commands. Let 
+\[
+    f(t) = 
+    \begin{cases}
+        \ec^{-1/t^2} \quad &t>0 \\
+        0 \quad & \text{else.}
+    \end{cases}
+\]
+Then one easily checks that $f$ is smooth and non-negative. Now we put 
+$g(t) = \frac{f(t)}{f(t) + f(1-t)}$, which is still smooth and non-negative. 
+We clearly have $g(t) = 0$ if $t<0$, $g(t) \in [0,1]$ for $t \in [0,1]$ and 
+$g(t) = 1$ for $t > 1$. Finally, define 
+\[
+    h(t) = g \left( \frac{t-X+Z}Z \right) - g \left( \frac{t-X-Y}Z \right).
+\]
+This satisfies $\textnormal{supp}(h) \subset [X-Z, X+Y+Z]$ and 
+$h(t) = 1$ for $t \in [X,X+Y]$. 
+We still need to check that $\norm{f^{(j)}}_1 \ll Z^{1-j}$ for all $j \in \N$.
+One could expect this to be really messy as calculating the higher derivatives
+of $h$ seems horrible. However, we just need that the $j$-th derivative of $h$ 
+is given by
+\[
+    h^{(j)}(t) = Z^{-j} \left( g^{(j)} \left( \tfrac{t-X+Z}Z \right) - g^{(j)}
+    \left( \tfrac{t-X-Y}Z \right) \right).
+\]
+As $h^{(j)}$ vanishes everywhere except $[X-Z,X]$ and $[X+Y, X+Y+Z]$, we obtain
+by a linear change of variables 
+\[
+    \norm{h^{(j)}}_1 = \left(\int_{X+Z}^X + \int_{X+Y}^{X+Y+Z}\right)
+    \abs{h^{(j)}(t)} \dc t = 2Z^{1-j} \int_0^1 \abs{g^{(j)}(t)} \dc t \ll_j Z^{1-j}.
+\]
+
 
 \section*{Problem 3}
 As the hint commands, we apply partial summation to the definition of
@@ -79,8 +109,6 @@ Let $M$ deonte the supremum of the absolute values of $\sum_{h \leq x}
     \frac{q^{3/2}}{2 \pi} = \abs{\int_1^q e(t/q) \sum_{h \leq t} \chi(h) \dc t} \leq \int_1^q \abs{ \sum_{h \leq t}  \chi(h) } \dc t \leq (q-1)M,
 \]
 which is even a tad stronger than what we had to show. 
-
-\textbf{Notes after correcting.} \leavevmode
 
 \section*{Problem 4}
 Let's just plug in the definition and look at what we have here.
