@@ -24,11 +24,34 @@ as Stirling a priori only gives uniform bounds in regions of the form $\abs{\arg
 - \pi} \geq \delta > 0$. We can however apply stirlings formula if we apply the recurrence
 $s\Gamma(s) = \Gamma(s+1)$ repeatedly: 
 \begin{multline*}
+    \int_{(-A+1/2)} \Gamma(s) x^s \dc s \ll 
     \int_{(-A+1/2)} \abs{\Gamma(s) x^s} \dc s \ll 
     x^{-A+1/2} \int_{(1/2)} \abs{\Gamma(s-A)} \dc s \\ 
     = x^{-A+1/2} \int_{(1/2)} \abs{\frac {\Gamma(s)}{(s-A+1) \cdots (s-1)}}
     \dc s \leq \frac{x^{-A + 1/2}}{(A-1)!} \int_{(1/2)} \abs{\Gamma(s)} \dc s. 
 \end{multline*}
+
+\textbf{Notes.}
+Once we know this inequality, we actually can do better: Remember that $\Gamma$ has poles at
+the negative integers, the residue at $-n$ is given by $\tfrac{(-1)^n}{n!}$. Hence for 
+(large) $T > 0$, we have that 
+\[
+    \int_{1/2-A-\ic T}^{1/2 - A +\ic T} \Gamma(s) x^s \dc s =
+    2 \pi \ic \frac{(-x)^{-A}}{A!} + \int_{1/2-A-\ic T}^{-1/2 - A + \ic T} \Gamma(s) x^s
+    \dc s + O\left( \int_{1/2-A-\ic T}^{-1/2-A - \ic T}  \Gamma(s) x^s \right). 
+\]
+By the rapid decay of $\Gamma$, the horizontal integral vanishes as $T
+\rightarrow \infty$, and we can bound the vertical integral using what we
+showed before, applied to $A+1$. This yields
+\[
+    \int_{(-A+1/2)} \Gamma(s) x^s \dc s = 2 \pi \ic \frac{(-x)^{-A}}{A!} + O\left(\frac{x^{-A-1/2}}{A!}\right).
+\]
+In fact, as for every $x>0$ the fraction $x^A/A!$ tends to zero as $A \to \infty$, we
+may repeat this as often as we want, obtaining
+\[
+    \frac 1{2 \pi \ic} \int_{(-A+1/2)} \Gamma(s) x^s \dc s = \sum_{k=A}^\infty \frac{(-x)^{-k}}{k!} 
+    = \ec^{-\frac 1x} - \sum_{k=0}^{A-1} \frac{(-x)^{-k}}{k!}.
+\]
 
 \section*{Problem 3}
 
