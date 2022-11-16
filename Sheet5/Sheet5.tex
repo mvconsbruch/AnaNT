@@ -1,0 +1,35 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+
+\author{Max von Consbruch}
+
+\begin{document}
+
+\begin{center}
+    \huge{Solution to Sheet 5.}
+\end{center}
+
+\section*{Problem 1}
+
+\section*{Problem 2}
+We have to show the bound
+\[
+    \int_{(-A + \tfrac 12)} \Gamma(s) x^s \dc s \ll \frac{x^{-A +
+    1/2}}{(A-1)!}.
+\]
+Note that the integral exists by the rapid decay of $\Gamma$ along vertical
+lines. However, we cannot apply Stirling's formula to bound the integral directly
+as Stirling a priori only gives uniform bounds in regions of the form $\abs{\arg(s)
+- \pi} \geq \delta > 0$. We can however apply stirlings formula if we apply the recurrence
+$s\Gamma(s) = \Gamma(s+1)$ repeatedly: 
+\begin{multline*}
+    \int_{(-A+1/2)} \abs{\Gamma(s) x^s} \dc s \ll 
+    x^{-A+1/2} \int_{(1/2)} \abs{\Gamma(s-A)} \dc s \\ 
+    = x^{-A+1/2} \int_{(1/2)} \abs{\frac {\Gamma(s)}{(s-A+1) \cdots (s-1)}}
+    \dc s \leq \frac{x^{-A + 1/2}}{(A-1)!} \int_{(1/2)} \abs{\Gamma(s)} \dc s. 
+\end{multline*}
+
+\section*{Problem 3}
+
+\end{document}
