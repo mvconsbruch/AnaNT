@@ -38,7 +38,7 @@ the negative integers, the residue at $-n$ is given by $\tfrac{(-1)^n}{n!}$. Hen
 \[
     \int_{1/2-A-\ic T}^{1/2 - A +\ic T} \Gamma(s) x^s \dc s =
     2 \pi \ic \frac{(-x)^{-A}}{A!} + \int_{1/2-A-\ic T}^{-1/2 - A + \ic T} \Gamma(s) x^s
-    \dc s + O\left( \int_{1/2-A-\ic T}^{-1/2-A - \ic T}  \Gamma(s) x^s \right). 
+    \dc s + O\left( \int_{1/2-A-\ic T}^{-1/2-A - \ic T}  \Gamma(s) x^s \dc s\right). 
 \]
 By the rapid decay of $\Gamma$, the horizontal integral vanishes as $T
 \rightarrow \infty$, and we can bound the vertical integral using what we
@@ -51,6 +51,12 @@ may repeat this as often as we want, obtaining
 \[
     \frac 1{2 \pi \ic} \int_{(-A+1/2)} \Gamma(s) x^s \dc s = \sum_{k=A}^\infty \frac{(-x)^{-k}}{k!} 
     = \ec^{-\frac 1x} - \sum_{k=0}^{A-1} \frac{(-x)^{-k}}{k!}.
+\]
+The equation for $A= 0$ is nothing new! As $\Gamma(s)$ is holomorphic
+for $\Re s > 0$ we already know that
+\[
+    \ec^{-1/x} = \frac{1}{2 \pi \ic} \int_{(1/2)} \cM(\ec^{1/x})(s) \frac{x^s}s \dc s
+    = \frac{1}{2 \pi \ic} \int_{(1/2)} \frac{\Gamma(s+1)}{s} x^s \dc s.
 \]
 
 \section*{Problem 3}
