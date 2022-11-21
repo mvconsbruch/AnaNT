@@ -1,0 +1,110 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+
+\author{Max von Consbruch}
+
+\begin{document}
+
+\begin{center}
+    \huge{Approximate functional equation, what is it all about?!}
+\end{center}
+
+\section{A classical approximate functional equation} % (fold)
+\label{sec:A classical approximate functional equation}
+
+The aim of the approximate functional equation is to understand $\zeta$ (or more 
+generally, any $L$-function) better in the critical strip $0 < \Re s < 1$. 
+In this first part, we will focus on the case of $\zeta$. 
+When we proved that $\zeta$ has a meromorphic continuation to $\Re s > 0$, we 
+used partial summation on the dirichlet series, showing that for $\Re s > 1$, we have
+\[
+    \zeta(s) = \sum_{n=1}^\infty n^{-s} = \frac{s}{s-1} - s \int_1^\infty \{t\} t^{-s-1} \dc t,
+\]
+where the RHS is defined also for $\Re s > 0$. 
+
+Given some $N > 0$, a similar expression arises if we use partial
+summation on the truncated Dirichlet series, as
+\[
+    \sum_{n \leq N} n^{-s} = N^{1-s} + s \int_1^N \lfloor t \rfloor t^{-s-1} \dc t
+    = \frac {N^{1-s}} {1-s} + \frac s{s-1} - s \int_1^N \{t\} t^{-s-1} \dc t.
+\]
+Now one might be tempted to comare the RHSs of the previous two equations. Writing 
+$s = \sigma + \ic t$, we find
+\[
+    \zeta(s) - \sum_{n \leq N}n^{-s} = \frac{N^{1-s}}{s-1} - s \int_1^N \{t\}
+    t^{-s-1} \dc t = \frac {N^{1-s}}{s-1} + O\left(\frac{\abs{s}}\sigma N^{-\sigma}
+        \right).
+\]
+The important observation is that nothing goes wrong if we pass from $\Re s > 1$
+to $\Re s > 0$! We found that $\zeta$ is approximated by the first terms 
+in its dirichlet series, even in the critical strip. As is turns out, this 
+approximation is not great, as we still have that annoying $\abs s$ in the $O$-term,
+which forces us to choose $N$ large (roughly like $t^{1/\sigma}$) to make use
+of this approximation. The crucial thing we missed in our approximation is that
+$n^{it} = \ec^{(\log n) \ic t}$ oscillates and constitutes a lot of
+cancellation. Using some sort of approximate fourier transform called 
+\textit{van der Corput summation}, one can get hold of this oscillation to
+obtain a stronger bound on the error, given by
+\[
+    \zeta(s) = \sum_{n \leq x} n^{-s} - \frac{x^{1-s}}{1-s} + O(x^{-\sigma}).
+\]
+This is uniform in $\sigma > \sigma_0$ once we fix $\sigma_0 > 0$, provided that
+$\abs t \leq 4x$. (Take a look in Chapter 4 of Brüdern's book for details).
+
+Choosing $\sigma = \frac 12$, we find that 
+\[
+    \zeta(s) \ll \sum_{n \leq t} n^{-\sigma} + t^{1-\sigma} \ll t^{1- \sigma},
+\]
+which is an okay bound, but not as good as we'd like. The convexity bound already 
+gave that $\zeta(s) \ll t^{\frac{1-\sigma}2 + \varepsilon}$, so we could hope 
+that we could do even better, approximating $\zeta$ with sums of length $\sqrt t$.
+Unfortunately, it does not seem as if such a identity holds true. 
+
+However, we can apply the functional equation to obtain a similar approximation
+of $\zeta$, just from the other side (i.e., at $1-s$). Even better, we might be
+able to combine these approximations to obtain a better approximation of 
+$\zeta$. This is the Idea of the \textit{approximate functional equation}. 
+And indeed, it gives what we hoped for: We can essentially approximate $\zeta$ by
+Dirichlet-sums of length $\sqrt t$. If we write $\zeta(s) = \Delta(s) \zeta(1-s)$,
+the theorem reads as
+\begin{thm}[Approximate functional equation]
+    Let $0 < \sigma < 1$ and $2 \pi xy = t$ , where $x,y > 1$. Then
+    \[
+    \zeta(s) = \sum_{n \leq x}n^{-s} + \Delta(s) \sum_{n \leq y} n^{s-1} 
+    + O((x^{-\sigma} + t^{1/2-\sigma} y^{\sigma-1}) \log t).
+    \]
+\end{thm}
+We shouldn't worry about the shape of the error term too much, just observe that 
+the balanced case is given when $\sigma = \frac 12$ and $x=y= \sqrt{\frac x
+{2\pi}}.$ 
+
+This AFC is stronger than the one we had in the lecture. For example, it allows
+us to deduce asymptotic formulas for the second and fourth moments of $\zeta$
+on the critical line, only using elementary manipulations. We get
+\[
+    \int_0^T \abs{\zeta(\tfrac 12 + \ic t)}^2 \dc t = T \log T + O(T)
+\]
+and 
+\[
+    \int_0^T \abs{\zeta(\tfrac 12 + \ic t)}^4 \dc t = \frac{T (\log T)^4}{2\pi} + 
+    O(T(\log T)^3).
+\]
+(Again, you can read this up in Brüdern's book).
+
+
+% section A classical approximate functional equation
+
+\section{The (smoothed) approximate functional equation from the lecture} % (fold)
+\label{sec:Our approximate functional equation}
+You may wonder, how does the approximate functional equation from before relate
+to the one we had in the lecture?! It looked much more complicated and did not
+allow us to deduce asymptotic formulas. In the lecture, we proved a smoothed
+version of the formula above, and usually, smoothed formulas are easier to
+prove, but harder to use. 
+
+% section Our approximate functional equation
+
+
+
+\end{document}
