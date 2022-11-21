@@ -11,6 +11,21 @@
 \end{center}
 
 \section*{Problem 1}
+We have basically solved this already on sheet 3. Note that as $d_1 \mid q_1$ and 
+$d_2 \mid q_2$, we have $(d_1, d_2) = 1$, so (by sheet 3) there are primitive
+characters $\psi_i$ mod $d_i$ with $\chi_i = \psi_i \chi_{0,q_i}$ (here again
+$\chi_{0,q_i}$ is the principal character mod $q_i$) whose product $\psi =
+\psi_1 \psi_2$ is a primitive character mod $d_1d_2$. Modulo $q$, this
+reveals
+\[
+    \chi_1 \chi_2 =  (\chi_{0, q_1} \psi_1) (\chi_{0, q_2} \psi_2) =
+    \chi_{0,q_1 q_2} \psi, 
+\]
+hence $\psi$ is induced by a primitive character mod $d_1d_2$. 
+
+It is easily seen that the coprimality condition is necessary. Take any real
+character $\chi$ mod $q$ for example, then $\chi^2 = 1$ and has conducter 
+$1 \neq q$. 
 
 \section*{Problem 2}
 We have to show the bound
@@ -60,5 +75,20 @@ for $\Re s > 0$ we already know that
 \]
 
 \section*{Problem 3}
+We substitute $p^{-s} = x$ to find the equivalent
+\[
+    \sum_{k=0}^\infty \beta(k) x^k = \frac 1 {P(x)}. 
+\]
+Where $P(x) = \prod_{j=1}^d(1-\alpha_j x)= \sum_{i = 0}^d a_i x^i$ (in particular,
+$a_0 = 1$). Multiply both sides with $P$, revealing
+\[
+    \sum_{d=0}^\infty x^d \sum_{k=0}^d \beta(d-k) a_k = 1.
+\]
+Equating coeffiecients gives that for $k>0$, 
+\[
+    \sum_{k=0}^d a_k \beta(d-k) = 0,
+\]
+which, after subtracting $\beta(d)$ on both sides and setting $c_i = -a_{i+1}$,
+gives the desired recurrence.
 
 \end{document}
