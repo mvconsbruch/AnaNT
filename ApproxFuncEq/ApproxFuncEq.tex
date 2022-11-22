@@ -160,10 +160,10 @@ and obtain
     \omega_{1-s}\left(\frac{nX}N\right).
 \end{multline*}
 Plugging this into (2.2), we get 
-\[
+\begin{equation}
     L(s) = \sum_{n=1}^\infty a_n n^{-s} \omega_s\left(\frac nX\right) + \eta N^{1/2 - s} \frac{L_\infty(1-s)}{L_\infty(s)} \sum_{n=1}^\infty \frac{\bar{a_n}}{n^{1-s}}
     \omega_{1-s}\left(\frac{nX}N\right) - R,
-\]
+\end{equation}
 which is exactly the statement of the approximate functional equation of the lecture
 once we replace $\omega$ by the inverse mellin transform of $\hat \omega$, 
 and $X$ by $X\sqrt N$. 
@@ -176,9 +176,14 @@ for $x > 0$
 $$ \sum_{n \in \N} a_n \omega(n/x) =\pifrac \int_{(c)} F(s) \hat \omega(s) x^s
 \dc s. $$
 We now shift the contour to the left, pick up residues and make up methods to
-deal with the remaining integral. In our case, we were able to use the 
+deal with the remaining integral. In our case, we really cared more about what's 
+happening in the integrals than in the sum, so we first choose a function we want to
+have as mellin transform and then choose $\omega$ in a way such that it mellin
+transforms into that function. (This leads to the awkward definition of $V_s$.)
+However, with this choice of a smooth weight we are able to pick up $L(s)$ as 
+a residue (which is what we wanted to approximate) and use the 
 functional equation for $L$-functions to reinterpret the shifted contour as 
-a smoothly weighted sum again.
+a similar smoothly weighted sum again. This leads to (2.3).
 
 
 
