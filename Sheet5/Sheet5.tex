@@ -68,11 +68,12 @@ may repeat this as often as we want, obtaining
     = \ec^{-\frac 1x} - \sum_{k=0}^{A-1} \frac{(-x)^{-k}}{k!}.
 \]
 The equation for $A= 0$ is nothing new! As $\Gamma(s)$ is holomorphic
-for $\Re s > 0$ we already know that
+for $\Re s > 0$ we already know that $\cM(e^{-x})(s) = \Gamma(s)$, so
 \[
-    \ec^{-1/x} = \frac{1}{2 \pi \ic} \int_{(1/2)} \cM(\ec^{1/x})(s) \frac{x^s}s \dc s
-    = \frac{1}{2 \pi \ic} \int_{(1/2)} \frac{\Gamma(s+1)}{s} x^s \dc s.
+    \ec^{-x} = \frac{1}{2 \pi \ic} \int_{(1/2)} \cM(\ec^{-x})(s) x^{-s} \dc s
+    = \frac{1}{2 \pi \ic} \int_{(1/2)} \Gamma(s) x^{-s} \dc s.
 \]
+Now replace $x$ by $x^{-1}$. 
 
 \section*{Problem 3}
 We substitute $p^{-s} = x$ to find the equivalent
