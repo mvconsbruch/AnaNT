@@ -11,6 +11,9 @@ Warning: These are non-official, there might be errors.
 * [Sheet 2](Sheet2/Sheet2.pdf)
 * [Sheet 3](Sheet3/Sheet3.pdf) + some facts on number theory.
 * [Sheet 4](Sheet4/Sheet4.pdf)
+* [Sheet 5](Sheet5/Sheet5.pdf)
 
+## Other Texts
+* [Notes on the approximate functional equation](ApproxFuncEq/ApproxFuncEq.pdf)
 
 ###### Max von Consbruch, email: s6mavonc@uni-bonn.de
