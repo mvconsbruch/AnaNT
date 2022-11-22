@@ -90,23 +90,98 @@ and
     \int_0^T \abs{\zeta(\tfrac 12 + \ic t)}^4 \dc t = \frac{T (\log T)^4}{2\pi} + 
     O(T(\log T)^3).
 \]
-(Again, you can read this up in Brüdern's book).
+(Again, you can read this up in Brüdern's book, chapter 4).
 
 
 % section A classical approximate functional equation
 
 \section{The smoothed approximate functional equation} % (fold)
 \label{sec:Our approximate functional equation}
-You may wonder, how does the approximate functional equation from before relate
-to the one we had in the lecture?! It looked much more complicated and did not
+Okay, the approximate functional equation is cool (or not), but how does it relate
+to the approximate functional equation we had in the lecture?! It looked much
+more complicated and did not
 allow us to deduce asymptotic formulas. In the lecture, we proved a smoothed
 version of the formula above, and usually, smoothed formulas are easier to
-prove, but harder to use. The reason for that phenomenon is that 
-for smooth, compactly supported functions, the mellin tranform has rapid
-decay along vertical lines. This makes calculations really easy.
+prove, but harder to use. (One reason for this phenomenon is that 
+the mellin tranform transforms smoothness into rapid
+decay along vertical lines. This usually makes calculations easy.)
+
+We are given some Dirichlet $L$-function $L(s) = \sum_{n=1}^\infty a_n n^{-s}$,
+which we want to approximate by a sum of the form 
+$\sum_{n=1}^\infty a_n n^{-s} \omega(n/X)$, where $X>0$ and $\omega = \omega_s$
+is some smooth cut-off function. Denoting the Mellin transform of $\omega$ by
+$\hat \omega$, we obtain (similarly to what we did for Perron's formula)
+\begin{equation}
+    \sum_{n=1}^\infty a_n n^{-s} \omega\left(\frac nX \right) = \pifrac \int_{(c)} 
+    L(s+u) X^u \hat \omega(u)  \dc u.
+\end{equation}
+Now, as we always do, we hope to find something new when shifting the contour 
+of the integral to the left, to $(-c)$, say. We now that we want $L(s)$ to appear,
+so it seems advisable to choose $\omega$ such that $\hat \omega$ has a simple
+pole with residue $1$ at zero. We also might pick up residues of $L$ at 
+$u = -s$ and $u = 1-s$, we will denote these residues with $R$. We get
+\[
+    \sum_{n=1}^\infty a_n n^{-s} \omega(n/X) = 
+    L(s) + \pifrac \int_{(-c)} L(s+u) \hat \omega(u) X^u \dc u + R.
+\]
+What now? Usually we would like to bound the integral, but showing that this integral
+is small seems impossible. However, as we understand $L(s)$ way better at 
+$\Re s = c$ than at $\Re s = -c$, we could try to apply the functional equation.
+The functional equation for $L$ reads
+\[
+    \Lambda(s) = \eta \bar \Lambda(1-s), \quad \text{where} \quad \Lambda(s) = 
+    N^{s/2} L_\infty(s) L(s). 
+\]
+Hence we write $\hat \omega(u) = \frac{L_\infty(s+u) G(u)}{s L_\infty(s)}$, and we
+impose that $G$ is a function independent of $u$ with $G(0) =1$. We obtain 
+\begin{equation}
+\sum_{n=1}^\infty a_n n^{-s} \omega(n/X)  = 
+L(s) - \frac{\eta}{N^{s/2} L_\infty(s)} \cdot \frac1 {2\pi \ic} 
+\int_{(-c)} \Lambda(s+u) G(u) \left( \frac X{\sqrt N} \right)^u \frac {\dc u} u + R
+\end{equation} 
+Investigating the integral further, we find after applying the functional equation 
+and a few manipulations
+\[
+\begin{aligned}
+    \pifrac \int_{(-c)} \Lambda(s+u) G(u) \left( \frac X{\sqrt N} \right)^u
+    \frac {\dc u} u 
+    &=  \pifrac \int_{(-c)} \Lambda(1-s-u) G(u) \left( \frac X{\sqrt N} \right)^u \frac {\dc u} u \\
+    &=  \pifrac \int_{(c)} \bar \Lambda(1-s+u) G(-u) \left( \frac {\sqrt N}X \right)^u \frac {\dc u} u \\
+    &=  \pifrac \int_{(c)} \bar \Lambda(1-s+u) G(-u) \left( \frac {\sqrt N}X \right)^u \frac {\dc u} u. 
+\end{aligned}
+\]
+If we further impose that $G$ is an even function (i.e. $G(u) = G(-u)$), this is
+almost the integral we started with in (2.1)! We can reverse our initial procedure
+and obtain
+\begin{multline*}
+    \pifrac \int_{(c)} \bar \Lambda(1-s+u) G(-u) \left( \frac {\sqrt N}X \right)^u \frac {\dc u} u \\ = \frac{N^{\frac{1-s}2}L_\infty(1-s)}{2 \pi \ic} \int_{(c)}
+    \bar L(1-s+u) \hat \omega_{1-s}(u) \left( \frac NX \right)^u \dc u
+    = N^{\frac{1-s}2} L_\infty(1-s) \sum_{n=1}^\infty \frac{\bar{a_n}}{n^{1-s}}
+    \omega_{1-s}\left(\frac{nX}N\right).
+\end{multline*}
+Plugging this into (2.2), we get 
+\[
+    L(s) = \sum_{n=1}^\infty a_n n^{-s} \omega_s\left(\frac nX\right) + \eta N^{1/2 - s} \frac{L_\infty(1-s)}{L_\infty(s)} \sum_{n=1}^\infty \frac{\bar{a_n}}{n^{1-s}}
+    \omega_{1-s}\left(\frac{nX}N\right) - R,
+\]
+which is exactly the statement of the approximate functional equation of the lecture
+once we replace $\omega$ by the inverse mellin transform of $\hat \omega$, 
+and $X$ by $X\sqrt N$. 
+
+\textbf{TL;DR:} The smoothed approximate functional equation we had in the lecture
+is just another instance of recurring procedure: 
+We start with some (possibly smoothly) weighted sum $\sum_{n \in \N} a_n
+\omega(n/x)$, calculate the mellin transform $\hat \omega$ of $\omega$ and obtain
+for $x > 0$ 
+$$ \sum_{n \in \N} a_n \omega(n/x) =\pifrac \int_{(c)} F(s) \hat \omega(s) x^s
+\dc s. $$
+We now shift the contour to the left, pick up residues and make up methods to
+deal with the remaining integral. In our case, we were able to use the 
+functional equation for $L$-functions to reinterpret the shifted contour as 
+a smoothly weighted sum again.
+
+
 
 % section Our approximate functional equation
-
-
 
 \end{document}
