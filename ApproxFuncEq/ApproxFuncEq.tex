@@ -79,7 +79,7 @@ We shouldn't worry about the shape of the error term too much, just observe that
 the balanced case is given when $\sigma = \frac 12$ and $x=y= \sqrt{\frac x
 {2\pi}}.$ 
 
-This AFC is stronger than the one we had in the lecture. For example, it allows
+This AFE is stronger than the one we had in the lecture. For example, it allows
 us to deduce asymptotic formulas for the second and fourth moments of $\zeta$
 on the critical line, only using elementary manipulations. We get
 \[
@@ -136,7 +136,7 @@ Hence we write $\hat \omega(u) = \frac{L_\infty(s+u) G(u)}{s L_\infty(s)}$, and 
 impose that $G$ is a function independent of $u$ with $G(0) =1$. We obtain 
 \begin{equation}
 \sum_{n=1}^\infty a_n n^{-s} \omega(n/X)  = 
-L(s) - \frac{\eta}{N^{s/2} L_\infty(s)} \cdot \frac1 {2\pi \ic} 
+L(s) + \frac{\eta}{N^{s/2} L_\infty(s)} \cdot \frac1 {2\pi \ic} 
 \int_{(-c)} \Lambda(s+u) G(u) \left( \frac X{\sqrt N} \right)^u \frac {\dc u} u + R
 \end{equation} 
 Investigating the integral further, we find after applying the functional equation 
@@ -146,8 +146,8 @@ and a few manipulations
     \pifrac \int_{(-c)} \Lambda(s+u) G(u) \left( \frac X{\sqrt N} \right)^u
     \frac {\dc u} u 
     &=  \pifrac \int_{(-c)} \Lambda(1-s-u) G(u) \left( \frac X{\sqrt N} \right)^u \frac {\dc u} u \\
-    &=  \pifrac \int_{(c)} \bar \Lambda(1-s+u) G(-u) \left( \frac {\sqrt N}X \right)^u \frac {\dc u} u \\
-    &=  \pifrac \int_{(c)} \bar \Lambda(1-s+u) G(-u) \left( \frac {\sqrt N}X \right)^u \frac {\dc u} u. 
+    &=  -\pifrac \int_{(c)} \bar \Lambda(1-s+u) G(-u) \left( \frac {\sqrt N}X \right)^u \frac {\dc u} u \\
+    &=  -\pifrac \int_{(c)} \bar \Lambda(1-s+u) G(-u) \left( \frac {\sqrt N}X \right)^u \frac {\dc u} u. 
 \end{aligned}
 \]
 If we further impose that $G$ is an even function (i.e. $G(u) = G(-u)$), this is
@@ -169,14 +169,14 @@ once we replace $\omega$ by the inverse mellin transform of $\hat \omega$,
 and $X$ by $X\sqrt N$. 
 
 \textbf{TL;DR:} The smoothed approximate functional equation we had in the lecture
-is just another instance of recurring procedure: 
+is just another instance of a recurrent procedure: 
 We start with some (possibly smoothly) weighted sum $\sum_{n \in \N} a_n
 \omega(n/x)$, calculate the mellin transform $\hat \omega$ of $\omega$ and obtain
 for $x > 0$ 
 $$ \sum_{n \in \N} a_n \omega(n/x) =\pifrac \int_{(c)} F(s) \hat \omega(s) x^s
 \dc s. $$
 We now shift the contour to the left, pick up residues and make up methods to
-deal with the remaining integral. In our case, we really cared more about what's 
+deal with the remaining integral. In our case, we really care more about what's 
 happening in the integrals than in the sum, so we first choose a function we want to
 have as mellin transform and then choose $\omega$ in a way such that it mellin
 transforms into that function. (This leads to the awkward definition of $V_s$).
