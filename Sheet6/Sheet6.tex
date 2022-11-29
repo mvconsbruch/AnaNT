@@ -1,0 +1,205 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+
+\author{Max von Consbruch}
+
+\begin{document}
+
+\begin{center}
+    \huge{Solutions to Sheet 5.}
+\end{center}
+
+\section*{Problem 1}
+Okay, we just go through everyting.
+For $\zeta(s)$ we have degree $d=1$, conductor $N=1$, root number 
+$\eta = 1$, $\kappa_1 = 0$ and hence $L_\infty(s) = \pi^{-s/2}\Gamma(s/2)$. 
+For $L(s, \chi)$ with a primitive Dirichlet character $\chi$ mod $q>1$ we have
+degree $d=1$, conductor $N=q$, root number $\eta = \ic^{-\kappa} \tau(\chi)q^{-1/2}$,
+$\kappa_1 = \kappa$ and $L_\infty(s) = \pi^{-s/2}\Gamma(\frac{s+\kappa}2)$
+where $\kappa = 0$ if $\chi$ is even and $\kappa = 1$ if $\chi$ is odd. 
+
+The functional equation now reads as follows.
+\begin{thm}[Approximate functional equation for $\zeta$]
+    Let $G(u)$ be any even function which is holomorphic and bounded in 
+    $\abs{\Re(u)} < 4$ and normalized by $G(0) = 1$. Let $X>0$. Then for 
+    $0 < \sigma < 1$ we have 
+    \[
+        \zeta(s) =
+        \sum_n n^{-s} V_s \left(\frac nX \right) + 
+        \pi^{s-1/2} \frac{\Gamma((1-s)/2)}{\Gamma(s/2)} \sum_n 
+        n^{s-1} V_{1-s}(nX) - R
+    \]
+    where
+    \[
+        V_s(y) = \pifrac \int_{(3)} G(u)  \frac{\Gamma((s+u)/2)}
+        {\Gamma(s/2)}(y \sqrt \pi)^{-u} \frac{\dc u}u
+    \]
+    and
+    \[
+        R = \frac{\pi^{s/2}}{\Gamma(s/2)} \frac{G(1-s)}{1-s} X^{1-s}
+        - \frac{\pi^{s/2}}{\Gamma(s/2)} \frac{G(-s)}{-s} X^{-s}.
+    \]
+\end{thm}
+Completed Dirichlet $L$-functions are entire, so we get rid of $R$. 
+As above, in the following $\kappa$ depends on the parity of $\chi$. 
+\begin{thm}[Approximate functional equation for Dirichlet $L$-functions]
+Let $G(u)$ be any even function which is holomorphic and bounded in 
+    $\abs{\Re(u)} < 4$ and normalized by $G(0) = 1$. Let $X>0$. Then for 
+    $0 < \sigma < 1$ we have 
+    \[
+        \zeta(s) =
+        \sum_n \chi(n)n^{-s} V_s \left(\frac n{X\sqrt q} \right) + 
+        \epsilon(s) \sum_n \overline{\chi(n)}
+        n^{s-1} V_{1-s}\left(\frac{nX}{\sqrt q}\right)
+    \]
+    where
+    \[
+        V_s(y) = \pifrac \int_{(3)} G(u) 
+        \frac{\Gamma((s+u+\kappa)/2)}
+        {\Gamma((s+\kappa)/2)} (y \sqrt \pi)^{-u} \frac{\dc u}u
+    \]
+    and
+    \[
+        \epsilon(s) = \ic^{-\kappa} \tau(\chi) q^{-s} \pi^{s-1/2} \frac{\Gamma
+        ((1-s+\kappa)/2)} {\Gamma((s+\kappa)2)}.
+    \]
+\end{thm}
+
+As for (3.11), we have for $\zeta$ that $\mathcal C(s) = \CC_0(s) = \abs {s+2}$, 
+for Dirichlet $L$-functions we find $\cC_0(s) = \abs{s + \kappa} + 2$ and
+$\cC(s) = q(\abs{s + \kappa} + 2)$. As an aside, the $2$ here is quite arbitrary 
+and is only there to make sure everything works out when $\abs s$ is small. 
+We can plug this into (3.11), finding (with $G(u) = \ec^{u^2}$) that for $\zeta$
+we have that
+\[
+    y^aV_s^{(a)}(y) \ll_{a,A} \left(1 + \frac{y}{\sqrt{\abs s +2}} \right)^{-A}
+\]
+for $\Re(s) > 0$ whereas for $L(s, \chi)$ we find
+\[
+    y^aV_s^{(a)}(y) \ll_{a,A} \left(1 + \frac{y}{\sqrt{\abs {s+\kappa} +2}}
+    \right)^{-A}
+\]
+for $\Re(s) > -\kappa$. 
+
+Lastly, the conditions for (3.12) are satisfied for both $\zeta(s)$ and $L(s,\chi)$, 
+we have the convexity bound
+\[
+    \zeta(s) \ll_{\varepsilon, \delta} (\abs s + 2)^{\frac{1-\sigma}2+\varepsilon}
+\]
+whenever $\abs{s-1} \geq \delta$ (i.e., away from the pole) and similarly
+\[
+    L(s,\chi) \ll_\varepsilon (q\abs{s+\kappa}+2)^{\frac{1-\sigma}2 + \varepsilon}. 
+\]
+Again, it should be noted that the $2$ is added artificially to have 
+small $\abs s$ not mess everything up. For large $s$, these vanish and we obtain 
+(and should really read these as)
+\[
+    \zeta(s) \ll \abs s ^{\frac{1-\sigma}2+\varepsilon} \quad \text{and}
+    \quad  L(s, \chi) \ll \abs {qs}^{\frac{1-\sigma}2 + \varepsilon}. 
+\]
+Also, if we fix $L$, we can absorb the factor $q$ into the implicit constant 
+from $\ll$. 
+
+
+
+\section*{Problem 2}
+We first calculate $\zeta(0)$. The simple pole of $\zeta(s)$ at $s=1$ has
+residue $1$, so we know that 
+$\lim_{s \to 1} (s-1) \zeta(s) = 1$. Writing the functional equation as
+$\zeta(s) = \Delta(s) \zeta(1-s)$ 
+gives 
+\[
+    1 = \lim_{s \to 1} (s-1) \zeta(s) = \lim_{s \to 1} (s-1) \Delta(s) \zeta(0),
+\]
+so we only need to evaluate the remaining term $\lim_{s \to 1}(s-1) \Delta(s)$.
+We have 
+$$\Delta(s) = \frac{\Gamma(\frac{1-s}2)}{\Gamma(\frac s2)} \pi^{s-1/2}.$$
+It follows that $\zeta(0) = -\frac 12$ as $\Gamma(1/2) = \sqrt \pi$ and 
+$\Gamma((1-s)/2)$ has residue $-2$ at $1$ (think about the Laurent expansion at $1$
+and remember that $\Gamma$ has residue $1$ at $0$). 
+
+\textit{$\zeta(s) < 0$ for $s \in (0,1)$.} We have that 
+\[
+    \zeta(s) = \frac{s}{s-1} - s \int_0^\infty \{t\} t^{-s-1} \dc t.
+\]
+This is negative. Hence $\zeta$ is negative in the interval $[0,1)$. 
+
+\section*{Problem 3}
+We want to follow the proof from (3.14) as closely as possible. The first 
+difference is that we sum over all characters, not just the primitive ones, 
+but this does not make a difference: If we know that 
+\[
+    \ssum_{\chi \text{(mod $q$)}} \abs{L(1/2, \chi)}^2 \ll q^{1+\varepsilon}
+\]
+(where the star in the sum means that we sum over primitive characters, this 
+notation is quite common), we can easily deduce
+\[
+    \sum_{\chi \text{(mod $q$)}} \abs{L(1/2, \chi)}^2 
+    = \sum_{d \mid q}\ssum_{\chi \text{(mod $d$)}} \abs{L(1/2, \chi)}^2 
+    \leq \tau(q) \max_{d \mid q} \ssum_{\chi \text{(mod $d$)}} \abs{L(1/2, \chi)}^2 
+    \ll q^{1+\varepsilon}
+\]
+as $\tau(q)$ the number of divisors of $q$, satisfies $\tau(q) \ll q^{\varepsilon}$. 
+The $L_\infty$ factor occuring in $V_s$ only depends on the parity of $\chi$, 
+so we further split the sum into odd and even parts. We want to use the 
+approximate functional equation with $X=1$, $s=1/2$ and $G(u) = \ec^{u^2}$ as in 
+(3.11). Let's check what happens. We find
+\[
+    L(1/2, \chi) = \sum_n \frac{\chi(n)}{n^{1/2}} V_{1/2}(n/\sqrt N)
+    +  \epsilon({1/2})\sum_n \frac{\overline\chi(n)}{n^{1/2}} V_{1/2}(n/\sqrt N) + R
+\]
+where 
+\begin{itemize}
+    \item $R = 0$ as the completed $L$-function $\Lambda(s, \chi)$ is entire.
+    \item The root number $\epsilon(1/2)$ has absolute value $1$. 
+    \item The terms involving $V = V_{1/2}$ can be bounded by 
+        $V(y) \ll_A (1 + y)^{-A}$. For all $A > 0$. 
+\end{itemize}
+Also note that both sums are equal in absolute value. This is not too
+complicated! We plug it in, using this time that $\abs{a+b}^4 \leq 8 (\abs a^4 
++ \abs b^4)$ (this can be seen using Hölder's inequality for example),
+obtaining 
+\[
+    \ssum_{\chi \text{(mod q) even}} \abs{L(1/2, \chi)}^4 
+    \leq 16 \ssum_{\chi(q) \text{ even}} \abs{\sum_n
+    \frac{\chi(n)}{n^{1/2}}V(n/\sqrt q)}^4.
+\]
+Similar to the proof of (3.14), we can complete the sum to go over all characters 
+and open up the sum, obtaining a fourfold sum which we can simplify using
+orthogonality relations on sums over characters. 
+In short, we get
+\begin{equation}
+    \dots 
+    \leq 16 \sum_{\chi (q)} \abs{ \sum_n \frac{\chi(n)}{n^{1/2}}V(n/\sqrt q)}^4
+    = 16 \sum_{n_1, n_2, m_1, m_2} \frac{V_{n_1} V_{n_2} \bar V_{m_1} \bar
+V_{m_2}}{(n_1n_2m_1m_2)^{1/2}}
+    \sum_{\chi (q)} \chi(n_1+n_2-m_1-m_2),
+\end{equation}
+where we wrote $V_n = V(n/\sqrt q)$.
+The sum over $\chi$ does not vanish iff $n_1n_2 \equiv m_1m_2 \pmod q$, 
+where it equals $\phi(q)$. As the hint suggests, we glue together $n_1$ and $n_2$,
+$m_1$ and $m_2$, which leaves us with the taks of bounding terms of the form
+\[
+    (V * V)(n) = \sum_{n_1 n_2 = n} V_{n_1} V_{n_2}.
+\]
+We find for any $A \geq 1$
+\[
+    (V * V)(n) \ll \sum_{n_1n_2 = n} \left(1+\frac {n_1} {\sqrt q} \right)^{-A}
+    \left(1+\frac {n_2} {\sqrt q} \right)^{-A} \leq 
+    \sum_{n_1 n_2 = n} \left(1+\frac {n} {q} \right)^{-A}
+    \ll_{\varepsilon}n^{\varepsilon} \left(1+\frac {n} {q} \right)^{-A}.
+\]
+With $A = 1+\varepsilon$ we calculate
+\begin{equation}
+    (1) \ll \phi(q) \sum_{n,m} \frac{(V\star V)(n) \overline{(V\star V)(m)}}{(nm)^{1/2}}
+    \ll \phi(q) \sum_n \sum_{n \equiv m \geq n} 
+    (1+\tfrac mq)^{-1} (1+\tfrac nq)^{-1} (mn)^{-1/2},
+\end{equation}
+and upon applying the bound $\phi(q) < q$ this is exactly the sum that
+arises in the end of the proof of (3.14)! (I might add lines on how to bound
+this once I have time).
+ 
+
+
+\end{document}

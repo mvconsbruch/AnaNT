@@ -171,6 +171,7 @@
 
 \newcommand{\legendre}[2]{\left( \frac{#1}{#2} \right)}
 
+
 \newcommand{\mat}[4]{\begin{pmatrix}
     #1 & #2\\
     #3 & #4
@@ -186,11 +187,10 @@
 \end{smallmatrix}\big)}
 
 
-\newtheorem{thm}{Theorem}[section]
+\newtheorem{thm}{Theorem}%[section]
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{prop}[thm]{Proposition}
-
 
 \theoremstyle{definition}
 \newtheorem{fact}[thm]{Fact}
@@ -202,7 +202,11 @@
 %\newtheorem*{cora}{Korollar}
 %\newtheorem*{thma}{Satz}
 %\newtheorem*{defa}{Definition}
-\numberwithin{equation}{section}
+%\numberwithin{equation}{section}
 
 %anant
 \newcommand{\pifrac}{\frac{1}{2 \pi \ic}}
+
+\newcommand{\ssum}{\sideset{}{^*} \sum}
+\newcommand{\psum}{\sideset{}{^'}\sum}
+ 
