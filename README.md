@@ -12,7 +12,7 @@ Warning: These are non-official, there might be errors.
 * [Sheet 3](Sheet3/Sheet3.pdf) + some facts on multiplicative groups mod q.
 * [Sheet 4](Sheet4/Sheet4.pdf)
 * [Sheet 5](Sheet5/Sheet5.pdf)
-* [Sheet 6](Sheet6/Sheet6.pdf) <- Bounds for $\zeta$ and $L(s,\chi)$ can be found here.
+* [Sheet 6](Sheet6/Sheet6.pdf) Bounds for $$\zeta$$ and $$L(s,\chi)$$ can be found here.
 
 ## Other Texts
 * [Notes on the approximate functional equation](ApproxFuncEq/ApproxFuncEq.pdf)
