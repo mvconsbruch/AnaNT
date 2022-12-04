@@ -10,12 +10,126 @@
     \huge{Solutions to Sheet 7.}
 \end{center}
 
-\section*{Problem 1\&2}
-\section*{Problem 3}
-\textbf{a)}
+\section*{Problem 1}
+\begin{enumerate}
+\item[a)] We have $g(x) \ll x^{-(-u+av)}$ as $x \to 0$ and 
+        $g(x) \ll x^{-(-u+bv)}$ as $x \to \infty$. Hence in $-u+av < 
+        \Re(s)< -u+bv$ the mellin transform $\hat g$ exists and is given by
+    \[
+        \hat g (s) = \int_0^\infty x^uf(x^v)x^s \frac{\dc x}x 
+        = v^{-1} \int_0^\infty f(y)y^{(s+u)/v-1} \dc y = v^{-1} f\left(
+            \frac{s+u}v \right)
+    \]
+    Now the RHS defines a holomorphic function in $-u+a'v < \Re(s) < 
+    -u + b'v$. 
+\item[b)]Of course, knowing bounds for $f$ does not imply any bounds for 
+    $f'$. But knowing that we can derive $f$, we can make use of partial
+    integration. We have
+    \[
+        \int_0^\infty f(x) x^{s-1} \dc x = \left[f(x)
+        \frac{x^s}s\right]_0^\infty - \frac 1s \int_0^\infty f'(x)x^s \dc x
+    \]
+    By assumption, the boundary terms vanish for $a < \Re (s) < b$, and
+    the integral on the RHS exists (if this is not clear, try to first 
+    approximate the integrals by truncated ones from $1/T$ to $T$ and let 
+    $T \to \infty$). Hence  $\hat{g}$ (with $g=f'$) exists in $a+1 < \Re(s) <
+    b+1$
+    (note the shift $s \mapsto s+1$ in the integral). Same argument as
+    before gives continuation of $\hat g$ to $a'+1 < \Re s < b'+1$. 
+\item[c)] By assumption $f$ has compact support, so the Mellin Transform
+    exists everywhere and the same holds for the derivatives. We make use
+    of what we showed in $b)$ repeatedly, obtaining
+    \[
+        \hat f(s) = \frac{(-1)^N}{s(s+1)\dots(s+N-1)} \hat g(s+N)
+        = (-1)^N \frac{\Gamma(s)}{\Gamma(s+N)} \hat g(s+N)
+    \]
+    where $g= f^{(N)}$. The first $\Gamma$-factor behaves (for 
+    fixed real part and large imaginary part of $s$) like $O(\abs s^{-N})$, 
+    so it remains to show that $\hat g(s)$ is bounded with $\Im s \to \infty$. But the integral
+    from the mellin transform can be bounded in absolute values, as
+    \[
+        \abs{g(s)} \leq \int_0^\infty \abs{g(x) x^{s-1}} \dc x
+        \ll \int \abs {g(x)} x^{\Re(s)-1} \dc x.
+    \]
+    This is convergent, and independent of $\Im(s)$. 
+\item [d)] Calculation: 
+    \begin{multline*}
+        \hat{f \star h}(s) = \int_0^\infty (f \star h)(x) x^{s-1} \dc x
+        = \int_0^\infty \int_0^\infty f(t) h(x/t) t^{-1} \dc t x^{s-1} \dc x
+        \\ = \int_0^\infty f(t) h(y) t^{s-1}y^{s-1} \dc t \dc y,
+    \end{multline*}
+    as desired. We made use of the substitution $y = x/t$, i.e. $\dc y = 
+    t^{-1} \dc x$. 
+\end{enumerate}
+\section*{Problem 2\&3}
+\textbf{a)} We want to apply Perron. Remember that we showed earlier that
+the Dirichlet series attached to the characteristic function on the set
+of squarefull numbers is given by $\frac{\zeta(2s)\zeta(3s)}{\zeta(6s)}$. 
+Just as in one of the examples from the lecture, we apply Perron with
+$c = 1 + 1/\log x$ and $T = x^\alpha$ for some fixed $\alpha \in (0,1)$.
+The absolute value of the coefficients is $\leq 1$ and we obtain
+\[
+    \sum_{n\leq x \  \rm sqfull} 1 
+    = \pifrac \int_{c-\ic T}^{c+\ic T} \frac{\zeta(2s)\zeta(3s)}{\zeta(6s)}
+    x^s \frac {\dc s}s + O(T^{-1} x \log x).
+\]
+We want to shift the contour to the left and pick up residues along the way. 
+The most important tool to bound the vertical contribution is the moment bound,
+and this requires the real part of the argument to be at least $\frac 12$. 
+Hence we shift to $\Re s = \frac 14$. The factor $\zeta^{-1}(6s)$ is still
+holomorphic here, so we only pick up the residues from $\zeta(2s)$ and $\zeta(3s)$.
+We obtain
+\begin{multline*}
+    \sum_{n \leq x \ \rm sqfull} 1  =  \\
+    \frac{\zeta(3/2)}{\zeta(3)}x^{1/2} + \frac{\zeta(2/3)}{\zeta(2)} x^{1/3}
+    + \left(\int_{c-\ic T}^{1/4 - \ic T} + \int_{1/4 - \ic T}^{1/4 + \ic T} 
+    + \int_{1/4 + \ic T}^{c + \ic T}\right) \frac{\zeta(2s)\zeta(3s)}{\zeta(6s)}
+    x^s \frac{\dc s}{s} + O(T^{-1} x \log x).
+\end{multline*}
+First, note that $\zeta^{-1}(s)$ is bounded in $\Re s > 1+\delta$, as 
+\[
+    \abs{\zeta^{-1}(s) } = \prod_p \abs{1-p^{-s}} 
+    \leq \prod_p (1 + p^{-1-\delta}) = \frac{\zeta(2+2\delta)}{\zeta(1+\delta)}
+    \ll_\delta 1. 
+\] 
+So we disregard this factor from now on. Let us first start with the vertical part.
+Here we have $\abs {x^s} = x^{1/4}$, so the contribution is bounded by 
+\[
+    \ll x^{1/4} \int_0^T \frac{\abs \zeta(1/2 + 2 \ic t)  \zeta(3/4 + 3 \ic t)}
+    {1/4 + \ic t} \dc t.
+\]
+We prove that the integral is bounded by $x^{\varepsilon}$. By splitting the integral
+into $\log x$ dyadic pieces $[M, 2M]$, is suffices to show that 
+\[
+    \int_M^{2M} \frac{\abs \zeta(1/2 + 2 \ic t)  \zeta(3/4 + 3 \ic t)} {1/4 +
+    \ic t} \dc t.
+\]
+The numerator is $\geq M$, so we really only need to show that 
+\[
+    \int_M^{2M} \abs {\zeta(1/2 + 2 \ic t)  \zeta(3/4 + 3 \ic t)} \dc t \ll 
+    M^{1+\varepsilon}.
+\]
+This is an immediate consequence of Cauchy-Schwartz and the moment bounds. 
 
-\textbf{b)} The good thing with smooth weights is that their mellin transform
-vanishes rapidly along vertical lines and we do not have to worry about cutting
+Next, we focus on the horizontal parts. Here, $s^{-1} \ll T^{-1}$, so the
+contribution become
+\[
+    \ll T^{-1} \int_{1/4}^c \abs{\zeta(2(\sigma+\ic T))\zeta(3(\sigma+\ic T)} \dc 
+    \sigma \ll T^{-1} \int_{1/4}^c T^{\max(1/2-\sigma, 0)} T^{\max(1/2-3\sigma/2,0)}
+    x^\sigma \dc \sigma.
+\]
+This requires some bookkeeping, but splitting this into the parts
+$(1/4, 1/3)$, $(1/3, 1/2)$ and $(1/2, \sigma)$ one quickly verifies that 
+no term contriibutes more that $x^{1+\varepsilon}$. To this end, we showed
+\[
+    \sum_{n \leq x \rm \ sqfull} 1 
+    = \frac{\zeta(3/2)}{\zeta(3)}x^{1/2} + \frac{\zeta(2/3)}{\zeta(2)} x^{1/3}
+    + O\left( \frac{x^{1+\varepsilon}}T + x^{1/4 + \varepsilon}\right).
+\]
+The claim follows upon setting $T = x^{3/4}$. 
+
+\textbf{b)} The good thing with smooth weights is that their mellin transforms
+usually decay quickly along vertical lines and we do not have to worry about cutting
 off the integral. Perron's formula reveals with $c > 1/2$
 \[
     \sum_{n \text{ squarefull}} \ec^{-n/x} = \pifrac \int_{(c)} \frac{\zeta(2s) \zeta(3s)}
@@ -70,13 +184,14 @@ which shows that indeed, the product converges absolutely and locally uniformly 
 $\Re s > 1$. 
 
 \textbf{b)} The heuristic goes as follows. Let $F$ be the Dirichlet series attached
-to $a$. By the above, $F$ is a holomorphic function for $s > 1$, but writing 
-$\zeta(s) = \Delta(s) \zeta(1-s)$ we find that $F$ has a continuation to a 
-meromorphic function on $\Re s > 1/2$. (Aside: We can apply the functional equation
-to as many $\zeta$-factors as we want, yielding continuations to $\Re s > 1/n$ for 
-arbitrarily large $n \in \N$. But $F$ can never be meromorphically continued
-to all of $\C$. This is because there are poles at $s=1, 1/2, 1/3, \dots$, which 
-by the identity theorem implies that $F^{-1}=0$.) Now Perron's Formula reads
+to $a$. By the above, $F$ is a holomorphic function for $s > 1$, but by 
+the continuation of the first $\zeta$-factor, we find that $F$ has a
+continuation to a meromorphic function on $\Re s > 1/2$. (Aside: We can apply
+the functional equation to as many $\zeta$-factors as we want, yielding
+continuations to $\Re s > 1/n$ for arbitrarily large $n \in \N$. But $F$ can
+never be meromorphically continued to all of $\C$. This is because there are
+poles at $s=1, 1/2, 1/3, \dots$, which by the identity theorem implies that
+$F^{-1}=0$.) Now Perron's Formula reads
 \[
     \sum_{n \leq x} a(n) = \pifrac \int_{(c)} F(s) x^s \frac{\dc s}s,
 \]
@@ -90,6 +205,8 @@ $o(x)$.
 
 \textbf{Proving the asymptotic using Cesàro-weights.} Proving the asymptotic is
 quite challenging, as we would have to find some bound on $a(n)$ to apply (4.7).
+The convergence of $\sum_n a(n)n^{-s}$ for $\Re (s)>1$ gives $a(n) \ll n$, but 
+there is no trivial way to get anything beyond that.
 Further below is a solution assmuing $a(n) \ll n^{1/2+\varepsilon}$, but 
 it turns out we don't need such bounds! Instead of bounding 
 \[
@@ -134,7 +251,10 @@ This shows $E_0(x) \leq O(x^{3/4+\varepsilon})$ once we choose $Q=x^{3/4}$. A si
 lower bound can be established by inspecting $\int_{x-Q}^x E_0(t) \dc t$ (exercise, 
 haha). This proves $S_0(x) = Cx + O(x^{3/4+\varepsilon})$. This really is remarkable,
 as this in particular implies that $a(n) \ll n^{3/4 + \varepsilon}$, which is a 
-bound we did not know existed beforehand. 
+bound we did not know existed beforehand. Even more, this followed only from a
+bound on the vertical growth of $F(s)$ and the fact 
+that $a(n) \geq 0$. The Lindelöf Hypothesis would imply an error term of 
+size $O(x^{1/2+\varepsilon})$. 
 
 
 \textbf{Proving the asymptotic assuming $a(n) \ll n^{1/2+\varepsilon}$. (I did
