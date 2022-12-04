@@ -1,0 +1,197 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+
+\author{Max von Consbruch}
+
+\begin{document}
+
+\begin{center}
+    \huge{Solutions to Sheet 7.}
+\end{center}
+
+\section*{Problem 1\&2}
+\section*{Problem 3}
+\textbf{a)}
+
+\textbf{b)} The good thing with smooth weights is that their mellin transform
+vanishes rapidly along vertical lines and we do not have to worry about cutting
+off the integral. Perron's formula reveals with $c > 1/2$
+\[
+    \sum_{n \text{ squarefull}} \ec^{-n/x} = \pifrac \int_{(c)} \frac{\zeta(2s) \zeta(3s)}
+    {\zeta(6s)} x^s \Gamma(s) \dc s.
+\]
+As $\Gamma$ vanishes rapidly along vertical lines, we can shift the contour to 
+$\Re s = 1/6 + \varepsilon$ and obtain
+\[
+    \dots = \frac 12 \frac{\zeta(3/2)}{\zeta(3)} x^{1/2} + 
+    \frac 13 \frac{\zeta(2/3)}{\zeta(2)} x^{1/3} + \pifrac \int_{(1/6 + \varepsilon)}
+    \frac{\zeta(2s) \zeta(3s)} {\zeta(6s)} x^s \Gamma(s) \dc s.
+\]
+The integral is absolutely convergent, hence gives an error of size
+$O(x^{1/6+\varepsilon})$.
+
+Remark: We will later prove that $\zeta(s)$ does not have zeroes in some
+neighbourhood of the line $\Re s = 1$, which in particular implies that there
+are no zeroes on the line itself. Hence we can get even shift the contour onto
+$\Re s = 1/6$, killing the $+\varepsilon$. 
+
+\section*{Problem 4}
+\textbf{a)} Every finite abelian group can be decomposed as a product of 
+cyclic groups of prime-power-order. Hence the number of isomorphism classes 
+of abelian groups of order $n$ gives a multiplicative arithmetic function
+$$a: \N \to \N, \quad n \mapsto \#(\{\text{abelian groups of order
+$n$}\}/\cong).$$ 
+If $n = p^r$ is a prime power, we find that $a(n)$ is given by the number of 
+(additive) partitions of $r$. Indeed, to a partition
+\[
+    1 \cdot a_1 + 2\cdot a_2 + 3 \cdot a_3 + \dots  = r 
+\]
+we can associate a group $(\Z/p\Z)^{a_1} \times (\Z/p^{2}\Z)^{a_2} \times
+(\Z/p^3\Z)^{a_3} \times \dots$ of order $p^r$, and vice versa. One quickly verifies
+(at least formally), that
+\[
+    \sum_{n=1}^\infty a(n) x^n = (1+x+x^2+\dots) (1+x^2+x^4+\dots) 
+    (1+x^3+x^6+\dots)\cdots
+\]
+and substituting $x=p^{-s}$ for varying $p$ yields the desired formula
+\[
+    \sum_{n=1}^\infty a(n) n^{-s} = \prod_{p} \prod_{r=1}^\infty(1-p^{-rs})^{-1}
+    = \prod_{r=1}^\infty \zeta(rs).
+\]
+The last step might demand clearification. Remember that a product $\prod a_n$
+with $a_n \neq 0$ converges absolutely to something $\neq 0$ iff the sum $\sum
+\abs{a_n-1}$ converges absolutely. In $\Re s > 1+\delta$ we have the uniform
+bound
+\[
+    \abs{1-\zeta(s)} \ll \sum_{n=2}^\infty n^{-1-\delta} \ll_\delta 2^{-\delta},
+\]
+which shows that indeed, the product converges absolutely and locally uniformly in
+$\Re s > 1$. 
+
+\textbf{b)} The heuristic goes as follows. Let $F$ be the Dirichlet series attached
+to $a$. By the above, $F$ is a holomorphic function for $s > 1$, but writing 
+$\zeta(s) = \Delta(s) \zeta(1-s)$ we find that $F$ has a continuation to a 
+meromorphic function on $\Re s > 1/2$. (Aside: We can apply the functional equation
+to as many $\zeta$-factors as we want, yielding continuations to $\Re s > 1/n$ for 
+arbitrarily large $n \in \N$. But $F$ can never be meromorphically continued
+to all of $\C$. This is because there are poles at $s=1, 1/2, 1/3, \dots$, which 
+by the identity theorem implies that $F^{-1}=0$.) Now Perron's Formula reads
+\[
+    \sum_{n \leq x} a(n) = \pifrac \int_{(c)} F(s) x^s \frac{\dc s}s,
+\]
+and upon shifting the contour to $1-\varepsilon$ we obtain
+\[
+    \sum_{n \leq x}a(n) = x\text{Res}_{s=1} F(s) + \pifrac \int_{(1-\varepsilon)}
+    F(s)x^s \frac{\dc s}s.
+\]
+The residue is given by $C = \zeta(2) \zeta(3) \cdots$, and we'd hope that we would be able to approximate the integral by something of size 
+$o(x)$.
+
+\textbf{Proving the asymptotic using Cesàro-weights.} Proving the asymptotic is
+quite challenging, as we would have to find some bound on $a(n)$ to apply (4.7).
+Further below is a solution assmuing $a(n) \ll n^{1/2+\varepsilon}$, but 
+it turns out we don't need such bounds! Instead of bounding 
+\[
+    S_0(x) = \sum_{n \leq x} a(n),
+\]
+we choose to bound
+\[
+    S_1(x) = \sum_{n \leq x} a(n) (x-n) = \int_1^x S_0(y) \dc y.
+\]
+(These weights are called Cesàro weights). 
+Integrating Perron's formula, we find that 
+\[
+    S_1(x) = \pifrac \int_{(c)} F(s) x^{s+1} \frac{\Gamma(s)}{\Gamma(s+2)} \dc s.
+\]
+The $\Gamma$-factor is essentially bounded by $\abs s^{-2}$, at least for 
+$\abs s > 2$. Whenever $\sigma > 1/2 + \delta$ and $\abs t > 1$ we find  
+$$F(\sigma + \ic t) \ll \abs{\zeta(s)} \zeta(1+2\delta) \zeta(3/2+3/2\delta) \cdots
+\ll \abs t^{\frac {1-\sigma}2 + \varepsilon} \delta^{-1}.$$
+Hence we can shift the contour to $\Re s = 1/2+\delta$, pick up a pole and the 
+remaining integral remains absolutely convergent. In formulas,
+\[
+    S_1(x) = \frac{x^2}2 C + \int_{(1/2+\delta)} F(s) x^{s+1}
+    \frac{\Gamma(s)}{\Gamma(s+2)} \dc s = \frac{x^2}2 C +
+    O_\delta(x^{3/2+\delta}).
+\]
+Nice, this at least shows that there is an asymptotic \textit{on average}. But
+how can we make use of this? We also showed that the Lindelöf-Hypothesis is true
+\textit{on average}, but we are far from proving the Lindelöf-Hypothesis in
+general! What plays in our favor here is that $S_0$ is non-decreasing. Denote
+by $E_0(x)$ the error function $S_0(x) - Cx$, and define $E_1$ as the integral
+of $E_0$. Note that we have $E_1(x) \ll x^{3/2+\varepsilon}$ by the above. 
+We also make a choice of some $Q = x^\alpha$ for $\alpha \in [0,1]$ and get
+(using monotonicity of $S_0$)
+\[
+    E_1(x+Q)-E_1(x) = \int_x^{x+Q} E_0(t) \dc t \geq Q(S_0(x) - Cx - CQ) = QE_0(x) + O(Q^2).
+\]
+But we also know that $E_1(x+Q)-E_1(x) = O(x^{3/2+\varepsilon})$, implying
+\[
+    QE_0(x) \leq O(x^{3/2+\varepsilon}+Q^2).
+\]
+This shows $E_0(x) \leq O(x^{3/4+\varepsilon})$ once we choose $Q=x^{3/4}$. A similar
+lower bound can be established by inspecting $\int_{x-Q}^x E_0(t) \dc t$ (exercise, 
+haha). This proves $S_0(x) = Cx + O(x^{3/4+\varepsilon})$. This really is remarkable,
+as this in particular implies that $a(n) \ll n^{3/4 + \varepsilon}$, which is a 
+bound we did not know existed beforehand. 
+
+
+\textbf{Proving the asymptotic assuming $a(n) \ll n^{1/2+\varepsilon}$. (I did
+this first but then realized that we can avoid this.)} To prove
+    the asymptotic, we first need to get some bound on $a(n)$. Using 
+the asymptotic for the number of partitions, one should be able to show that 
+$a(n) \ll n^{1/2+\varepsilon}$. (Might think about this again later.) 
+Using (4.7), we find for $T = x^\alpha$ (to be chosen later) 
+\[
+    \sum_{n \leq x} a(n) = \pifrac \int_{(c)}^T F(s) x^s \frac{\dc s}s 
+    + O(E),
+\]
+where $\int_{(c)}^T$ means $\int_{c-\ic T}^{c+\ic T}$ and 
+\[
+    E = x^{c-\alpha} \sum_n a_n n^{-c} + x^{1/2+\varepsilon}(1+ x^{1-\alpha}\log x)
+    \ll_{c} x^{c-\alpha} + x^{1/2+\varepsilon} + x^{3/2 - \alpha + \varepsilon} \log x
+\]
+For $0< \delta < 1/2$ and $1-\delta < \Re s$ we have a uniform bound $F(s) \ll
+(\delta-1/2)^{-1} \zeta(s)$ as the remaining factors are bound by $\zeta(2(1-\delta))
+\zeta(3(1-\delta)) \cdots \ll (1/2-\delta)^{-1}$. Hence the convexity bound gives
+$$F(\sigma + \ic t) \ll \abs t^{\frac {1-\sigma}2 + \varepsilon}$$
+for $\abs t > 1$.
+We are now ready for shifting the contour to $\Re s = 1-\delta$. Similarly to above,
+we obtain
+$$\sum_{n \leq x} = Cx + H(\delta) + \pifrac \int_{(1-\delta)}^T F(s) x^s
+\frac{\dc s}s + O(E),$$
+where the horizontal integrals are given and bounded by 
+\[
+    H(\delta) = \pifrac \left( \int_{c-\ic T}^{1-\delta - \ic T} - \int_{c+\ic
+    T}^{1-\delta + \ic T} \right) F(s) x^s \frac{\dc s }s \ll (1/2-\delta)^{-1}
+    x^c T^{\delta/2-1 + \varepsilon}.
+\]
+Only the vertical integral remains mysterios. We have $F(s) \ll (\delta-1/2)^{-1} \zeta(s)$, and obtain
+\[
+    V(\delta) = \pifrac \int_{(1-\delta)^T} F(s) x^s \frac{\dc s }s 
+\ll x^{1-\delta}((1/2-\delta)\delta)^{-1} + (1/2-\delta)^{-1}x^{1-\delta}\int_1^T \frac{\abs{\zeta((1-\delta) + \ic t)}}{\abs t} \dc t
+\]
+We cut the integral in diadic pieces, which we can bound using 
+the moment bounds, as
+\begin{multline*}
+    \int_T^{2T} \frac{\abs{\zeta(\sigma + \ic t)}}{\abs t} \dc t
+    \ll \left(\int_T^{2T}\abs{\zeta(\sigma+\ic t)}^2 t^{-1} \dc t \right)^{1/2}
+    \left( \int_T^{2T} t^{-1} \dc t\right)^{1/2} \\
+    \ll (T^{-1} T^{1+\varepsilon})^{1/2} (\log T)^{1/2} \ll
+    T^\varepsilon,
+\end{multline*}
+showing that 
+\[
+    \int_1^T \frac{\abs{\zeta((1-\delta) + \ic t)}}{\abs t} \dc t
+    \ll (\log T) T^\varepsilon \ll T^\varepsilon \ll x^\varepsilon.
+\]
+Collecting errors, choosing $\alpha$ large, $c = 1+\varepsilon$ and $\delta =
+1/2-\varepsilon$ reveals
+\[
+    \sum_{n \leq x} a(n) = Cx + O_{\varepsilon}(x^{1/2+\varepsilon}).
+\]
+
+\contactend
+
+\end{document}
