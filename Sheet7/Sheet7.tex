@@ -95,13 +95,13 @@ First, note that $\zeta^{-1}(s)$ is bounded in $\Re s > 1+\delta$, as
 So we disregard this factor from now on. Let us first start with the vertical part.
 Here we have $\abs {x^s} = x^{1/4}$, so the contribution is bounded by 
 \[
-    \ll x^{1/4} \int_0^T \frac{\abs \zeta(1/2 + 2 \ic t)  \zeta(3/4 + 3 \ic t)}
+    \ll x^{1/4} \int_0^T \frac{\abs{ \zeta(1/2 + 2 \ic t)  \zeta(3/4 + 3 \ic t)}}
     {1/4 + \ic t} \dc t.
 \]
 We prove that the integral is bounded by $x^{\varepsilon}$. By splitting the integral
 into $\log x$ dyadic pieces $[M, 2M]$, is suffices to show that 
 \[
-    \int_M^{2M} \frac{\abs \zeta(1/2 + 2 \ic t)  \zeta(3/4 + 3 \ic t)} {1/4 +
+    \int_M^{2M} \frac{\abs {\zeta(1/2 + 2 \ic t)  \zeta(3/4 + 3 \ic t)}} {1/4 +
     \ic t} \dc t.
 \]
 The numerator is $\geq M$, so we really only need to show that 
@@ -178,8 +178,9 @@ with $a_n \neq 0$ converges absolutely to something $\neq 0$ iff the sum $\sum
 \abs{a_n-1}$ converges absolutely. In $\Re s > 1+\delta$ we have the uniform
 bound
 \[
-    \abs{1-\zeta(s)} \ll \sum_{n=2}^\infty n^{-1-\delta} \ll_\delta 2^{-\delta},
+    \abs{1-\zeta(rs)} \ll \sum_{n=2}^\infty n^{r(-1-\delta)} \ll_\delta 2^{-r},
 \]
+so that 
 which shows that indeed, the product converges absolutely and locally uniformly in
 $\Re s > 1$. 
 
