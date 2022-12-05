@@ -12,7 +12,7 @@
 
 \section*{Problem 1}
 \begin{enumerate}
-\item[a)] We have $g(x) \ll x^{-(-u+av)}$ as $x \to 0$ and 
+\item[a - 2p)] We have $g(x) \ll x^{-(-u+av)}$ as $x \to 0$ and 
         $g(x) \ll x^{-(-u+bv)}$ as $x \to \infty$. Hence in $-u+av < 
         \Re(s)< -u+bv$ the mellin transform $\hat g$ exists and is given by
     \[
@@ -22,7 +22,7 @@
     \]
     Now the RHS defines a holomorphic function in $-u+a'v < \Re(s) < 
     -u + b'v$. 
-\item[b)]Of course, knowing bounds for $f$ does not imply any bounds for 
+\item[b - 3p)]Of course, knowing bounds for $f$ does not imply any bounds for 
     $f'$. But knowing that we can derive $f$, we can make use of partial
     integration. We have
     \[
@@ -36,7 +36,7 @@
     b+1$
     (note the shift $s \mapsto s+1$ in the integral). Same argument as
     before gives continuation of $\hat g$ to $a'+1 < \Re s < b'+1$. 
-\item[c)] By assumption $f$ has compact support, so the Mellin Transform
+\item[c - 3p)] By assumption $f$ has compact support, so the Mellin Transform
     exists everywhere and the same holds for the derivatives. We make use
     of what we showed in $b)$ repeatedly, obtaining
     \[
@@ -52,7 +52,7 @@
         \ll \int \abs {g(x)} x^{\Re(s)-1} \dc x.
     \]
     This is convergent, and independent of $\Im(s)$. 
-\item [d)] Calculation: 
+\item [d - 2p)] Calculation: 
     \begin{multline*}
         \hat{f \star h}(s) = \int_0^\infty (f \star h)(x) x^{s-1} \dc x
         = \int_0^\infty \int_0^\infty f(t) h(x/t) t^{-1} \dc t x^{s-1} \dc x
@@ -62,7 +62,7 @@
     t^{-1} \dc x$. 
 \end{enumerate}
 \section*{Problem 2\&3}
-\textbf{a)} We want to apply Perron. Remember that we showed earlier that
+\textbf{a - 15p)} We want to apply Perron. Remember that we showed earlier that
 the Dirichlet series attached to the characteristic function on the set
 of squarefull numbers is given by $\frac{\zeta(2s)\zeta(3s)}{\zeta(6s)}$. 
 Just as in one of the examples from the lecture, we apply Perron with
@@ -108,12 +108,20 @@ The denumerator is (throughout) of size $\gg M$, so we really only need to show
 that 
 \[
     \int_M^{2M} \abs {\zeta(1/2 + 2 \ic t)  \zeta(3/4 + 3 \ic t)} \dc t \ll 
-    M^{\varepsilon} \ll T^\varepsilon \ll x^\varepsilon.
+    M^{\varepsilon} \ll T^\varepsilon 
 \]
 This is an immediate consequence of Cauchy-Schwartz and the moment bounds. 
+Hence we can conclude
+\begin{multline*}
+\int_0^T \frac{\abs{ \zeta(1/2 + 2 \ic t)  \zeta(3/4 + 3 \ic t)}}
+    {1/4 + \ic t} \dc t  \\ \leq 
+\left(\int_0^1 + \int_1^2 + \dots + \int_{2^{\lfloor \log_2(T) \rfloor}}^{2^{\lfloor \log_2(T)}\rfloor+1} \right)  \frac{\abs{ \zeta(1/2 + 2 \ic t)  \zeta(3/4 + 3 \ic t)}}
+    {1/4 + \ic t} \dc t  
+    \ll \log_2(T) T^{\varepsilon} \ll T^{\varepsilon}.
+\end{multline*}
 
 Next, we focus on the horizontal parts. Here, $s^{-1} \ll T^{-1}$, so the
-contribution become
+contributions become
 \[
     \ll T^{-1} \int_{1/4}^c \abs{\zeta(2(\sigma+\ic T))\zeta(3(\sigma+\ic T)} \dc 
     \sigma \ll T^{-1} \int_{1/4}^c T^{\max(1/2-\sigma, 0)} T^{\max(1/2-3\sigma/2,0)}
@@ -129,7 +137,7 @@ no term contriibutes more that $x^{1+\varepsilon}$. To this end, we showed
 \]
 The claim follows upon setting $T = x^{3/4}$. 
 
-\textbf{b)} The good thing with smooth weights is that their mellin transforms
+\textbf{b - 5p)} The good thing with smooth weights is that their mellin transforms
 usually decay quickly along vertical lines and we do not have to worry about cutting
 off the integral. Perron's formula reveals with $c > 1/2$
 \[
@@ -152,7 +160,7 @@ are no zeroes on the line itself. Hence we can get even shift the contour onto
 $\Re s = 1/6$, killing the $+\varepsilon$. 
 
 \section*{Problem 4}
-\textbf{a)} Every finite abelian group can be decomposed as a product of 
+\textbf{a - 6p)} Every finite abelian group can be decomposed as a product of 
 cyclic groups of prime-power-order. Hence the number of isomorphism classes 
 of abelian groups of order $n$ gives a multiplicative arithmetic function
 $$a: \N \to \N, \quad n \mapsto \#(\{\text{abelian groups of order
@@ -185,7 +193,7 @@ so that
 which shows that indeed, the product converges absolutely and locally uniformly in
 $\Re s > 1$. 
 
-\textbf{b)} The heuristic goes as follows. Let $F$ be the Dirichlet series attached
+\textbf{b - 4p)} The heuristic goes as follows. Let $F$ be the Dirichlet series attached
 to $a$. By the above, $F$ is a holomorphic function for $s > 1$, but by 
 the continuation of the first $\zeta$-factor, we find that $F$ has a
 continuation to a meromorphic function on $\Re s > 1/2$. (Aside: We can apply
