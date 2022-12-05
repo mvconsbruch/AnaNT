@@ -99,15 +99,16 @@ Here we have $\abs {x^s} = x^{1/4}$, so the contribution is bounded by
     {1/4 + \ic t} \dc t.
 \]
 We prove that the integral is bounded by $x^{\varepsilon}$. By splitting the integral
-into $\log x$ dyadic pieces $[M, 2M]$, is suffices to show that 
+into $\log x$ dyadic pieces $[M, 2M]$ for $M < T$. It suffices to show that 
 \[
     \int_M^{2M} \frac{\abs {\zeta(1/2 + 2 \ic t)  \zeta(3/4 + 3 \ic t)}} {1/4 +
-    \ic t} \dc t.
+    \ic t} \dc t \ll M^{1+\varepsilon}.
 \]
-The numerator is $\geq M$, so we really only need to show that 
+The denumerator is (throughout) of size $\gg M$, so we really only need to show
+that 
 \[
     \int_M^{2M} \abs {\zeta(1/2 + 2 \ic t)  \zeta(3/4 + 3 \ic t)} \dc t \ll 
-    M^{1+\varepsilon}.
+    M^{\varepsilon} \ll T^\varepsilon \ll x^\varepsilon.
 \]
 This is an immediate consequence of Cauchy-Schwartz and the moment bounds. 
 
@@ -119,7 +120,7 @@ contribution become
     x^\sigma \dc \sigma.
 \]
 This requires some bookkeeping, but splitting this into the parts
-$(1/4, 1/3)$, $(1/3, 1/2)$ and $(1/2, \sigma)$ one quickly verifies that 
+$(1/4, 1/3)$, $(1/3, 1/2)$ and $(1/2, c)$ one quickly verifies that 
 no term contriibutes more that $x^{1+\varepsilon}$. To this end, we showed
 \[
     \sum_{n \leq x \rm \ sqfull} 1 
@@ -254,8 +255,7 @@ haha). This proves $S_0(x) = Cx + O(x^{3/4+\varepsilon})$. This really is remark
 as this in particular implies that $a(n) \ll n^{3/4 + \varepsilon}$, which is a 
 bound we did not know existed beforehand. Even more, this followed only from a
 bound on the vertical growth of $F(s)$ and the fact 
-that $a(n) \geq 0$. The Lindelöf Hypothesis would imply an error term of 
-size $O(x^{1/2+\varepsilon})$. 
+that $a(n) \geq 0$. 
 
 
 \textbf{Proving the asymptotic assuming $a(n) \ll n^{1/2+\varepsilon}$. (I did
@@ -288,7 +288,7 @@ where the horizontal integrals are given and bounded by
     T}^{1-\delta + \ic T} \right) F(s) x^s \frac{\dc s }s \ll (1/2-\delta)^{-1}
     x^c T^{\delta/2-1 + \varepsilon}.
 \]
-Only the vertical integral remains mysterios. We have $F(s) \ll (\delta-1/2)^{-1} \zeta(s)$, and obtain
+Only the vertical integral remains mysterious. We have $F(s) \ll (\delta-1/2)^{-1} \zeta(s)$, and obtain
 \[
     V(\delta) = \pifrac \int_{(1-\delta)^T} F(s) x^s \frac{\dc s }s 
 \ll x^{1-\delta}((1/2-\delta)\delta)^{-1} + (1/2-\delta)^{-1}x^{1-\delta}\int_1^T \frac{\abs{\zeta((1-\delta) + \ic t)}}{\abs t} \dc t
