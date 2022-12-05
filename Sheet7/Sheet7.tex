@@ -213,12 +213,35 @@ and upon shifting the contour to $1-\varepsilon$ we obtain
 The residue is given by $C = \zeta(2) \zeta(3) \cdots$, and we'd hope that we would be able to approximate the integral by something of size 
 $o(x)$.
 
-\textbf{Proving the asymptotic using Cesàro-weights.} Proving the asymptotic is
+\textbf{Proving the asymptotic.}
+Proving the asymptotic is
 quite challenging, as we would have to find some bound on $a(n)$ to apply (4.7).
-The convergence of $\sum_n a(n)n^{-s}$ for $\Re (s)>1$ gives $a(n) \ll n$, but 
+The convergence of $\sum_n a(n)n^{-s}$ for $\Re (s)>1$ gives $a(n) \ll
+n^{1+\varepsilon}$, but 
 there is no trivial way to get anything beyond that.
-Further below is a solution assmuing $a(n) \ll n^{1/2+\varepsilon}$, but 
-it turns out we don't need such bounds! Instead of bounding 
+But it turns out we don't need such bounds! 
+
+\textbf{Using a modified version of (4.7).} The probably more sensible way to
+do this is to use a modified version of 
+(4.7): If we assume $x \in \frac 12 + \N$, we can copy the proof of (4.7), but 
+the first summand $A_x$ can be avoided. This gives (with the same terminology as in 
+(4.7)) the statement
+\[
+    \sum_{n \leq x} a_n = \pifrac \int_{c-\ic T}^{c + \ic T} \sum_{n \in
+        \N}\frac{a_n}{n^s} x^{s} \frac {\dc s}s + O\left(\frac{x^c}T \sum_n
+            \frac{\abs {a_n}}{n^c} + 
+    A_x \frac{x \log x}T\right).
+\]
+We can now follow the same strategy as usual, and in the end realize
+that $T = x^\alpha$ can be chosen an arbitrary power of $x$, which 
+should ultimately yield a asymptotic with error $O(x^{1/2+\varepsilon})$.
+(You will need $A_x = \max_{n \sim x} \abs {a_n} \ll x^{1+\varepsilon}$.) This
+is left as an exercise :) The following solution introduces a new idea. We 
+sacrifice a bit of error size, but get a smooth ride when moving the integral to 
+the left in exchange. You will realize we almost don't have to worry about
+messy calculations at all! 
+
+\textbf{Proving the asymptotic using Cesàro-weights.} Instead of bounding 
 \[
     S_0(x) = \sum_{n \leq x} a(n),
 \]
@@ -263,63 +286,9 @@ haha). This proves $S_0(x) = Cx + O(x^{3/4+\varepsilon})$. This really is remark
 as this in particular implies that $a(n) \ll n^{3/4 + \varepsilon}$, which is a 
 bound we did not know existed beforehand. Even more, this followed only from a
 bound on the vertical growth of $F(s)$ and the fact 
-that $a(n) \geq 0$. 
+that $a(n) \geq 0$. Also note that we by did not do as good as we could have! 
+We could have shifted further to the left and picked up more residues. 
 
-
-\textbf{Proving the asymptotic assuming $a(n) \ll n^{1/2+\varepsilon}$. (I did
-this first but then realized that we can avoid this.)} To prove
-    the asymptotic, we first need to get some bound on $a(n)$. Using 
-the asymptotic for the number of partitions, one should be able to show that 
-$a(n) \ll n^{1/2+\varepsilon}$. (Might think about this again later.) 
-Using (4.7), we find for $T = x^\alpha$ (to be chosen later) 
-\[
-    \sum_{n \leq x} a(n) = \pifrac \int_{(c)}^T F(s) x^s \frac{\dc s}s 
-    + O(E),
-\]
-where $\int_{(c)}^T$ means $\int_{c-\ic T}^{c+\ic T}$ and 
-\[
-    E = x^{c-\alpha} \sum_n a_n n^{-c} + x^{1/2+\varepsilon}(1+ x^{1-\alpha}\log x)
-    \ll_{c} x^{c-\alpha} + x^{1/2+\varepsilon} + x^{3/2 - \alpha + \varepsilon} \log x
-\]
-For $0< \delta < 1/2$ and $1-\delta < \Re s$ we have a uniform bound $F(s) \ll
-(\delta-1/2)^{-1} \zeta(s)$ as the remaining factors are bound by $\zeta(2(1-\delta))
-\zeta(3(1-\delta)) \cdots \ll (1/2-\delta)^{-1}$. Hence the convexity bound gives
-$$F(\sigma + \ic t) \ll \abs t^{\frac {1-\sigma}2 + \varepsilon}$$
-for $\abs t > 1$.
-We are now ready for shifting the contour to $\Re s = 1-\delta$. Similarly to above,
-we obtain
-$$\sum_{n \leq x} = Cx + H(\delta) + \pifrac \int_{(1-\delta)}^T F(s) x^s
-\frac{\dc s}s + O(E),$$
-where the horizontal integrals are given and bounded by 
-\[
-    H(\delta) = \pifrac \left( \int_{c-\ic T}^{1-\delta - \ic T} - \int_{c+\ic
-    T}^{1-\delta + \ic T} \right) F(s) x^s \frac{\dc s }s \ll (1/2-\delta)^{-1}
-    x^c T^{\delta/2-1 + \varepsilon}.
-\]
-Only the vertical integral remains mysterious. We have $F(s) \ll (\delta-1/2)^{-1} \zeta(s)$, and obtain
-\[
-    V(\delta) = \pifrac \int_{(1-\delta)^T} F(s) x^s \frac{\dc s }s 
-\ll x^{1-\delta}((1/2-\delta)\delta)^{-1} + (1/2-\delta)^{-1}x^{1-\delta}\int_1^T \frac{\abs{\zeta((1-\delta) + \ic t)}}{\abs t} \dc t
-\]
-We cut the integral in diadic pieces, which we can bound using 
-the moment bounds, as
-\begin{multline*}
-    \int_T^{2T} \frac{\abs{\zeta(\sigma + \ic t)}}{\abs t} \dc t
-    \ll \left(\int_T^{2T}\abs{\zeta(\sigma+\ic t)}^2 t^{-1} \dc t \right)^{1/2}
-    \left( \int_T^{2T} t^{-1} \dc t\right)^{1/2} \\
-    \ll (T^{-1} T^{1+\varepsilon})^{1/2} (\log T)^{1/2} \ll
-    T^\varepsilon,
-\end{multline*}
-showing that 
-\[
-    \int_1^T \frac{\abs{\zeta((1-\delta) + \ic t)}}{\abs t} \dc t
-    \ll (\log T) T^\varepsilon \ll T^\varepsilon \ll x^\varepsilon.
-\]
-Collecting errors, choosing $\alpha$ large, $c = 1+\varepsilon$ and $\delta =
-1/2-\varepsilon$ reveals
-\[
-    \sum_{n \leq x} a(n) = Cx + O_{\varepsilon}(x^{1/2+\varepsilon}).
-\]
 
 \contactend
 
