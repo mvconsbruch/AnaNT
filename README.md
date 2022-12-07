@@ -3,6 +3,7 @@
 
 ## Announcements
 * From now on we will meet at 8:30!
+* I am really glad noone showed during Dies! 
 
 ## Solutions to the exercise sheets
 Warning: These are non-official, there might be errors. 
