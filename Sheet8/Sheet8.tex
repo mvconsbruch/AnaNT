@@ -26,9 +26,11 @@ Of course $\zeta^k(s)$ has a singularity of degree $k$ at $1$, and we only need
 to calculate the $(-1)$st term of the Laurent expansion of $F$ at $1$. 
 We have the Taylor expansions
 \[
-    \frac 1{s} =  \sum_{n=0}^\infty (-1)^n (s-1)^n 
-    \quad \text{and} \quad
-    x^s = \sum_{n=0}^\infty (\log x)^n (s-1)^n.
+    \frac 1{s} =  \sum_{n=0}^\infty (-1)^n (s-1)^n = 1 - (s-1) + (s-1)^2 - \dots
+\]
+and
+\[
+    x^s = \sum_{n=0}^\infty x(\log x)^n (s-1)^n = x + x(\log x)(s-1) + x(\log x)^2(s-1)^2 + \dots. 
 \]
 Let $a_n$ denote the coefficients of the Laurent series of $\zeta$ at $1$, i.e.
 \[
@@ -44,7 +46,7 @@ Calculating $P_2$ and $P_3$ now is pure calculation.
 We multiply this with the Taylor series above and find that the coefficient of 
 $s^{-1}$ is given by 
 \[
-    2a_{-1}a_0 x + a_{-1}^2 (x \log x - x).
+    2a_{-1}a_0 x + a_{-1}^2 (x \log x - x) = x ( a_{-1}^2 \log x + 2a_{-1}a_0-a_{-1}^2).
 \]
 \textbf{Remark.} It is possible to show by elementary means that 
 \[
@@ -60,9 +62,10 @@ $k=1$).
 \]
 and again use this to figure out the coeffitient of $(s-1)^{-1}$ in the 
 Laurent expansion of $F_3$ around $s=1$. We find that this coefficient is given by
-\[
-    x(a_0^2 + a_1) + 3a_0x ( \log x - 1) + 3x ((\log x)^2 - \log x + 1).
-\]
+\begin{multline*}
+    3(a_0^2 + a_1)x + 3a_0x ( \log x - 1) + x ((\log x)^2 - \log x + 1) \\
+    = x ( (\log x)^2 + (\log x)(3 \gamma - 1) + 3 (\gamma^2 + a_1 - \gamma) + 1)
+\end{multline*}
 
 
 
