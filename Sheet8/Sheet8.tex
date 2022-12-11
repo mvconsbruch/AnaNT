@@ -26,11 +26,11 @@ Of course $\zeta^k(s)$ has a singularity of degree $k$ at $1$, and we only need
 to calculate the $(-1)$st term of the Laurent expansion of $F$ at $1$. 
 We have the Taylor expansions
 \[
-    \frac 1{s} =  \sum_{n=0}^\infty (-1)^n (s-1)^n = 1 - (s-1) + (s-1)^2 - \dots
+    \frac 1{s} =  \sum_{n=0}^\infty (-1)^n (s-1)^n = 1 - (s-1) + (s-1)^2 + O((s-1)^3)
 \]
 and
 \[
-    x^s = \sum_{n=0}^\infty x(\log x)^n (s-1)^n = x + x(\log x)(s-1) + x(\log x)^2(s-1)^2 + \dots. 
+    x^s = \sum_{n=0}^\infty x(\log x)^n (s-1)^n = x + x(\log x)(s-1) + x(\log x)^2(s-1)^2 + O((s-1)^3). 
 \]
 Let $a_n$ denote the coefficients of the Laurent series of $\zeta$ at $1$, i.e.
 \[
@@ -41,10 +41,10 @@ Calculating $P_2$ and $P_3$ now is pure calculation.
 \textbf{Calculating $P_2$.} We find
 \[
     \zeta^2(s) = \left( \sum_{n=-1}^\infty a_n s^n \right)^2
-    = a_{-1}^2 (s-1)^{-2} + 2a_{-1}a_0 (s-1)^{-1} + \dots.
+    = a_{-1}^2 (s-1)^{-2} + 2a_{-1}a_0 (s-1)^{-1} + O(1).
 \]
 We multiply this with the Taylor series above and find that the coefficient of 
-$s^{-1}$ is given by 
+$(s-1)^{-1}$ is given by 
 \[
     2a_{-1}a_0 x + a_{-1}^2 (x \log x - x) = x ( a_{-1}^2 \log x + 2a_{-1}a_0-a_{-1}^2).
 \]
@@ -58,7 +58,7 @@ $k=1$).
 
 \textbf{Calculating $P_3$.} We find similarly to above
 \[
-    \zeta^3(s) = (s-1)^{-3} + 3a_0 (s-1)^{-2} + 3(a_0^2 + a_1)(s-1)^{-1} + \dots
+    \zeta^3(s) = (s-1)^{-3} + 3a_0 (s-1)^{-2} + 3(a_0^2 + a_1)(s-1)^{-1} + O(1).
 \]
 and again use this to figure out the coeffitient of $(s-1)^{-1}$ in the 
 Laurent expansion of $F_3$ around $s=1$. We find that this coefficient is given by
@@ -146,7 +146,7 @@ This shows $t \geq \sqrt{-b^{-1}-1} \approx 6.5036$.
     The "only" thing left to made precise is the contour shift. The main ingrediants
     are (5.3b) and (5.3c).
 
-    Just for conveniance, let's summarize the bounds we need for
+    Just for convenience, let's summarize the bounds we need for
     $\tfrac{\zeta'}\zeta$:
     \[
         \frac{\zeta'}{\zeta}(s) = 
@@ -167,7 +167,7 @@ This shows $t \geq \sqrt{-b^{-1}-1} \approx 6.5036$.
     possible to find some $T = T_n$ with $\abs{n-T} \leq 1$ and 
     $\min_{\rho}{\abs{T - \Im\rho}} \leq \frac 1{\log \abs n}$. Together
     with $(5.3c)$, this gives that $\frac{\zeta'}{\zeta}(\sigma + \ic
-    T) \ll (\log \abs T)$ on that line. 
+    T) \ll (\log \abs T)^2$ on that line. 
 
 
     The plan is now to choose some large $n$, and 
@@ -177,11 +177,11 @@ This shows $t \geq \sqrt{-b^{-1}-1} \approx 6.5036$.
         \dc s
     \end{equation}
     to $\Re s = -1/2$. This leaves us with the exercise to bound the horizontal
-    integrals along the segments $[2\pm \ic T, -1/2 \pm \ic T]$. By the rapid decay
+    integrals along the segments $[2\pm \ic n, -1/2 \pm \ic n]$. By the rapid decay
     of $\hat \omega$ and the bounds for $\zeta'/\zeta$, changing the boundaries
     of the integral in (1) from $[2-\ic n, 2 + \ic n]$ to $[2 - \ic T_n, 2 +
-    \ic T_n]$ comes only with a small cost of $o(1)$, so we may also assume that
-    uniformly $\zeta(\sigma + \ic T_n) \ll \log n$ along the horizontal segments. 
+    \ic T_n]$ comes only with a small cost of $o(1)$. So we may also assume that
+    uniformly $\zeta(\sigma + \ic T_n) \ll (\log n)^2$ along the horizontal segments. 
     This justifies the first contour shift, and we obtain
     \begin{multline*}
         \sum_n \Lambda(n) \omega(n) = \pifrac \int_{2- \ic n}^{2 + \ic n} 
@@ -220,7 +220,8 @@ we would like to choose $\omega$ in way such that $\hat \omega(1/2 + \ic \gamma)
 \approx x^{\ic \gamma}$ for the zeroes we want to consider, and $\hat \omega$ 
 decaying rapidly after that range (ignoring the contribution of the trivial zeroes).
 
-A convenient seems to be 
+Apparently (not clear to me how to come up with this but hey it works) a
+convenient seems to be 
 \[
     \hat \omega(1/2 + \ic \gamma) = x^{\ic \gamma} \exp(-(\gamma/S)^2) = 
     x^{s-\frac 12} \exp\left( \left(\frac{s-1/2}{S}\right)^2\right),
