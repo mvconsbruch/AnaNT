@@ -11,9 +11,271 @@
 \end{center}
 
 \section*{Problem 1}
-\textbf{a-4p)} I already gave a solution to this on sheet 5. 
+\textbf{a-4p)} Look at sheet 5.
+
+\textbf{b-6p)} The approximation in (4.9) reads 
+\[
+    \sum_{n \leq x} d_k(n) = x P_k(\log x) + O(x^{1-\delta}).
+\]
+Reading the proof reveals that the main term is given by the residue
+\[
+    R \coloneqq \Res_{s=1} \frac{\zeta^k(s) x^s}s = \Res_{s=1} F_k(s),
+\]
+where for convenience $F_k(s) \coloneqq \frac{\zeta^k(s) x^s}s.$
+Of course $\zeta^k(s)$ has a singularity of degree $k$ at $1$, and we only need 
+to calculate the $(-1)$st term of the Laurent expansion of $F$ at $1$. 
+We have the Taylor expansions
+\[
+    \frac 1{s} =  \sum_{n=0}^\infty (-1)^n (s-1)^n 
+    \quad \text{and} \quad
+    x^s = \sum_{n=0}^\infty (\log x)^n (s-1)^n.
+\]
+Let $a_n$ denote the coefficients of the Laurent series of $\zeta$ at $1$, i.e.
+\[
+    \zeta(s) = \sum_{n = -1}^\infty a_n (s-1)^n.
+\]
+Calculating $P_2$ and $P_3$ now is pure calculation. 
+
+\textbf{Calculating $P_2$.} We find
+\[
+    \zeta^2(s) = \left( \sum_{n=-1}^\infty a_n s^n \right)^2
+    = a_{-1}^2 (s-1)^{-2} + 2a_{-1}a_0 (s-1)^{-1} + \dots.
+\]
+We multiply this with the Taylor series above and find that the coefficient of 
+$s^{-1}$ is given by 
+\[
+    2a_{-1}a_0 x + a_{-1}^2 (x \log x - x).
+\]
+\textbf{Remark.} It is possible to show by elementary means that 
+\[
+    \sum_{n\leq x}^\infty d_2(n) = x \log x + (2\gamma-1)x + O(x^{1/2}),
+\]
+which shows that $a_0 = \gamma$. (I just realized that $a_{-1} = 1$ is already
+known haha, but we could probably also derive this with a similar approach and
+$k=1$).
+
+\textbf{Calculating $P_3$.} We find similarly to above
+\[
+    \zeta^3(s) = (s-1)^{-3} + 3a_0 (s-1)^{-2} + 3(a_0^2 + a_1)(s-1)^{-1} + \dots
+\]
+and again use this to figure out the coeffitient of $(s-1)^{-1}$ in the 
+Laurent expansion of $F_3$ around $s=1$. We find that this coefficient is given by
+\[
+    x(a_0^2 + a_1) + 3a_0x ( \log x - 1) + 3x ((\log x)^2 - \log x + 1).
+\]
+
+
+
+
+
 \section*{Problem 2}
+\textbf{a)}
+To calculate $\zeta'(0)$, we make use of the functional equation, in the
+form
+\[
+    \zeta(1-s) = \zeta(s) \cdot \frac{2\Gamma(s)}{(2\pi)^s} 
+    \sin((\pi(1-s)/2).
+\]
+(This can be derived from the usual functional equation using the reflection formula
+$\Gamma(z) \Gamma(1-z) = \frac \pi{\sin(\pi z)}$. For $s$ close to $1$ we find
+\[
+    (s-1)\zeta(s) \Gamma(s) = 1 + O((s-1)^2),
+\]
+and 
+\[
+    \sin(\pi(1-s)/2) = -\tfrac \pi 2 (s-1) + O((s-1)^3).
+\]
+Hence
+\[
+    \zeta(1-s) = - \frac{\pi}{(2\pi)^s} + O((s-1)^2) = 
+    - \frac 12 - \frac 12 \log(2\pi) (s-1) + O((s-1)^2). 
+\]
+This gives $\zeta'(0) = - \frac{\log 2 \pi}2$.
+We now insert this into (5.2). For $L(s) = \zeta(s)$, this reads as
+\[
+    - \frac{\zeta'(s)}{\zeta(s)} = - \frac{\log \pi}2 + \frac 12 \frac{\Gamma'(s/2)}
+    {\Gamma(s/2)} - b + \frac 1s + \frac{1}{s-1} - \sum_{\rho \neq 0,1} 
+    \left( \frac{1}{s-\rho} + \frac 1 \rho\right).
+\]
+Taking the logarithmic derivative of the recurrece relation $\Gamma(s+1) = s \Gamma(s)$ reveals
+\[
+    \frac{\Gamma'(s+1)}{\Gamma(s+1)} = \frac 1s + \frac{\Gamma'(s)}{\Gamma(s)}.
+\]
+We can use this to simplify our equation, leaving us with
+\[
+    -\frac{\zeta'(s)}{\zeta(s)} = -\frac{\log \pi}2 + \frac 12 \frac{\Gamma'(s/2+1)}{\Gamma(s/2 + 1)} - b + \frac {1}{s-1} - \sum_{\rho \neq 0,1} \left( \frac1{s-\rho} 
+        + \frac 1 \rho \right ).
+\]
+When inserting $s=0$, this sum vanishes, and we find
+\[
+    -\frac{\zeta'(0)}{\zeta(0)} = -\frac{\log \pi}{2} + \frac 12 \frac{\Gamma'(1)}{\Gamma(1)} - b - 1.
+\]
+This proves the claim, as we know $\zeta'(0) = - \frac 12$, $\Gamma(1) = 1$ 
+and the values for $\zeta$ and $\Gamma$ from above. 
+
+\textbf{Remark.} The formula $\Gamma'(1) = -\gamma$ can be derived from
+the Weierstraß product
+\[
+\frac 1 {\Gamma(z)} = z \ec^{\gamma z} \prod_{j=1}^\infty\left(1+ \frac zj
+\right) \ec^{-z/j}
+\]
+by taking logarithmic derivatives on both sides and inserting $z=1$.
+
+\textbf{b)} This statement is false, but of course, we are supposed to show 
+$\abs{\Im(\rho) } \geq 6$ for all the \textit{non-trivial} roots of the zeta
+function.
+By (5.3a), we have that $$-b = -\Re b = \sum_\rho \Re(\tfrac 1 \rho).$$
+The idea is that if $\Im \rho_1$ was small, then this sum would be so large that
+this equality cannot hold (remember that $b = -0.023$ is quite small).
+Let $\rho = \sigma + \ic t$ be a root with smallest possible imaginary value.
+Note that with $\rho$, we also have roots $1-\sigma \pm \ic t$ and $\sigma - \ic t$,
+so we may assume that $\sigma \geq \frac 12$ and that $t > 0$. As all
+contributions in the sum of (5.3a) are positive, we find
+\[
+    -b \geq \frac 1{\sigma + \ic t} + \frac1{\sigma - \ic t} =
+    \frac{2 \sigma}{\sigma^2 + t^2} \geq \frac 1{1+q^2}.
+\]
+This shows $t \geq \sqrt{-b^{-1}-1} \approx 6.5036$. 
+
+
 \section*{Problem 3}
+\textbf{a-5p)}
+    The "only" thing left to made precise is the contour shift. The main ingrediants
+    are (5.3b) and (5.3c).
+
+    Just for conveniance, let's summarize the bounds we need for
+    $\tfrac{\zeta'}\zeta$:
+    \[
+        \frac{\zeta'}{\zeta}(s) = 
+        \begin{cases}
+            O(1) \quad &\Re s \geq 2, \\
+            O(\log \abs s) \quad &\Re s \leq -\frac 12, \ \abs{s+2m} \geq \frac 14 \text{ for all $m \in \N$,} \\
+            \sum_{\abs{\rho - s} \leq 1} \frac{1}{s-\rho} + O(1 + \log \abs s),
+            \quad & -1 \leq \Re s \leq 3. 
+        \end{cases}
+    \]
+    The first bound follows from $\frac{\zeta'}\zeta(s) = \sum_n \Lambda(n) n^{-s}$,
+    the second part follows from the first bound, the functional equation and
+    Stirling's formula. The third part is (5.3c).
+
+    By (5.3b), there are approximately $\log T$ roots of the zeta-function
+    with imaginary part close to $T$ (i.e., $\abs{T- \Im \rho} \leq 1$).
+    Hence given some $n \in \Z$, the pigeonhole principle assures that it is 
+    possible to find some $T = T_n$ with $\abs{n-T} \leq 1$ and 
+    $\min_{\rho}{\abs{T - \Im\rho}} \leq \frac 1{\log \abs n}$. Together
+    with $(5.3c)$, this gives that $\frac{\zeta'}{\zeta}(\sigma + \ic
+    T) \ll (\log \abs T)$ on that line. 
+
+
+    The plan is now to choose some large $n$, and 
+    shifting the truncated integral 
+    \begin{equation}
+        -\pifrac \int_{2-\ic n}^{2+ \ic n} \frac{\zeta'}{\zeta}(s) \hat \omega(s)
+        \dc s
+    \end{equation}
+    to $\Re s = -1/2$. This leaves us with the exercise to bound the horizontal
+    integrals along the segments $[2\pm \ic T, -1/2 \pm \ic T]$. By the rapid decay
+    of $\hat \omega$ and the bounds for $\zeta'/\zeta$, changing the boundaries
+    of the integral in (1) from $[2-\ic n, 2 + \ic n]$ to $[2 - \ic T_n, 2 +
+    \ic T_n]$ comes only with a small cost of $o(1)$, so we may also assume that
+    uniformly $\zeta(\sigma + \ic T_n) \ll \log n$ along the horizontal segments. 
+    This justifies the first contour shift, and we obtain
+    \begin{multline*}
+        \sum_n \Lambda(n) \omega(n) = \pifrac \int_{2- \ic n}^{2 + \ic n} 
+        \frac{\zeta'(s)}{\zeta(s)} \hat \omega(s) \dc s + o(1) \\
+        = \sum_{\abs{\Im \rho} \leq T_n} \hat \omega(\rho)
+        + \pifrac \int_{-1/2 - \ic T_n}^{-1/2 + \ic T_n}
+        \frac{\zeta'(s)}{\zeta(s)} \hat \omega(s) \dc s + o(1).
+    \end{multline*}
+    We may let $n \to \infty$, obtaining 
+    \[
+        \sum_n \Lambda(n) \omega(n) - \sum_\rho \hat \omega(\rho)
+         = \int_{(-1/2)}  \frac{\zeta'(s)}{\zeta(s)} \hat \omega(s) \dc s.
+    \]
+    In the proof of (4.4c) we can abuse the fact that $\supp(\omega) \subset
+    [2, \infty)$ to show that $\hat \omega(s) \ll \frac{2^{-s}}{\abs{\Im(s)}^N}$
+    for all $N$. This shows the bound
+    \[
+        \int_{(-A+1/2)}  \frac{\zeta'(s)}{\zeta(s)} \hat \omega(s) \dc s
+        \ll 2^{-A},
+    \]
+    and the shift is justified.
+
+\textbf{b-5p)}
+The observation is that this function has large negative peaks at the primes
+(and smaller ones with sign $(-1)^k$ when $n=p^k$ is a prime power). Although 
+the solution will (implicitely) assume the Riemann conjecture, this illustrates
+the fact that \textit{$\zeta$ knows everything about the primes.}
+
+Okay, let's analyze what's happening here. First, we have 
+\[
+    \cos(\gamma_j \log x) = \Re(\ec^{\ic \gamma_j \log x}) = \Re(x^{\ic \gamma_j}),
+\]
+so we are plotting the real part of the sum of $x^{\ic \gamma}$ over the first few
+zeroes. If we want to interpret this as a sum $\sum_\rho \hat \omega(\rho)$, 
+we would like to choose $\omega$ in way such that $\hat \omega(1/2 + \ic \gamma)
+\approx x^{\ic \gamma}$ for the zeroes we want to consider, and $\hat \omega$ 
+decaying rapidly after that range (ignoring the contribution of the trivial zeroes).
+
+A convenient seems to be 
+\[
+    \hat \omega(1/2 + \ic \gamma) = x^{\ic \gamma} \exp(-(\gamma/S)^2) = 
+    x^{s-\frac 12} \exp\left( \left(\frac{s-1/2}{S}\right)^2\right),
+\]
+as this vanishes quickly once $\gamma > S$. We choose $S$ to be a parameter roughly
+of the size of the largest zero we want to consider, which in our case is 
+$\gamma_{30} \approx 100$. That's why we choose $S = 100$. We will later show
+that the weight 
+\[
+    \omega(y) = \omega_{S,x}(y) = \frac {S}{2(\pi y)^{1/2}} \exp \left(
+        -\left( \frac S2 \log\left(\frac yx\right) \right)^2
+    \right)
+\]
+is the inverse Mellin-transform of $\hat \omega$. Now this is large if 
+the part in the exponential vanishes, i.e., if $x \approx y$. On the other side,
+if $y$ is not close to $x$ then $\log(y/x)$ becomes large (say of size
+$\approx \frac{10}S$), then the factor $\exp(-S^2/4 \log(y/x)^2)$ makes
+$\omega$ decay quickly. So at least for $x$ not too large (for large $x$ we need
+a further distance between $y$ and $x$ to make $\log(y/x)$ become large), $\omega$
+essentially looks like a peak at $y=x$. 
+We are now ready to explain what's going on. With the explicit formula
+(which we are technically not even allowed to use as $\omega$ is not compactly
+supported, but whatever), we find
+\[
+    \sum_n \Lambda(n) \omega_{S,x}(n) \approx - \sum_{\abs{\Im \rho} \leq S} \hat
+    \omega(\rho) \approx \sum_{j=1}^S \cos(\gamma_j \log x).
+\]
+If now $x \approx p^k$ is close to a prime power, the LHS is $\approx \Lambda(n)
+\frac{S}{y^{1/2}}$, large. If not, there is no term on the LHS that
+contributes much, so we would expect the RHS to be small. 
+
+\textbf{Prove that "$\hat \omega = \hat \omega$".} We put $\hat \omega$ in the
+inverse mellin transform to find
+\[
+    \omega(y) = \pifrac \int_{(c)} x^{s-1/2} \exp\left( \left(
+    \frac{s-1/2}{S}\right)^2 \right) y^{-s} \dc s
+\]
+for all real numbers $c$. We substitute $u = \frac{s-1/2}S$ and find
+\[
+    \omega(y) = \frac S{y^{1/2}} \cdot \pifrac \int_{(c)}
+    \exp(u^2) \left( \frac yx \right)^{-Su} \dc u.
+\]
+Abbreviating $v = S \log \frac yx$ shows further that 
+\[
+    \frac S{y^{1/2}} \pifrac \int_{(c)} \exp(u^2) \exp(-uv) \dc u 
+    = \frac{S \exp(-v^2/4)}{y^{1/2}} \cdot \pifrac \int_{(c)}
+    \exp((u-v/2)^2) \dc u.
+\]
+This integral does not depend on $c$, hence we may wlog assume $c=v/2$, which reveals
+that this integral equals
+\[
+    \pifrac \int_{(0)} \exp(u^2) \dc u = \frac 1{2\pi} \int_{-\infty}^{\infty}
+    \exp(-t^2) \dc t = \frac 1{2 \sqrt \pi},
+\]
+just what we wanted.
+
+
+
 \section*{Problem 4}
 First, an aside on the weird-looking error term $\psi(x)-x \ll x \ec^{-c
 \sqrt{\log x}}$. On the one side it is better than every error term
