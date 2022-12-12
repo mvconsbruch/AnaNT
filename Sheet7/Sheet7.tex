@@ -221,17 +221,19 @@ n^{1+\varepsilon}$, but
 there is no trivial way to get anything beyond that.
 But it turns out we don't need such bounds! Note that we really need to include
 a bound of $a(n)$ in $(4.7)$ because we try to approximate a function that 
-"jumps" (the RHS) with a function that is continuous in $x$ (the integral, 
+"jumps" (the LHS) with a function that is continuous in $x$ (the integral, 
 at least as long as $T = T(x)$ is continuous in $x$). But if we decide to inspect
-the approximation away from the jumps of the RHS, we might be able to prove an 
+the approximation away from the jumps of the LHS, we might be able to prove an 
 error not involving terms of the form $O(\max_{n \sim x} \abs{a_n})$. This 
 idea is sketched in the following.
 
 \textbf{Using a modified version of (4.7).} The probably more sensible way to
 do this is to use a modified version of 
-(4.7): If we assume $x \in \frac 12 + \N$, we can copy the proof of (4.7), but 
-the first summand $A_x$ can be avoided. This gives (with the same terminology as in 
-(4.7)) the statement
+(4.7): If we assume $x \in \frac 12 + \N$ (more generally, $x \in 
+[\delta, 1-\delta] + \N$ works for $0 < \delta < 1/2$),
+we can copy the proof of
+(4.7), but the first summand $A_x$ can be avoided. This gives (with the same
+terminology as in (4.7)) the statement
 \[
     \sum_{n \leq x} a_n = \pifrac \int_{c-\ic T}^{c + \ic T} \sum_{n \in
         \N}\frac{a_n}{n^s} x^{s} \frac {\dc s}s + O\left(\frac{x^c}T \sum_n
