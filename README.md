@@ -6,10 +6,10 @@
 * I am really glad noone showed during Dies! 
 
 ## Solutions to the exercise sheets
-Warning: These are non-official, there might be errors. Also, this wouldn't
-have been possible without me having access to the solutions of Christian
-Bernert, who did the exercise sessions when I took the same course in Göttingen
-in 2019.
+Warning: These are non-official, there might be errors. Also, this would not have been
+have been possible if I didn't have access to my former tutor's solutions 
+from 2019, when I took a similar course in Göttingen.
+
 * A full solution to Sheet 0 can be found on pages 6ff in Brüdern's _Einführung
   in die analytische Zahlentheorie_ (german), or (in a slightly different form)
   on the first few pages of Tenenbaum's _Introduction to analytic and
