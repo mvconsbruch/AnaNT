@@ -219,7 +219,13 @@ quite challenging, as we would have to find some bound on $a(n)$ to apply (4.7).
 The convergence of $\sum_n a(n)n^{-s}$ for $\Re (s)>1$ gives $a(n) \ll
 n^{1+\varepsilon}$, but 
 there is no trivial way to get anything beyond that.
-But it turns out we don't need such bounds! 
+But it turns out we don't need such bounds! Note that we really need to include
+a bound of $a(n)$ in $(4.7)$ because we try to approximate a function that 
+"jumps" (the RHS) with a function that is continuous in $x$ (the integral, 
+at least as long as $T = T(x)$ is continuous in $x$). But if we decide to inspect
+the approximation away from the jumps of the RHS, we might be able to prove an 
+error not involving terms of the form $O(\max_{n \sim x} \abs{a_n})$. This 
+idea is sketched in the following.
 
 \textbf{Using a modified version of (4.7).} The probably more sensible way to
 do this is to use a modified version of 
@@ -243,15 +249,17 @@ sacrifice a bit of error size, but get a smooth ride when moving the integral to
 the left in exchange. You will realize we almost don't have to worry about
 messy calculations at all! 
 
-\textbf{Proving the asymptotic using Cesàro-weights.} Instead of bounding 
+\textbf{Proving the asymptotic using Cesàro-weights.} Instead of trying to avoid
+the jumps, we could also try to smooth out the LHS of (4.7). Instead of bounding
 \[
     S_0(x) = \sum_{n \leq x} a(n),
 \]
-we choose to bound
+we try to bound
 \[
     S_1(x) = \sum_{n \leq x} a(n) (x-n) = \int_1^x S_0(y) \dc y.
 \]
-(These weights are called Cesàro weights). 
+(These weights are called Cesàro weights). We hope to recover information about 
+$S_0$ afterwards. 
 Integrating Perron's formula, we find that 
 \[
     S_1(x) = \pifrac \int_{(c)} F(s) x^{s+1} \frac{\Gamma(s)}{\Gamma(s+2)} \dc s.
