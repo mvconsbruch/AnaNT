@@ -1,0 +1,37 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+
+\author{Max von Consbruch}
+
+\begin{document}
+
+\begin{center}
+    \huge{Solutions to Sheet 9.}
+\end{center}
+
+\section*{Problem 1\&2}
+\section*{Problem 3}
+\section*{Problem 4}
+Okay, let $c>0$ and let $q$ and $q'$ be two exceptional moduli with zeroes characters
+$\chi$, $\chi'$ and real zeroes $\beta, \beta'$ satisfying the condition of the
+exercise. Let's compare the assumptions with the statement of (5.12).
+\begin{enumerate}
+    \item[(A)] We have $1 - \frac c{\log q} < \beta$, and similar for $q'$.
+    \item[(5.12)] There is some small $d>0$ (independent of $q$ and $q'$) such
+        that we have $\min(\beta, \beta') \leq 1 - \frac d{\log(qq')}$. 
+\end{enumerate}
+If we assume $q < q'$, we certainly obtain
+\[
+    1 - \frac c {\log q} < 1 - \frac d {\log(qq')}, \quad \text{i.e.}
+    \quad \frac dc < \frac  {\log(qq')}{\log q}, \quad \text{i.e.} \quad
+    q' > q^{d/c - 1}.
+\]
+Thus, any $c < d/3$ does the job. 
+
+Aside: This shows that there are $O(\log \log n)$ exceptional moduli up to $n$. 
+
+
+\contactend
+
+\end{document}
