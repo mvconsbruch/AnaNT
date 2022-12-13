@@ -11,7 +11,133 @@
 \end{center}
 
 \section*{Problem 1\&2}
+
+Want to estimate
+\[
+    S_2(x) \coloneqq \sum_{n \leq x, \Omega(n) = 2} 1.
+\]
+Write it as 
+\[
+    \sum_{p \leq \sqrt x} \sum_{p \leq q \leq x/p} 1 = \sum_{p \leq \sqrt x}
+    \pi(x/p) - \pi(p).
+\]
+Use PNT, get 
+\[
+    S_2(x) = \sum_{p \leq \sqrt x} \int_p^{x/p} \frac {\dc t}{\log t} +
+    O(x \ec^{-c\sqrt{\log x}} ).
+\]
+for a constant $c>0$ (not the same as in the PNT).
+Concept-wise we are done here, as all is left to do is to do partial summation
+with $g(t) = \Li(x/t) - \Li(t)$ as smooth weight, and $a_n$ the indicator
+function on primes. Estimating the rest is a bit tedious, but straight-forward:
+
+We have $g(\sqrt x) = 0$ and $-g'(t) = \frac 1 {\log t} + \frac{x}{t^2
+\log(x/t)}$. We obtain
+\[
+    S_2(x) = \sum_{p \leq \sqrt x} g(p) = 
+    \int_2^{\sqrt x} \frac{\pi(t)}{\log t} + \frac{\pi(t) x}{t^2 \log(x/t)}
+    \dc t.
+\]
+The integral over $\pi(t)/\log t$ can be dealt with quite quickly. We have 
+$\pi(t) \ll \frac t{\log t}$, hence
+\[
+    \int_2^{\sqrt x} \frac{\pi(t)}{\log t} \dc t
+    \ll \int_2^{\sqrt x} \frac t{(\log t)^2} \dc t
+    \ll \left( \int_{2}^{x^{1/4}} + 
+    \int_{x^{1/4}}^{\sqrt x} \right )\frac{t}{(\log t)^2} \dc t 
+    \ll x^{1/2} + \frac x{(\log x)^2}.
+\]
+We are left with
+\[
+    S_2(x) = \int_2^{\sqrt x} \frac{\pi(t) x \dc t}{t^2 \log(x/t)} + O\left(\frac x
+    {(\log x)^2}\right) = \int_2^{\sqrt x} \frac{x((\log t)^{-1} + O((\log t)^{-2}))}{t
+\log(x/t)} \dc t + O\left(\frac x{(\log x)^2}\right),
+\]
+where we applied the PNT again, this time with error term $O(x/(\log x)^2)$. 
+The integral over the $O$-term is also easily handled. We have $\log(x/t) \gg
+\log g$, and hence find that the contribution is bounded by 
+\[
+    \frac x{\log x} \int_2^{\sqrt x} \frac 1{t (\log t)^2} \dc t
+    \ll \frac x{\log x}. 
+\]
+We are left with
+\[
+    S_2(x) = x \int_2^{\sqrt x} \frac 1{t (\log t)(\log \tfrac xt)} \dc t 
+    + O(\frac x{\log x}).
+\]
+We can use the geometric series to show that 
+\[
+    \frac 1{\log \tfrac xt} = \frac 1{\log x (1- \tfrac{\log x}{\log t})}
+    = \frac 1{\log x} \left( 1 + O(\tfrac {\log t}{\log x}) \right)
+    = \frac 1 {\log x} + O\left(\frac{\log t}{(\log x)^2} \right).
+\]
+Hence we obtian
+\[
+    S_2(x) = \frac x{\log x} \int_2^{\sqrt x} \frac 1{t \log t} \dc t
+    + O\left(\frac x{(\log x)^2} \int_2^{\sqrt x} \frac 1t \right)+ O(\tfrac x{\log x}) 
+    = \frac x{\log x} \int_2^{\sqrt x} \frac 1{t \log t} \dc t + O\left( \frac
+    {x}{\log x} \right).
+\]
+This integral is exactly given by 
+\[
+    \int_2^{\sqrt x} \frac 1{t \log t} \dc t = 
+    \log \log \sqrt x - \log \log 2,
+\]
+which leaves us with
+\[
+    S_2(x) = \frac{x \log \log x}{\log x} + O\left( \frac x{\log x}\right),
+\]
+as desired.
+
+
 \section*{Problem 3}
+This is a consequence of Merten's theorem, which states that for 
+$x > 1$, 
+\[
+    \sum_{p \leq x} \frac 1p = \log \log x + C + O((\log x)^{-1})
+\]
+for some constant $C$. 
+
+Note that 
+\[
+    \frac{\phi(n)}n = \prod_{p \mid n} (1 - p^{-1}),
+\]
+so we really want to show that the RHS is $\gg (\log \log n)^{-1}$. 
+The product over the prime divisors of $n$ is hard to get a hold on. 
+It would be much easier if we could somehow relate this to products of 
+the form $\prod_{p \leq x} (1-p^{-1})$, as these products can be bounded
+with Merten's formula:
+\begin{multline*}
+    \prod_{p \leq x} \left(1 - \frac 1p \right) 
+    = \exp \left( \sum_{p \leq x} \log \left( 1- \frac 1p \right) \right) = \exp \left( - \sum_{p \leq x} \frac 1p - \sum_{p \leq x} \sum_{k \geq 2} \frac1{kp^k} \right) \\ 
+    = \exp\left( - \log \log x -C + O((\log x)^{-1}) - \sum_p \sum_{k \geq 2} \frac1{kp^k} + O\left( \sum_{p > x} \sum_{k \geq 2} \frac1 {p^k} \right) \right) \\ 
+    = \frac{ \ec^{-C'}}{\log x} \exp \left( O \left( \frac 1{\log x} \right) \right) 
+    = \frac{\ec^{-C'}}{\log x}(1 + O((\log x)^{-1}) 
+    \gg \frac 1{\log x}.
+\end{multline*}
+(This also was on sheet 0). 
+In particular, if we choose $x = \log n$, we obtain
+\[
+    \prod_{p \leq \log n}\left(1 - \frac 1p\right) \gg (\log \log n)^{-1}.
+\]
+This is nice, because the prime divisors $p \mid n$ with $p \geq \log n$ 
+don't contribute anything: 
+\[
+    \prod_{p \mid n, \ p \leq \log n} \left(1 - \frac 1p\right)
+    \geq \left( 1 - \frac 1 {\log n} \right)^{\omega(n)}
+    \geq \left(1 - \frac 1 {\log n} \right)^{2 \log n} \gg 1.
+\]
+(Here we used $\omega(n) \leq \log_2(n) \leq 2 \log n$ and that one formula for $\ec$). Hence we can conclude
+\[
+    \frac{\phi(n)}n \geq
+    \left( 1 - \frac 1{\log n} \right)^{\omega(n)} \prod_{p \leq \log n}
+    \left(1 - \frac 1p\right) \gg \frac 1{\log \log n}.
+\]
+
+
+
+
+
 \section*{Problem 4}
 Okay, let $c>0$ and let $q$ and $q'$ be two exceptional moduli with zeroes characters
 $\chi$, $\chi'$ and real zeroes $\beta, \beta'$ satisfying the condition of the
