@@ -18,8 +18,8 @@ Want to estimate
 \]
 Write it as 
 \[
-    \sum_{p \leq \sqrt x} \sum_{p \leq q \leq x/p} 1 = \sum_{p \leq \sqrt x}
-    \pi(x/p) - \pi(p).
+    S_2(x) = \sum_{p \leq \sqrt x} \sum_{p \leq q \leq x/p} 1 =
+    \sum_{p \leq \sqrt x} \left(\pi(x/p) - \pi(p)\right) + O(\sqrt x).
 \]
 Use PNT, get 
 \[
@@ -134,8 +134,8 @@ don't contribute anything:
     \left(1 - \frac 1p\right) \gg \frac 1{\log \log n}.
 \]
 
-
-
+\textbf{Notes after correcting.} I just realized that the long calculation 
+can be replaced by a reference to (5.9).
 
 
 \section*{Problem 4}
@@ -155,7 +155,10 @@ If we assume $q < q'$, we certainly obtain
 \]
 Thus, any $c < d/3$ does the job. 
 
-Aside: This shows that there are $O(\log \log n)$ exceptional moduli up to $n$. 
+This shows that there are $O(\log \log n)$ exceptional moduli up to $n$. 
+
+Aside: There is nothing special about the $2$ in the exponent, if we choose 
+$c$ small enough we can get arbtirarily large exponents. But gives stronger conditions on what it means to be exceptional. 
 
 
 \contactend
