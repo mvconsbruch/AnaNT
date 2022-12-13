@@ -22,6 +22,8 @@ from 2019, when I took a similar course in Göttingen.
 * [Sheet 6](Sheet6/Sheet6.pdf) Bounds for ζ and L(s,χ) can be found here.
 * [Sheet 7](Sheet7/Sheet7.pdf) More examples for applications of Perron's formula, and some fun with Cesàro weights in exercise 4!
 * [Sheet 8](Sheet8/Sheet8.pdf) 
+* [Sheet 9](Sheet9/Sheet9.pdf) 
+
 
 ## Other Texts
 * [Notes on the approximate functional equation](ApproxFuncEq/ApproxFuncEq.pdf)
