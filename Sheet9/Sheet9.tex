@@ -55,7 +55,7 @@ We are left with
 \]
 where we applied the PNT again, this time with error term $O(x/(\log x)^2)$. 
 The integral over the $O$-term is also easily handled. We have $\log(x/t) \gg
-\log g$, and hence find that the contribution is bounded by 
+\log x$, and hence find that the contribution is bounded by 
 \[
     \frac x{\log x} \int_2^{\sqrt x} \frac 1{t (\log t)^2} \dc t
     \ll \frac x{\log x}. 
@@ -71,7 +71,7 @@ We can use the geometric series to show that
     = \frac 1{\log x} \left( 1 + O(\tfrac {\log t}{\log x}) \right)
     = \frac 1 {\log x} + O\left(\frac{\log t}{(\log x)^2} \right).
 \]
-Hence we obtian
+Hence we obtain
 \[
     S_2(x) = \frac x{\log x} \int_2^{\sqrt x} \frac 1{t \log t} \dc t
     + O\left(\frac x{(\log x)^2} \int_2^{\sqrt x} \frac 1t \right)+ O(\tfrac x{\log x}) 
@@ -135,7 +135,9 @@ don't contribute anything:
 \]
 
 \textbf{Notes after correcting.} I just realized that the long calculation 
-can be replaced by a reference to (5.9).
+can be replaced by a reference to (5.9). This also makes the reference to 
+Merten's theorem dispensable, but technically uses the (much stronger) 
+prime number theorem.
 
 
 \section*{Problem 4}
