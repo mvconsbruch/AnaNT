@@ -4,6 +4,7 @@
 ## Announcements
 * From now on we will meet at 8:30!
 * I am really glad noone showed during Dies! 
+* The tutorial on Wednesday, December 21st will take place online, via zoom! I will add details on wednesday morning.
 
 ## Solutions to the exercise sheets
 Warning: These are non-official, there might be errors. Also, this would not have been
