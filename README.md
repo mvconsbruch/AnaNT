@@ -5,6 +5,8 @@
 * From now on we will meet at 8:30!
 * I am really glad noone showed during Dies! 
 * The tutorial on Wednesday, December 21st will take place online, via zoom! I will add details on wednesday morning.
+You can join the Zoom meeting via the url https://uni-bonn.zoom.us/j/64856121693?pwd=dlh6L3dSSTJrV1ZaWnRVc01tMTNjZz09.
+The Meeting ID is 64856121693, the password is dlh6L3dSSTJrV1ZaWnRVc01tMTNjZz09. (Sorry didn't know how to customize this).
 
 ## Solutions to the exercise sheets
 Warning: These are non-official, there might be errors. Also, this would not have been
