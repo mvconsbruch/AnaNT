@@ -43,9 +43,7 @@ $\pi(t) \ll \frac t{\log t}$, hence
 \[
     \int_2^{\sqrt x} \frac{\pi(t)}{\log t} \dc t
     \ll \int_2^{\sqrt x} \frac t{(\log t)^2} \dc t
-    \ll \left( \int_{2}^{x^{1/4}} + 
-    \int_{x^{1/4}}^{\sqrt x} \right )\frac{t}{(\log t)^2} \dc t 
-    \ll x^{1/2} + \frac x{(\log x)^2}.
+    \ll \frac x{(\log x)^2}.
 \]
 We are left with
 \[
@@ -67,7 +65,7 @@ We are left with
 \]
 We can use the geometric series to show that 
 \[
-    \frac 1{\log \tfrac xt} = \frac 1{\log x (1- \tfrac{\log x}{\log t})}
+    \frac 1{\log \tfrac xt} = \frac 1{\log x (1- \tfrac{\log t}{\log x})}
     = \frac 1{\log x} \left( 1 + O(\tfrac {\log t}{\log x}) \right)
     = \frac 1 {\log x} + O\left(\frac{\log t}{(\log x)^2} \right).
 \]

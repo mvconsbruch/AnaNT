@@ -17,15 +17,15 @@ from 2019, when I took a similar course in Göttingen.
   in die analytische Zahlentheorie_ (german), or (in a slightly different form)
   on the first few pages of Tenenbaum's _Introduction to analytic and
   probabilistic number theory._  
-* [Sheet 1](Sheet1/Sheet1.pdf)
-* [Sheet 2](Sheet2/Sheet2.pdf)
-* [Sheet 3](Sheet3/Sheet3.pdf) + some facts on multiplicative groups mod q.
-* [Sheet 4](Sheet4/Sheet4.pdf)
-* [Sheet 5](Sheet5/Sheet5.pdf)
-* [Sheet 6](Sheet6/Sheet6.pdf) Bounds for ζ and L(s,χ) can be found here.
-* [Sheet 7](Sheet7/Sheet7.pdf) More examples for applications of Perron's formula, and some fun with Cesàro weights in exercise 4!
-* [Sheet 8](Sheet8/Sheet8.pdf) 
-* [Sheet 9](Sheet9/Sheet9.pdf) 
+* [Sheet 1](Sheet01/Sheet1.pdf)
+* [Sheet 2](Sheet02/Sheet2.pdf)
+* [Sheet 3](Sheet03/Sheet3.pdf) + some facts on multiplicative groups mod q.
+* [Sheet 4](Sheet04/Sheet4.pdf)
+* [Sheet 5](Sheet05/Sheet5.pdf)
+* [Sheet 6](Sheet06/Sheet6.pdf) Bounds for ζ and L(s,χ) can be found here.
+* [Sheet 7](Sheet07/Sheet7.pdf) More examples for applications of Perron's formula, and some fun with Cesàro weights in exercise 4!
+* [Sheet 8](Sheet08/Sheet8.pdf) 
+* [Sheet 9](Sheet09/Sheet9.pdf) 
 
 
 ## Other Texts
