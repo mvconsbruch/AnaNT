@@ -10,6 +10,8 @@
     \huge{Solutions to Sheet 10.}
 \end{center}
 
+\textbf{Reminder:} $\Li(n) \coloneqq \int_2^n \frac 1{\log t} \dc t$. 
+
 \section*{Problem 1}
 One might think that this problem is incredibly complicated, but in reality it 
 is terribly simple. Let $P = P(q,a)$ be the smallest prime congruent to $a$ mod $q$.
@@ -25,6 +27,77 @@ Okay. If
 
 \section*{Problem 2}
 \section*{Problem 3}
+Before solving this, we should maybe try to figure out why we would expect this result. 
+Given some number $n$, we are supposed to evaluate the counting function
+\[
+    R(n) = \# \{p \leq n \mid \text{$n-p$ is square free}\}.
+\]
+Naively, one might be think that 
+$$R(n) \approx \zeta(2)^{-1}\pi(n) = \prod_{p} (1 - p^{-2}) \pi(n),$$
+as the propability of a random number to be square-free is (in a suitable sense) given by
+$\zeta(2)^{-1}$, and we inspect numbers (which seem random) in a set of cardinality 
+$\pi(n)$. This heuristic is not too far off, but it is wrong! The main term of the 
+asymptotic is clearly different. \\ 
+To see what goes wrong, let $q$ be any prime
+number.  First assume that $q \nmid n$. What is the probability that $q^2$ divides $n-p$
+for some prime $p\neq q$?  Neither $n$ nor $p$ are divisible by $q$, so the
+residue classes of these
+numbers mod $q^2$ are invertible, and there are $\phi(q^2)$ such residue
+classes.  So the probability is given by $\phi(q^2)^{-1}$.  Now assume $q \mid
+n$. One quickly checks that $q^2$ cannot divide $n-p$
+(unless $p = q$, but this case does not contribute much). Now we can explain
+the asymptotic: There are
+$\approx \Li(n)$ primes $\leq n$, and the probability for $n-p$ not being divisible by 
+some prime $q$ is given by $(1-\phi(q^2)^{-1})$ if $q \nmid n$ and by $1$ if $q \mid n$. 
+As $n-p$ is square-free iff no square of a prime divides it, we should expect
+\[
+    R(n) \approx \prod_{q \nmid n}(1-\phi(q^2)^{-1}) \Li(n) = \prod_{q
+    \nmid n}\left(1-\frac1{q(q-1)}\right)^{-1} \Li(n),
+\]
+and this is what we have to prove.
+
+\textit{Proof.} Clearly, we have $R(n) = \sum_{p \leq n} \mu^2(n-p)$. A standard 
+trick to deal with $\mu^2$ is writing it as $\mu(k) = \sum_{d^2 \mid k} \mu(d)$.
+Applying this gives
+\[
+    R(n) = \sum_{p \leq n} \mu^2(n-p) = \sum_{p \leq n} \sum_{d^2 \mid n-p} \mu(d)
+    = \sum_{d \leq \sqrt n} \mu(d) \sum_{p \leq n, \ p \equiv n \text{ mod } d^2} 1.
+\]
+This is now basically an issue of counting primes in an arithmetic progression! 
+Hence it really smells like Siegel-Walfisz, but this is not applicable right away. 
+One issue is that we can only apply Siegel-Walfisz if $(d,n)=1$. But restricting to those
+$d$ does not really affect our main term, as whenever $(d,n)>1$ there is at
+most one prime number in that arithmetic progression, and the contribution of
+those is bounded by $\omega(n) \ll n^{\varepsilon}$. Furthermore, and more
+seriously, Siegel-Walfisz is only applicable if $d$ is small compared to $n$,
+more precisely, only if $d < (\log n)^A$.  But again, we can elementarily bound
+the terms with $d > (\log n)^A$. Given some $d$, the amount of numbers $<n$
+congruent to $n$ mod $d^2$ can be bounded by $\ll \frac n {d^2}$. We obtain
+\[
+    R(n) = \sum_{d \leq (\log n)^A, \ (d,n)=1} \psi(n; n, d^2) + 
+    O\left(\sum_{(\log n)^A < d < \sqrt n} \frac{n}{d^2} \right) + O(\sqrt n),
+\]
+and the $O$-terms can be bound by $\ll \frac{n}{(\log n)^A}$. Also, we can now apply
+Siegel-Walfisz! We find
+\[
+    R(n) = \sum_{d \leq (\log n)^A, \ (d,n)=1} \frac{1}{\phi(d^2)} \Li(n) 
+    + O\left( \frac{n}{(\log n)^A} \right).
+\]
+The sum can be completed, as $\phi(d^2) \gg \frac {d^2}{\log \log d} \gg
+d^{2-\varepsilon}$, so that 
+\[
+    \sum_{d > (\log n)^A} \frac 1{\phi(d^2)} \ll \frac{1}{(\log n)^{A(1-\varepsilon)}}.
+\]
+This allows us to conclude (for any $A$, not the choice we made before)
+\[
+    R(n) = \sum_{d \in \N, \ (d,n) = 1} \frac 1 {\phi(d^2)} \Li(n)
+    + O_A\left( \frac{n}{(\log n)^A} \right) = \prod_{p \nmid n}\left(1-\frac
+    1{\phi(p^2)}\right) \Li(n) + O_A\left( \frac{n}{(\log n)^A} \right).
+\]
+
+
+
+
 \section*{Problem 4}
 \contactend
 
