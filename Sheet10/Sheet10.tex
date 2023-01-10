@@ -11,21 +11,121 @@
 \end{center}
 
 \textbf{Reminder:} $\Li(n) \coloneqq \int_2^n \frac 1{\log t} \dc t$. 
-
 \section*{Problem 1}
-One might think that this problem is incredibly complicated, but in reality it 
-is terribly simple. Let $P = P(q,a)$ be the smallest prime congruent to $a$ mod $q$.
-The idea is now to plug this into to use the that 
-\[
-    \psi_0(P(q,a)-1,q,a) = \sum_{p \equiv a \pmod q} \log p = 0,
-\]
-Siegel-Walfisz says that $\psi(x,q,a) \approx \psi_0(x,q,a) \approx \frac
-x{\phi(q)}$ if $x$ is large, so we'd expect to find that $P(q,a)$ cannot be too
-large if the equality above holds.
+This exercise tests your understanding of the Siegel-Walfiz theorem.
+Let's write down explicitely what it says. 
+\begin{thm}[Explicit Siegel-Walfisz]
+    Let $A>0$. There is a constant $K = K(A)$ and a constant $c$ such that
+    whenever $q < (\log x)^A$, we have the approximation (with $K$ and $c$
+    independent of $q$!!!)
+    \[
+        \abs{\frac{x}{\phi(q)} - \psi(x; q, a)} < K x \ec^{-c \sqrt {\log x}}.
+    \]
+\end{thm}
+It is a routine exercise in partial summation to obtain the corresponding 
+statement for $\pi(x)$, which reads (with the same $c$)
+\begin{thm}[Explicit Siegel-Walfisz for $\pi$]
+    Let $A>0$. There is a constant $K = K(A)$ and a constant $c$ such that
+    whenever $q < (\log x)^A$, we have the approximation (with $K$ and $c$
+    independent of $q$!!!)
+    \[
+        \abs{\frac{\Li(x)}{\phi(q)} - \pi(x; q, a)} < K x \ec^{-c \sqrt {\log x}}.
+    \]
+\end{thm}
+In particular, if $q$ is large enough and we choose $x$ such that 
+$q < \log(x)^A$ (i.e., so large that we can apply Siegel-Walfisz), 
+we have $Kx\ec^{-c \sqrt {\log x}} < \frac{\Li(x)}{\phi(q)}+1$,
+so that $\pi(x;q,a) > 0$. The condition $q < (\log x)^A$ is equivalent 
+to $\ec^{q^{1/A}} < x$. As $A$ may be chosen arbitrarily large, this 
+implies that we have $\pi(x;q,a) > 0$ if $x \gg \ec^{q^{\varepsilon}}$.
 
-Okay. If 
+This bound might feel unsatisfying, because $\exp(q^{\varepsilon})$ is huge 
+compared to $q$! 
+We cannot do much better because the possibility of Siegel-Zeroes
+forces us to impose hard restrictions on the size of $q$ compared to $x$. However,
+if the generalized Riemann hypothesis were true, we wouldn't have to worry about 
+them. Perron's formula would the estimate
+\[
+    \psi(x, \chi) \ll (\log q) x^{\frac 12 + \varepsilon}
+\]
+and hence 
+\begin{equation}
+    \psi(x; q, a) = \frac 1{\phi(q)} \sum_\chi \sum_n \chi(n) \Lambda(n) n^{-s}
+    = \frac{x}{\phi(q)} + O((\log q)x^{1/2 + \varepsilon}).
+\end{equation}
+(I am not completely sure with the error term, but you might be able to work this
+out yourself. You will need the approximations
+\[
+    \frac{L'}L (s, \chi) = \begin{cases}
+        O(1) \quad &\Re s \geq 2 \\
+        O(\log q \abs s) \quad &\Re s \leq -\tfrac 12 \text{ and }
+        \abs{s+m} > \tfrac 14 \forall m \in \N \\
+        \sum_{\abs{t- \Im \rho} \leq 1} \frac 1{s-\rho} + 
+        O( \log (q( 2+ \abs t))) \quad & -\frac 12 \leq \Re s \leq 2,
+    \end{cases}
+\]
+where the latter sums goes over the non-trivial zeroes of $L(s, \chi)$.)
+Anyways, we observe that the main term of (1) dominates the error if
+$q^{2+\varepsilon} < x$. This is the desired bound. 
+
 
 \section*{Problem 2}
+\begin{enumerate}
+    \item[(a)] Let's try partial summation in conjunction with Polya-Vinogradov.
+        \[
+            \sum_{M < n \leq N} \chi(n) n^{-s} = 
+            N^{-s} \sum_{n \leq N} \chi(n) - M^{-s} \sum_{n \leq M} \chi(n)
+            + s\int_M^N t^{-s-1} \sum_{M < n \leq t} \chi(n) \dc t
+        \]
+        Now Polya-Vinogradov gives that every sum can be bound by $O(q^{1/2}
+        \log q)$. We obtain
+        \[
+            \sum_{M < n \leq N} \chi(n) n^{-s} 
+            \ll M^{-\Re s} q^{\frac 12} \log q + \abs s \int_M^N t^{-\Re s-1} 
+            q^{\frac 12} \log q \dc t  \ll \frac{\abs s qM^{-\Re s}}{\Re s}.
+        \]
+        Here we completed the integral and bounded $q^{\frac 12}\log q \ll q$. 
+        (This is not optimal, but it doesn't matter). 
+    \item[(b)] Note that in part a, we can choose $N$ arbitrarily large (without
+        changing the implicit constant in $\ll$!). Hence it 
+        makes sense to choose some $M > 2$ and split the sum $L(s, \chi) =
+        \sum_{n \in \N} \chi(n)n^{-s}$ into the parts $n \leq M$ and $n > M$
+        and apply the result of part a for the latter sum. How large do we have 
+        to choose $M$ in order to make this work? As $\Re s > 1 - (\log q)^{-1}$
+        and $\abs{\Im s} < q$ we find $\abs s \ll q \Re s$. With part a, this 
+        gives
+        \[
+            \sum_{M < n} \chi(n) n^{-s} \ll q^2 M^{(\log q)^{-1}-1}.
+        \]
+        If we choose $M = q^2$, this reduces to $\ll 1$, so let's see if the sum
+        with terms $n < M$ is small enough. We trivially bound
+        \[
+            \sum_{n < M} \chi(n)n^{-s} \ll \sum_{n < M} n^{(\log q)^{-1}n^{-1}}
+            \ll \int_1^M t^{(\log q)^{-1}-1} \dc t = \left[ (\log q) t^{(\log
+            q)^{-1}} \right]_1^M.
+        \]
+        As $M = q^2$ and $(q^2)^{(\log q)^{-1}} = \ec^{2 (\log q) (\log
+        q)^{-1}} = \ec^2 \ll 1$, we are done.
+
+    \item[(c)] We will prove this with Cauchy's integral formula. Remember what 
+        it says:
+        \[
+            L'(s,\chi) = \pifrac \int_C \frac{L(z, \chi)}{(z-s)^2} \dc z,
+        \]
+        where $C$ is some path convoluting $s$. We choose $C$ to be the circle
+        $\{z \mid \abs{z-s} = (\log q)^{-1}\}$. This might cause us to leave the
+        domain $\Re s > 1 - (\log q)^{-1}$, however the bound of part $b$ stays
+        valid even if $\Re s > 1 - 2(\log q)^{-1}$. We get
+        \[
+            L'(s, \chi) \ll \int_{\abs{z-s} = (\log q)^{-1}} 
+            \frac{L(z,\chi)}{(z-s)^2} \dc z \ll (\log q)^2.
+        \]
+        Here we used $L(z,\chi) \ll \log q$ and $(s-z)^{-2} \ll (\log q)^2$, 
+        so the part in the integral is bounded by $O((\log q)^3)$. As we integrate
+        over a path with length $O((\log q)^{-1})$, we obtain 
+        a bound with $O((\log q)^2)$, and we win.
+\end{enumerate}
+
 \section*{Problem 3}
 Before solving this, we should maybe try to figure out why we would expect this result. 
 Given some number $n$, we are supposed to evaluate the counting function
@@ -99,6 +199,24 @@ This allows us to conclude (for any $A$, not the choice we made before)
 
 
 \section*{Problem 4}
+We follow the hint.
+Let $n \equiv 3$ mod $4$, write it as $n = 4k+3$. Now
+\[
+     \frac 4n - \frac 1{k+1} = \frac 4n-\frac 4{n+1} =
+    \frac{4}{n(n+1)} = \frac 4{(4k+3)(4k+4)} = \frac 1{(4k+3)(k+1)}.
+\]
+This shows that there is a solution for every $n \equiv 3 \mod 4$. 
+One also quickly verifies that if $\frac 4n = \frac 1a + \frac 1b$,
+then $\frac 4{mn} = \frac 1{ma}+ \frac 1{mb}$. Also, there is a 
+solution whenever $n$ is even. Hence we really only
+have to show that almost all numbers have a prime divisor $\equiv 3$ mod $4$.
+
+Now we can use (5.15). The numbers having only prime factors congruent
+$1$ mod $4$ is a subset of the numbers that can be written as a sum of 
+two squares, and by (5.15), the number of sums of two squares up to $x$ is bound by
+$O(\frac x{\sqrt{\log x}}) = o(x)$.
+
+
 \contactend
 
 \end{document}
